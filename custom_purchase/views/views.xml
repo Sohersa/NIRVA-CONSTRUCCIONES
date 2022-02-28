@@ -2,7 +2,7 @@
   <data>
     <!-- explicit list view definition -->
     
-    <record model="ir.ui.view" id="my_module.list">
+    <record model="ir.ui.view" id="custom_purchase_form">
       <field name="name">my_module_list</field>
       <field name="model">purchase_requisition</field>
       <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
