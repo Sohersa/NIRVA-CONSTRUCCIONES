@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class PurchaseOrder(models.Model):
     # _name = 'my_module.custom_purchase'
-    _inherit_='purchase.order'
+    _inherit='purchase.order'
 
     custom = fields.Char(default="Campo personalizado heredado")
 
