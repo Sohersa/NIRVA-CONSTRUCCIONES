@@ -3,14 +3,17 @@
     <!-- explicit list view definition -->
     
     <record model="ir.ui.view" id="my_module.list">
-      <field name="name">my_module list</field>
-      <field name="model">my_module.my_module</field>
+      <field name="name">my_module_list</field>
+      <field name="model">purchase_requisition</field>
+      <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+        <notebook position="inside">
+          <page string="Custom pestaña we">
+            <group>
+              <field name="custom"/>
+            </group>
+          </page>
+        </notebook>
       </field>
     </record>
    
