@@ -2,10 +2,10 @@
   <data>
     <!-- explicit list view definition -->
     
-    <!-- <record model="ir.ui.view" id="custom_purchase_form">
+    <record model="ir.ui.view" id="custom_purchase_form">
       <field name="name">my_module_list</field>
       <field name="model">purchase_requisition</field>
-      <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
       <field name="arch" type="xml">
         <notebook position="inside">
           <page string="Custom pestaña we">
@@ -15,7 +15,7 @@
           </page>
         </notebook>
       </field>
-    </record> -->
+    </record>
    
 
     <!-- actions opening views on models -->
