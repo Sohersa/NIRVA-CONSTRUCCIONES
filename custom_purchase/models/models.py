@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api
 
-class CustomPurchase(models.Model):
+class PurchaseOrder(models.Model):
     # _name = 'my_module.custom_purchase'
     _inherit_='purchase.order'
 
