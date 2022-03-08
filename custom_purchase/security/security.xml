@@ -4,12 +4,12 @@
 
     <record id="module_category_compras" module="ir.module.category">
         <field name="name">Compras</field>
-        <field name="sequence">1<field>
+        <field name="sequence">1</field>
     </record>
     
     <record id="module_category_compras_recepciones" module="ir.module.category">
         <field name="name">Recepciones</field>
-        <field name="sequence">1<field>
+        <field name="sequence">1</field>
         <field name="parent_id" ref="module_category_compras"/>
     </record>
 
@@ -23,4 +23,4 @@
         <field name="category_id" ref="module_category_compras_recepciones"/>
     </record>
 
-<odoo>
+</odoo>
