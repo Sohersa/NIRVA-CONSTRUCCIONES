@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "custom_compras",
+    'name': "Purchase customizations",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -29,7 +29,7 @@
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    # 'demo': [
+    #     'demo/demo.xml',
+    # ],
 }
