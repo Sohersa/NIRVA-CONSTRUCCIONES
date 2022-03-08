@@ -2,23 +2,23 @@
 
 <odoo>
 
-    <record id="module_category_compras" module="ir.module.category">
+    <record id="module_category_compras" model="ir.module.category">
         <field name="name">Compras</field>
         <field name="sequence">1</field>
     </record>
     
-    <record id="module_category_compras_recepciones" module="ir.module.category">
+    <record id="module_category_compras_recepciones" model="ir.module.category">
         <field name="name">Recepciones</field>
         <field name="sequence">1</field>
         <field name="parent_id" ref="module_category_compras"/>
     </record>
 
-    <record id="group_compras_recepciones_obra" module="res.groups">
+    <record id="group_compras_recepciones_obra" model="res.groups">
         <field name="name">Obra</field>
         <field name="category_id" ref="module_category_compras_recepciones"/>
     </record>
 
-    <record id="group_compras_recepciones_oficina" module="res.groups">
+    <record id="group_compras_recepciones_oficina" model="res.groups">
         <field name="name">Oficina</field>
         <field name="category_id" ref="module_category_compras_recepciones"/>
     </record>
