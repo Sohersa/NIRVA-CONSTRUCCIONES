@@ -8,7 +8,7 @@ class ResPartner(models.Model):
     
     _inherit='res.partner'
 
-    es_sucursal = fields.Boolean(string="¿Es una sucursal?", default=False)
+    es_sucursal = fields.Boolean(string="Es sucursal", default=False)
 
     # Establecemos la acción a ejecutar al cambiar el valor de "is_company"
     @api.onchange('is_company')

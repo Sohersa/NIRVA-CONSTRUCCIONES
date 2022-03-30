@@ -19,9 +19,11 @@
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
-        <field name="parent_id" attrs="{'invisible': ['&amp;',('is_company','=', True),('es_sucursal','=', False)]}"/>
+        <field name="parent_id" position="replace">
+          <field name="parent_id" string="Deriva de:" attrs="{'invisible': ['&amp;',('is_company','=', True),('es_sucursal','=', False)]}"/>
+        </field>
         <field name="parent_id" position="before">
-          <field name="es_sucursal" />
+          <field name="es_sucursal" string="Es sucursal" />
         </field>
       </field>
     </record>
