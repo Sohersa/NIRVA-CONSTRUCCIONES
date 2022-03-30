@@ -47,14 +47,6 @@ class ResPartner(models.Model):
                 return {'domain': {'parent_id': []}}
 
 class PurchaseOrder(models.Model):
-<<<<<<< HEAD
-    
-    _inherit='purchase.order'
-
-    enterprise_domain = [('company_type', '=', 'company')]
-
-    empresa_id = fields.Many2one('res.partner', 'Empresa', domain=enterprise_domain)
-=======
 
     _inherit='purchase.order'
 
@@ -87,4 +79,3 @@ class PurchaseOrder(models.Model):
     #         domain =[('id', 'in', partners_list)]
     #         return domain
     #     return domain
->>>>>>> app_purchase
