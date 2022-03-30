@@ -9,16 +9,24 @@
       <field name="arch" type="xml">
         <field name="partner_id" position="before">
           <field name="empresa_id" />
+          <field name="sucursal_id" />
         </field>
-        <!-- <notebook position="inside">
-          <page string="Custom pestaña we">
-            <group>
-              <field name="custom"/>
-            </group>
-          </page>
-        </notebook> -->
       </field>
     </record>
+
+    <record model="ir.ui.view" id="custom_partner_form">
+      <field name="name">res_partner_form_customizations</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <field name="parent_id" attrs="{'invisible': ['&amp;',('is_company','=', True),('es_sucursal','=', False)]}"/>
+        <field name="parent_id" position="before">
+          <field name="es_sucursal" />
+        </field>
+      </field>
+    </record>
+
+
    
 
     <!-- actions opening views on models -->
