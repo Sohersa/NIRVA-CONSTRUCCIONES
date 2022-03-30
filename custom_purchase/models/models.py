@@ -55,7 +55,7 @@ class PurchaseOrder(models.Model):
     empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
 
     # Estableciendo el campo de la sucursal
-    surcursal_id = fields.Many2one('res.partner', string='Sucursal')
+    sucursal_id = fields.Many2one('res.partner', string='Sucursal')
 
     # Establecemos el dominio de las sucursales
     @api.onchange('empresa_id')
