@@ -7,7 +7,7 @@ class PurchaseOrder(models.Model):
     _inherit='purchase.order'
 
     enterprise_domain = [('company_type', '=', 'company')]
-    empresa_id = fields.Many2one('res.partner', 'Empresa', domain=enterprise_domain)
+    empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
     # name = fields.Char()
     # value = fields.Integer()
     # value2 = fields.Float(compute="_value_pc", store=True)
