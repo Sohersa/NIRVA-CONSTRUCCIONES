@@ -23,7 +23,7 @@ class PurchaseOrder(models.Model):
     @api.onchange('empresa_id')
     def _onchange_empresa(self):
         for rec in self:
-            return {'domain': {'partner_id': [('parent_id', '=', rec.partner_id.id)]}}
+            return {'domain': {'partner_id': [('parent_id', '=', rec.empresa_id.id)]}}
     # @api.depends('value')
     # def _value_pc(self):
     #     self.value2 = float(self.value) / 100
