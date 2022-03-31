@@ -29,7 +29,7 @@
         <!-- Agregamos nuestro checkbox de es_sucursal -->
         <field name="parent_id" position="before">
           <group>
-              <label string="Es sucursal?"/>
+              <label string="Es sucursal label"/>
               <field name="es_sucursal"/>
           </group>
         </field>
