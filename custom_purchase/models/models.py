@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ast import If
+from dataclasses import field
 from odoo import models, fields, api
 
 class ResPartner(models.Model):
@@ -8,6 +9,7 @@ class ResPartner(models.Model):
     _inherit='res.partner'
 
     es_sucursal = fields.Boolean()
+    hide_parent_id_field = fields.Boolean()
 
     # Establecemos la acción a ejecutar al cambiar el valor de "is_company"
     @api.onchange('is_company')
@@ -17,10 +19,14 @@ class ResPartner(models.Model):
             if (rec.is_company):
                 # y es una sucursal...
                 if (rec.es_sucursal):
+                    # Mostramos el campo de empresa relacionada
+                    rec.hide_parent_id_field = False
                     # retornamos un dominio que sólo incluya a las empresas
                     return {'domain': {'parent_id': ['&', ('is_company', '=', True), ('es_sucursal', '=', False)]}}
                 # y no es una sucursal
                 else:
+                    # Ocultamos el campo de empresa relacionada
+                    rec.hide_parent_id_field = True
                     # retornamos un dominio vacío
                     return {'domain': {'parent_id': [('id', '=', '-1')]}}
                 """
@@ -41,10 +47,14 @@ class ResPartner(models.Model):
             if (rec.is_company):
                 # y es una sucursal...
                 if (rec.es_sucursal):
+                    # Mostramos el campo de empresa relacionada
+                    rec.hide_parent_id_field = False
                     # retornamos un dominio que sólo incluya a las empresas
                     return {'domain': {'parent_id': ['&', ('is_company', '=', True), ('es_sucursal', '=', False)]}}
                 # y no es una sucursal
                 else:
+                    # Ocultamos el campo de empresa relacionada
+                    rec.hide_parent_id_field = True
                     # retornamos un dominio vacío
                     return {'domain': {'parent_id': [('id', '=', '-1')]}}
                 """

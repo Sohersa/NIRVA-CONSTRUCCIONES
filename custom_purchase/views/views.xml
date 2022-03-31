@@ -21,8 +21,10 @@
       <field name="arch" type="xml">
 
         <field name="parent_id" position="replace">
-          <label for="parent_id" string="Pertenece a:" />
-          <field name="parent_id" attrs="{'invisible': ['&amp;',('is_company','=', True),('es_sucursal','=', False)]}"/>
+          <group>
+            <label for="parent_id" string="Pertenece a:" />
+            <field name="parent_id" attrs="{'invisible': [('hide_parent_id_field','=', True)]}"/>
+          </group>
         </field>
 
         <field name="parent_id" position="before">
