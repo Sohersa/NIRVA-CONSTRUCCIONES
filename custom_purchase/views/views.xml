@@ -29,7 +29,6 @@
 
         <field name="parent_id" position="before">
           <group>
-              <label for="es_sucursal" string="Es sucursal"/>
               <field name="es_sucursal"/>
           </group>
         </field>
