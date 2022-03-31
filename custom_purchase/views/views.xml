@@ -27,7 +27,7 @@
 
         <field name="name" position="after">
           <group>
-            <field name="es_sucursal" nolabel="1" attrs="{'invisible':[('is_company', '=', False)]}"/>
+            <field name="es_sucursal" nolabel="1"/>
             <label for="es_surcusal" string="El contacto representa una sucursal"/>
           </group>
         </field>
