@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     _inherit='res.partner'
 
     es_sucursal = fields.Boolean()
-    hide_parent_id_field = fields.Boolean()
+    # hide_parent_id_field = fields.Boolean()
 
     # Establecemos la acción a ejecutar al cambiar el valor de "is_company"
     @api.onchange('is_company')

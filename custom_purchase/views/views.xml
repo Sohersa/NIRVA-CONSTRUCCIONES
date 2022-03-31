@@ -23,7 +23,8 @@
         <field name="parent_id" position="replace">
           <group>
             <label for="parent_id" string="Pertenece a:" />
-            <field name="parent_id" attrs="{'invisible': [('hide_parent_id_field','=', True)]}"/>
+            <!-- <field name="parent_id" attrs="{'invisible': [('hide_parent_id_field','=', True)]}"/> -->
+            <field name="parent_id" />
           </group>
         </field>
 
