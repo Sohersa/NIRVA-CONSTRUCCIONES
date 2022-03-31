@@ -22,13 +22,11 @@
 
         <field name="parent_id" position="replace">
             <label for="parent_id" string="Empresa o sucursal relacionada:"/>
-            <field name="parent_id" nolabel="0"/>
+            <field name="parent_id"/>
         </field>
 
         <field name="name" position="after">
-          <group>
-              <field name="es_sucursal"/>
-          </group>
+            <field name="es_sucursal"/>
         </field>
 
       </field>
