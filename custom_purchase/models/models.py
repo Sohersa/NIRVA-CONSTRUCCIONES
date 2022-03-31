@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     
     _inherit='res.partner'
 
-    es_sucursal = fields.Boolean(string="Es sucursal", default=False)
+    es_sucursal = fields.Boolean()
 
     # Establecemos la acción a ejecutar al cambiar el valor de "is_company"
     @api.onchange('is_company')
@@ -67,7 +67,7 @@ class PurchaseOrder(models.Model):
 
     # Estableciendo el campo de la sucursal
     sucursal_domain = [('id', '=', '-1')]
-    sucursal_id = fields.Many2one('res.partner', string='Sucursal')
+    sucursal_id = fields.Many2one('res.partner', string='Sucursal', domain=sucursal_domain)
 
     # Establecemos el dominio de las sucursales
     @api.onchange('empresa_id')
