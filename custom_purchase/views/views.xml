@@ -21,6 +21,7 @@
       <field name="arch" type="xml">
 
         <field name="parent_id" position="replace">
+            <label for="parent_id" string="Empresa o sucursal relacionada:"/>
             <field name="parent_id" nolabel="0"/>
         </field>
 
