@@ -21,12 +21,16 @@
       <field name="arch" type="xml">
 
         <field name="parent_id" position="replace">
-          <field name="parent_id" nolabel="0"/>
+            <label for="parent_id" string="Empresa o sucursal relacionada:"/>
+            <field name="parent_id" nolabel="0"/>
         </field>
 
         <field name="name" position="after">
           <group>
-              <field name="es_sucursal"/>
+            <div class="o_row">
+              <label for="es_sucursal" string="El contacto representa una sucursal"/>
+              <field name="es_sucursal" nolabel="1"/>
+            </div>
           </group>
         </field>
 
