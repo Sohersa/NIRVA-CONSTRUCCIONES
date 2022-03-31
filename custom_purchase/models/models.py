@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from email.policy import default
-import string
 from odoo import models, fields, api
 
 class ResPartner(models.Model):
@@ -22,7 +20,7 @@ class ResPartner(models.Model):
                 se oculte si el contacto en creación/edición es una empresa; es decir, cuando 
                 (is_company & !es_sucursal)
                 """
-                return {'domain': {'parent_id': []}}
+                return {'domain': {'parent_id': [('id', '=', '-1')]}}
             # Si el contacto en creación/edición no es una empresa...
             else:
                 # retornamos un dominio que sólo incluya a las sucursales
@@ -44,7 +42,7 @@ class ResPartner(models.Model):
                 se oculte si el contacto en creación/edición es una empresa; es decir, cuando 
                 (is_company & !es_sucursal)
                 """
-                return {'domain': {'parent_id': []}}
+                return {'domain': {'parent_id': [('id', '=', '-1')]}}
 
 class PurchaseOrder(models.Model):
 
@@ -55,6 +53,7 @@ class PurchaseOrder(models.Model):
     empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
 
     # Estableciendo el campo de la sucursal
+    sucursal_domain = [('id', '=', '-1')]
     sucursal_id = fields.Many2one('res.partner', string='Sucursal')
 
     # Establecemos el dominio de las sucursales
@@ -65,7 +64,7 @@ class PurchaseOrder(models.Model):
 
     # Establecemos el dominio de los contactos
     @api.onchange('sucursal_id')
-    def _onchange_empresa(self):
+    def _onchange_sucursal(self):
         for rec in self:
             return {'domain': {'partner_id': [('parent_id', '=', rec.sucursal_id.id)]}}
 

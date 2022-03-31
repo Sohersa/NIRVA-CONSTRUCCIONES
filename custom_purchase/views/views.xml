@@ -23,7 +23,8 @@
           <field name="parent_id" string="Deriva de:" attrs="{'invisible': ['&amp;',('is_company','=', True),('es_sucursal','=', False)]}"/>
         </field>
         <field name="parent_id" position="before">
-          <field name="es_sucursal" string="Es sucursal" />
+          <label for="es_sucursal" string="Es sucursal"/>
+          <field name="es_sucursal"/>
         </field>
       </field>
     </record>
