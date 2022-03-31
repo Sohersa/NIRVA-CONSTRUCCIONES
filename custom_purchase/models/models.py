@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from ast import If
 from odoo import models, fields, api
 
 class ResPartner(models.Model):
@@ -14,13 +15,19 @@ class ResPartner(models.Model):
         for rec in self:
             # Si el contacto en creación/edición es una empresa...
             if (rec.is_company):
-                # retornamos un dominio sin condiciones
+                # y es una sucursal...
+                if (rec.es_sucursal):
+                    # retornamos un dominio que sólo incluya a las empresas
+                    return {'domain': {'parent_id': ['&', ('is_company', '=', True), ('es_sucursal', '=', False)]}}
+                # y no es una sucursal
+                else:
+                    # retornamos un dominio vacío
+                    return {'domain': {'parent_id': [('id', '=', '-1')]}}
                 """
                 Nota: por consistencia, es importante que el campo de 'parent_id'
                 se oculte si el contacto en creación/edición es una empresa; es decir, cuando 
                 (is_company & !es_sucursal)
                 """
-                return {'domain': {'parent_id': [('id', '=', '-1')]}}
             # Si el contacto en creación/edición no es una empresa...
             else:
                 # retornamos un dominio que sólo incluya a las sucursales
@@ -30,19 +37,25 @@ class ResPartner(models.Model):
     @api.onchange('es_sucursal')
     def _onchange_es_sucursal(self):
         for rec in self:
-            # Si el contacto en creación/edición es una sucursal...
-            if(rec.es_sucursal):
-                # retornamos un dominio con sólo las empresas
-                return {'domain': {'parent_id': ['&', ('is_company', '=', True), ('es_sucursal', '=', False)]}}
-            # Si el contacto 
-            else:
-                # retornamos un dominio sin condiciones
+            # Si el contacto en creación/edición es una empresa...
+            if (rec.is_company):
+                # y es una sucursal...
+                if (rec.es_sucursal):
+                    # retornamos un dominio que sólo incluya a las empresas
+                    return {'domain': {'parent_id': ['&', ('is_company', '=', True), ('es_sucursal', '=', False)]}}
+                # y no es una sucursal
+                else:
+                    # retornamos un dominio vacío
+                    return {'domain': {'parent_id': [('id', '=', '-1')]}}
                 """
                 Nota: por consistencia, es importante que el campo de 'parent_id'
                 se oculte si el contacto en creación/edición es una empresa; es decir, cuando 
                 (is_company & !es_sucursal)
                 """
-                return {'domain': {'parent_id': [('id', '=', '-1')]}}
+            # Si el contacto en creación/edición no es una empresa...
+            else:
+                # retornamos un dominio que sólo incluya a las sucursales
+                return {'domain': {'parent_id': ['&', ('is_company', '=', True), ('es_sucursal', '=', True)]}}
 
 class PurchaseOrder(models.Model):
 
