@@ -3,15 +3,15 @@
     'name': "Purchase customizations",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        'Purchase' customizations according to the Nirva logic.
+    """,
 
     'description': """
         The module's purpose is to create a custom implementation for the existing purchase app.
     """,
 
     'author': "Oupp",
-    'website': "http://www.yourcompany.com",
+    'website': "https://www.sohersabim.com/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
@@ -20,7 +20,7 @@
     'version': '0.1.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'hr', 'contacts'],
+    'depends': ['base', 'purchase'],
 
     # always loaded
     'data': [

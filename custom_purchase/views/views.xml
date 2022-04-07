@@ -1,7 +1,7 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
     
+    <!-- Customizations in Purchase Order Form -->
     <record model="ir.ui.view" id="custom_purchase_form">
       <field name="name">pruchase_order_form_customizations</field>
       <field name="model">purchase.order</field>
@@ -9,12 +9,12 @@
       <field name="arch" type="xml">
         <field name="partner_id" position="before">
           <field name="empresa_id" />
-          <field name="sucursal_id" />
         </field>
       </field>
     </record>
 
-    <record model="ir.ui.view" id="custom_partner_form">
+    <!-- Customizations in Res Partner Form -->
+    <!-- <record model="ir.ui.view" id="custom_partner_form">
       <field name="name">res_partner_form_customizations</field>
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
@@ -35,7 +35,7 @@
         </field>
 
       </field>
-    </record>
+    </record> -->
 
 
    
