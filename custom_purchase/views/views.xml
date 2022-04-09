@@ -10,6 +10,9 @@
         <field name="partner_id" position="before">
           <field name="empresa_id" />
         </field>
+        <!-- <field name="requisition_id" position="after">
+          <field name="empresa_id" />
+        </field> -->
       </field>
     </record>
 
