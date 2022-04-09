@@ -9,7 +9,6 @@
       <field name="arch" type="xml">
         <field name="partner_id" position="before">
           <field name="empresa_id" />
-          <field name="obra" />
         </field>
       </field>
     </record>

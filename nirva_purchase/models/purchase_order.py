@@ -24,9 +24,9 @@ class PurchaseOrder(models.Model):
                 return {'domain': {'partner_id': ['&', ('is_company', '=', False), ('parent_id', '=', False)]}}
 
     # Limitamos el dominio del campo purchase.picking_type_id [Obra]
+    @api.onchange('requisition_id')
     def _set_picking_type_domain(self):
-        obra_domain = ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=",self.env.company.id)]
-        return obra_domain
-
-    # Sobre-escribimos el campo purchase.picking_type_id [Obra]
-    obra = fields.Many2one('stock.picking.type', string='Obra customization', domain=_set_picking_type_domain)
+        for rec in self:
+            # Definimos el dominio
+            obra_domain = ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", rec.env.company.id)]
+            return {'domain': {'picking_type_id': obra_domain}}
