@@ -9,8 +9,6 @@
       <field name="arch" type="xml">
         <field name="partner_id" position="before">
           <field name="empresa_id" />
-        </field>
-        <field name="picking_type_id" position="after">
           <field name="obra" />
         </field>
       </field>
