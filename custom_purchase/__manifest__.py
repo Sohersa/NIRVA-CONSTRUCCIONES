@@ -16,7 +16,7 @@
     'version': '0.0.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'hr'],
+    'depends': ['base', 'purchase'],
 
     # always loaded
     'data': [
