@@ -22,3 +22,11 @@ class PurchaseOrder(models.Model):
             else:
                 # Devolvemos todos los partners individuales que no estén asociados a ninguna compañía
                 return {'domain': {'partner_id': ['&', ('is_company', '=', False), ('parent_id', '=', False)]}}
+
+    # Limitamos el dominio del campo purchase.picking_type_id [Obra]
+    def _set_picking_type_domain(self):
+        obra_domain = ["&",["code","=","incoming"],"|",["warehouse_id","!=",False],["warehouse_id.company_id","=",self.env.company.id]]
+        return obra_domain
+
+    # Sobre-escribimos el campo purchase.picking_type_id [Obra]
+    picking_type_id = fields.Many2one('stock.picking.type', string='Obraaa', domain=_set_picking_type_domain)
