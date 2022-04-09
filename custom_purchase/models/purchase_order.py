@@ -29,4 +29,4 @@ class PurchaseOrder(models.Model):
         return obra_domain
 
     # Sobre-escribimos el campo purchase.picking_type_id [Obra]
-    picking_type_id = fields.Many2one('stock.picking.type', string='Obraaa', domain=_set_picking_type_domain)
+    x_studio_obra = fields.Many2one('stock.picking.type', string='Obraaa', domain=_set_picking_type_domain)
