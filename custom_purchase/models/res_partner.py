@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from odoo.addons.base_vat.models.res_partner import ResPartner
 from odoo import models, fields, api
 
 class ResPartnerExtension(models.Model):
