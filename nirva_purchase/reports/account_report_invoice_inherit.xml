@@ -6,7 +6,8 @@
     <template id="sohersa_nirva_report_invoice" 
               inherit_id="account.report_invoice_document">
 
-      <xpath expr="//@div[id='informations']" position="before">
+      <!-- <xpath expr="//@div[id='informations']" position="before"> -->
+      <xpath expr="/t/t/div/h2" position="before">
 
         <div>
           <h2>DATOS DE COMPRA</h2>
@@ -68,17 +69,17 @@
           <div class="row mt32 mb32" id="partner_bank_data">
             <div class="col-3 mw-100 mb-2">
               <strong>Banco</strong>
-              <p class="m-0" t-field="o.partner_bank_id.bank_name" /> // Banco
+              <p class="m-0" t-field="o.partner_bank_id.bank_name" />
             </div>
 
             <div class="col-3 mw-100 mb-2">
               <strong>Número de cuenta</strong>
-              <p class="m-0" t-field="o.partner_bank_id.acc_number" /> // Número de cuenta
+              <p class="m-0" t-field="o.partner_bank_id.acc_number" />
             </div>
 
             <div class="col-3 mw-100 mb-2">
               <strong>CLABE</strong>
-              <p class="m-0" t-field="o.partner_bank_id.l10n_mx_edi_clabe" /> // CLABE 
+              <p class="m-0" t-field="o.partner_bank_id.l10n_mx_edi_clabe" />
             </div>
 
             <div class="col-3 mw-100 mb-2">
