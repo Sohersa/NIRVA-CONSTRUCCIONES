@@ -5,7 +5,7 @@
 
     <template id="sohersa_nirva_report_invoice" 
               inherit_id="account.report_invoice_document"
-              priority="0">
+              priority="1">
 
       <xpath expr="//div[@class='page']" position="inside">
         <div class="row mt32 mb32" id="required_fields">
