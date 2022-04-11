@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <odoo>
+  <data>
 
     <!-- <template id="sohersa_nirva_report_invoice" inherit_id="account.report_invoice">
 
@@ -15,21 +16,22 @@
 
     </template> -->
 
-  <record id="nirva_purchase_form">
+    <record id="nirva_account_invoice_report_document">
 
-    <field name="inherit_id" ref="account.report_invoice"/>
-    <field name="arch" type="xml">
+      <field name="inherit_id" ref="account.report_invoice_document"/>
+      <field name="arch" type="xml">
 
-    <xpath expr="//div[@class='page']" position="inside">
-      <div class="row mt32 mb32" id="required_fields">
-        <div class="col-auto mw-100 mb-2">
-          <strong>Empresa relacionada</strong>
-          <p class="m-0" t-field="o.partner_id.parent_id.name" />
+      <xpath expr="//div[hasclass('page')]" position="inside">
+        <div class="row mt32 mb32" id="required_fields">
+          <div class="col-auto mw-100 mb-2">
+            <strong>Empresa relacionada</strong>
+            <p class="m-0" t-field="o.partner_id.parent_id.name" />
+          </div>
         </div>
-      </div>
-    </xpath>
+      </xpath>
 
-    </field>
-  </record>
+      </field>
+    </record>
 
+  </data>
 </odoo>
