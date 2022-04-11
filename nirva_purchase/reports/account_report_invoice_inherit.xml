@@ -6,8 +6,7 @@
     <template id="sohersa_nirva_report_invoice" 
               inherit_id="account.report_invoice_document">
 
-      <!-- <xpath expr="/t/t/div/div[1]" position="after"> -->
-      <xpath expr="/t/t/div/h2" position="before">
+      <xpath expr="//@div[id='informations']" position="before">
 
         <div>
           <h2>DATOS DE COMPRA</h2>
@@ -102,25 +101,6 @@
       </xpath>
 
     </template>
-
-    <!-- <record model="ir.ui.view" id="nirva_invoice_report_document">
-
-      <field name="inherit_id" ref="account.report_invoice_document"/>
-      <field name="model">report.account.report_invoice</field>
-
-      <field name="arch" type="xml">
-
-        <xpath expr="//div[hasclass('page')]" position="after">
-          <div class="row mt32 mb32" id="required_fields_2">
-            <div class="col-auto mw-100 mb-2">
-              <strong>Empresa relacionada</strong>
-              <field name="partner_id.parent_id.name" />
-            </div>
-          </div>
-        </xpath>
-
-      </field>
-    </record> -->
 
   </data>
 </odoo>
