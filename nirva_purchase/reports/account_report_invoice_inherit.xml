@@ -3,9 +3,9 @@
 <odoo>
   <data>
 
-    <!-- <template id="sohersa_nirva_report_invoice" inherit_id="account.report_invoice">
+    <template id="sohersa_nirva_report_invoice" inherit_id="account.report_invoice_document">
 
-      <xpath expr="//div[@class='row mt32 mb32']" position="after">
+      <xpath expr="//div[@class='page']" position="inside">
         <div class="row mt32 mb32" id="required_fields">
           <div class="col-auto mw-100 mb-2">
             <strong>Empresa relacionada</strong>
@@ -14,9 +14,18 @@
         </div>
       </xpath>
 
-    </template> -->
+      <xpath expr="//div[@class='page']" position="after">
+        <div class="row mt32 mb32" id="required_fields">
+          <div class="col-auto mw-100 mb-2">
+            <strong>Empresa relacionada</strong>
+            <p class="m-0" t-field="o.partner_id.parent_id.name" />
+          </div>
+        </div>
+      </xpath>
 
-    <record model="ir.ui.view" id="nirva_account_invoice_report_document">
+    </template>
+
+    <!-- <record model="ir.ui.view" id="nirva_account_invoice_report_document">
 
       <field name="inherit_id" ref="account.report_invoice_document"/>
       <field name="arch" type="xml">
@@ -31,7 +40,7 @@
         </xpath>
 
       </field>
-    </record>
+    </record> -->
 
   </data>
 </odoo>
