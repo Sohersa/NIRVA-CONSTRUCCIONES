@@ -4,10 +4,9 @@
   <data>
 
     <template id="sohersa_nirva_report_invoice" 
-              inherit_id="account.report_invoice_document"
-              priority="1">
+              inherit_id="account.report_invoice_document">
 
-      <xpath expr="//div[@class='page']" position="inside">
+      <xpath expr="//h2" position="before">
         <div class="row mt32 mb32" id="required_fields">
           <div class="col-auto mw-100 mb-2">
             <strong>Empresa relacionada</strong>
