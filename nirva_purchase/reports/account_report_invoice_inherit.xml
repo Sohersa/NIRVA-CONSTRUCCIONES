@@ -3,18 +3,11 @@
 <odoo>
   <data>
 
-    <template id="sohersa_nirva_report_invoice" inherit_id="account.report_invoice_document">
+    <template id="sohersa_nirva_report_invoice" 
+              inherit_id="account.report_invoice_document"
+              priority="0">
 
       <xpath expr="//div[@class='page']" position="inside">
-        <div class="row mt32 mb32" id="required_fields">
-          <div class="col-auto mw-100 mb-2">
-            <strong>Empresa relacionada</strong>
-            <p class="m-0" t-field="o.partner_id.parent_id.name" />
-          </div>
-        </div>
-      </xpath>
-
-      <xpath expr="//div[@class='page']" position="after">
         <div class="row mt32 mb32" id="required_fields">
           <div class="col-auto mw-100 mb-2">
             <strong>Empresa relacionada</strong>
