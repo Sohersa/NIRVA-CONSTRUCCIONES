@@ -6,8 +6,8 @@
     <template id="sohersa_nirva_report_invoice" 
               inherit_id="account.report_invoice_document">
 
-      <xpath expr="//h2" position="before">
-        <div class="row mt32 mb32" id="required_fields">
+      <xpath expr="//h2[1]" position="before">
+        <div class="row" id="required_fields">
           <div class="col-auto mw-100 mb-2">
             <strong>Empresa relacionada</strong>
             <p class="m-0" t-field="o.partner_id.parent_id.name" />
