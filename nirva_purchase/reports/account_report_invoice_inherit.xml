@@ -8,7 +8,7 @@
 
       <xpath expr="//div[@id='informations']" position="before">
       <!-- <xpath expr="/t/t/div/h2" position="before"> -->
-        <h2><span>DATOS DE COMPRA</h2></span>
+        <h2><span>DATOS DE COMPRA</span></h2>
         <div class="row mt32 mb32" id="purchase_order_data">    
           <div class="col-3 mw-100 mb-2">
             <strong>Obra</strong>
@@ -33,7 +33,7 @@
       </xpath>
 
       <xpath expr="//div[@id='informations']" position="before">
-        <h2><span>DATOS DE PROVEEDOR</h2></span>
+        <h2><span>DATOS DE PROVEEDOR</span></h2>
         <div class="row mt32 mb32" id="partner_contact_data">
           <div t-if="not o.partner_id" class="col-3 mw-100 mb-2">
             <strong>Proveedor</strong>
@@ -63,7 +63,7 @@
       </xpath>
 
       <xpath expr="//div[@id='informations']" position="before">
-        <h2><span>DATOS DE PAGO</h2></span>
+        <h2><span>DATOS DE PAGO</span></h2>
         <div class="row mt32 mb32" id="partner_bank_data">
           <div class="col-3 mw-100 mb-2">
             <strong>Banco</strong>
@@ -88,7 +88,7 @@
       </xpath>
 
       <xpath expr="//div[@id='informations']" position="before">
-        <h2><span>DATOS DE TRAZABILIDAD</h2></span>
+        <h2><span>DATOS DE TRAZABILIDAD</span></h2>
         <div class="row mt32 mb32" id="trazabilidad">      
           <div class="col-3 mw-100 mb-2">
             <strong>Orden de compra</strong>
