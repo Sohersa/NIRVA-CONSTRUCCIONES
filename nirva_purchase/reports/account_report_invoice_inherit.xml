@@ -6,7 +6,7 @@
     <template id="sohersa_nirva_report_invoice" 
               inherit_id="account.report_invoice_document">
 
-      <xpath expr="//@div[id='informations']" position="before">
+      <xpath expr="//div[@id='informations']" position="before">
       <!-- <xpath expr="/t/t/div/h2" position="before"> -->
         <h2>DATOS DE COMPRA</h2>
         <div class="row mt32 mb32" id="purchase_order_data">    
