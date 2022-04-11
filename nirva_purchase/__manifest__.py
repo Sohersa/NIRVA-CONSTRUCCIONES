@@ -27,6 +27,7 @@
         # 'security/ir.model.access.csv',
         'security/security.xml',
         'views/views.xml',
+        'reports/account_report_invoice_inherit.xml'
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
