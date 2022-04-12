@@ -6,9 +6,8 @@
     <template id="sohersa_nirva_report_invoice" 
               inherit_id="account.report_invoice_document">
 
-      <!-- <xpath expr="//div[@id='informations']" position="before"> -->
       <xpath expr="/t/t/div/h2" position="before">
-        <h2><span>DATOS DE COMPRA</span></h2>
+        <h2><span>Datos de compra</span></h2>
         <div class="row mt32 mb32" id="purchase_order_data">    
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Obra</strong>
@@ -30,10 +29,8 @@
             <p class="m-0" t-field="o.x_autoriza" />
           </div>
         </div>
-      <!-- </xpath> -->
 
-      <!-- <xpath expr="//div[@id='informations']" position="before"> -->
-        <h2><span>DATOS DE PROVEEDOR</span></h2>
+        <h2><span>Datos de proveedor</span></h2>
         <div class="row mt32 mb32" id="partner_contact_data">
           <div t-if="not o.partner_id" class="col-auto col-3 mw-100 mb-2">
             <strong>Proveedor</strong>
@@ -60,10 +57,8 @@
             <p class="m-0" t-field="o.partner_id.vat" />
           </div>
         </div>
-      <!-- </xpath> -->
 
-      <!-- <xpath expr="//div[@id='informations']" position="before"> -->
-        <h2><span>DATOS DE PAGO</span></h2>
+        <h2><span>Datos de pago</span></h2>
         <div class="row mt32 mb32" id="partner_bank_data">
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Banco</strong>
@@ -85,10 +80,8 @@
             <p class="m-0" t-field="o.invoice_date" />
           </div>
         </div>
-      <!-- </xpath> -->
 
-      <!-- <xpath expr="//div[@id='informations']" position="before"> -->
-        <h2><span>DATOS DE TRAZABILIDAD</span></h2>
+        <h2><span>Datos de trazabilidad</span></h2>
         <div class="row mt32 mb32" id="trazabilidad">      
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Orden de compra</strong>
