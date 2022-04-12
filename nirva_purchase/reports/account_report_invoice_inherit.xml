@@ -10,22 +10,22 @@
       <xpath expr="/t/t/div/h2" position="before">
         <h2><span>DATOS DE COMPRA</span></h2>
         <div class="row mt32 mb32" id="purchase_order_data">    
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Obra</strong>
             <p class="m-0" t-field="o.x_studio_obra.warehouse_id.name" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Dirección</strong>
             <p class="m-0" t-field="o.x_studio_obra.warehouse_id.partner_id.contact_address" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Concepto</strong>
             <p class="m-0" t-field="o.x_studio_concepto" />
           </div>
           
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Autoriza</strong>
             <p class="m-0" t-field="o.x_autoriza" />
           </div>
@@ -35,27 +35,27 @@
       <!-- <xpath expr="//div[@id='informations']" position="before"> -->
         <h2><span>DATOS DE PROVEEDOR</span></h2>
         <div class="row mt32 mb32" id="partner_contact_data">
-          <div t-if="not o.partner_id" class="col-3 mw-100 mb-2">
+          <div t-if="not o.partner_id" class="col-auto col-3 mw-100 mb-2">
             <strong>Proveedor</strong>
             <p class="m-0" t-field="o.partner_id.name" />
           </div>
 
-          <div t-if="o.partner_id.parent_id" class="col-3 mw-100 mb-2">
+          <div t-if="o.partner_id.parent_id" class="col-auto col-3 mw-100 mb-2">
             <strong>Proveedor</strong>
             <p class="m-0" t-field="o.partner_id.parent_id.name" />
           </div>
           
-          <div t-if="o.partner_id.parent_id" class="col-3 mw-100 mb-2">
+          <div t-if="o.partner_id.parent_id" class="col-auto col-3 mw-100 mb-2">
             <strong>Contacto/Sucursal</strong>
             <p class="m-0" t-field="o.partner_id.name" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Dirección</strong>
             <p class="m-0" t-field="o.partner_id.contact_address_complete" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>RFC</strong>
             <p class="m-0" t-field="o.partner_id.vat" />
           </div>
@@ -65,22 +65,22 @@
       <!-- <xpath expr="//div[@id='informations']" position="before"> -->
         <h2><span>DATOS DE PAGO</span></h2>
         <div class="row mt32 mb32" id="partner_bank_data">
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Banco</strong>
             <p class="m-0" t-field="o.partner_bank_id.bank_name" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Número de cuenta</strong>
             <p class="m-0" t-field="o.partner_bank_id.acc_number" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>CLABE</strong>
             <p class="m-0" t-field="o.partner_bank_id.l10n_mx_edi_clabe" />
           </div>
 
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Fecha de pago</strong>
             <p class="m-0" t-field="o.invoice_date" />
           </div>
@@ -90,7 +90,7 @@
       <!-- <xpath expr="//div[@id='informations']" position="before"> -->
         <h2><span>DATOS DE TRAZABILIDAD</span></h2>
         <div class="row mt32 mb32" id="trazabilidad">      
-          <div class="col-3 mw-100 mb-2">
+          <div class="col-auto col-3 mw-100 mb-2">
             <strong>Orden de compra</strong>
             <p class="m-0" t-field="o.x_studio_folio" />
           </div>
