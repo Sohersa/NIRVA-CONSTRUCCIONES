@@ -10,7 +10,7 @@ class PurchaseRequisition(models.Model):
     # Filtramos el dominio del campo purchase_requisition.x_subcontrato [Concepto]
     def _set_stock_location_domain(self):
         for rec in self:
-            if(rec.x_studio_obra.wharehouse_id):
+            if(rec.x_studio_obra.warehouse_id):
                 #Definimos el dominio
                 ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.warehouse_id.name)]
                 return {'domain': {'x_studio_subcontrato': ubicaciones_domain}}
@@ -19,4 +19,4 @@ class PurchaseRequisition(models.Model):
         return ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", self.env.company.id)]
 
     x_studio_obra = fields.Many2one('stock.picking.type', string='Obra actualizadaaaa', domain=_overwrite_obra_domain)
-    x_studio_subcontrato = fields.Many2one('stock.location', string='Concepto actualizadooo', domain=[])
+    x_studio_subcontrato = fields.Many2one('stock.location', string='Concepto actualizadooo', domain=[('id', '=', '-1')])
