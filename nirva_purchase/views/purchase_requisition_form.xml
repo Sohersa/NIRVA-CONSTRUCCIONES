@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <!-- Customizations in Purchase Requisition form -->
+        <record model="ir.ui.view" id="nirva_purchase_requisition_form">
+            <field name="name">purchase_requisition_customizations</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
+            <field name="arch" type="xml">
+                <field name="ordering_date" position="attributes">
+                    <attribute name="attrs">
+                    {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
+                    </attribute>
+                </field>
+                <field name="schedule_date" position="attributes">
+                    <attribute name="attrs">
+                    {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
+                    </attribute>
+                </field>
+            </field>
+        </record>
+  
+      <!-- <group>
+        <field name="ordering_date" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
+        <field name="schedule_date" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
+    </group> -->
+
+    </data>
+</odoo>
