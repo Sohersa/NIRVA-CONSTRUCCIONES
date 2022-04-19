@@ -12,7 +12,7 @@ class PurchaseRequisition(models.Model):
         for rec in self:
             if(rec.x_studio_obra.wharehouse_id):
                 #Definimos el dominio
-                ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.wharehouse_id.name)]
+                ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.warehouse_id.name)]
                 return {'domain': {'x_studio_subcontrato': ubicaciones_domain}}
 
     def _overwrite_obra_domain(self): 
