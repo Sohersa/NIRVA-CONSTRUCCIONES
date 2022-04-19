@@ -13,73 +13,28 @@
       </field>
     </record>
 
-    <!-- Customizations in Res Partner Form -->
-    <!-- <record model="ir.ui.view" id="custom_partner_form">
-      <field name="name">res_partner_form_customizations</field>
-      <field name="model">res.partner</field>
-      <field name="inherit_id" ref="base.view_partner_form"/>
+    <!-- Customizations in Purchase Requisition form -->
+    <record model="ir.ui.view" id="nirva_purchase_requisition_form">
+      <field name="name">purchase_requisition_customizations</field>
+      <field name="model">purchase.requisition</field>
+      <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
       <field name="arch" type="xml">
-
-        <field name="parent_id" position="replace">
-            <label for="parent_id" string="Empresa o sucursal relacionada:"/>
-            <field name="parent_id" nolabel="0"/>
+        <field name="ordering_date" position="attributes">
+          <!-- <attribute name="invisible">0</attribute> -->
+          <attribute name="attrs">
+            {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
+          </attribute>
         </field>
-
-        <field name="name" position="after">
-          <group>
-            <div class="o_row">
-              <label for="es_sucursal" string="El contacto representa una sucursal"/>
-              <field name="es_sucursal" nolabel="1"/>
-            </div>
-          </group>
-        </field>
-
-      </field>
-    </record> -->
-
-
-   
-
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="my_module.action_window">
-      <field name="name">my_module window</field>
-      <field name="res_model">my_module.my_module</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="my_module.action_server">
-      <field name="name">my_module server</field>
-      <field name="model_id" ref="model_my_module_my_module"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
       </field>
     </record>
-    -->
 
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="my_module" id="my_module.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="my_module.menu_1" parent="my_module.menu_root"/>
-    <menuitem name="Menu 2" id="my_module.menu_2" parent="my_module.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="my_module.menu_1_list" parent="my_module.menu_1"
-              action="my_module.action_window"/>
-    <menuitem name="Server to list" id="my_module" parent="my_module.menu_2"
-              action="my_module.action_server"/>
-    -->
+    <!-- <group>
+      <field name="date_end" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
+      <field name="ordering_date" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
+      <field name="schedule_date" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
+      <field name="origin" placeholder="e.g. PO0025" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+      <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" attrs="{'readonly': [('state','not in',('draft'))]}"/>
+  </group> -->
+
   </data>
 </odoo>
