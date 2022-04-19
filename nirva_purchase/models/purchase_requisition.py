@@ -10,9 +10,10 @@ class PurchaseRequisition(models.Model):
     # Filtramos el dominio del campo purchase_requisition.x_subcontrato [Concepto]
     def _set_stock_location_domain(self):
         for rec in self:
-            #Definimos el dominio
-            ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.wharehouse_id.name)]
-            return {'domain': {'x_studio_subcontrato': ubicaciones_domain}}
+            if(rec.x_studio_obra.wharehouse_id):
+                #Definimos el dominio
+                ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.wharehouse_id.name)]
+                return {'domain': {'x_studio_subcontrato': ubicaciones_domain}}
 
     def _overwrite_obra_domain(self): 
         return ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", self.env.company.id)]
