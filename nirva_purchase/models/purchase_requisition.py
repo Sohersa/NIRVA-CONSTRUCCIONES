@@ -14,7 +14,6 @@ class PurchaseRequisition(models.Model):
             ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.wharehouse_id.name)]
             return {'domain': {'x_subcontrato': ubicaciones_domain}}
 
-    @api.multi
     def _overwrite_obra_domain(self): 
         return ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", self.env.company.id)]
 
