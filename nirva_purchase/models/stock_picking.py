@@ -29,7 +29,7 @@ class StockPicking(models.Model):
 
     @api.model
     def _default_purchase_order(self):
-        return self.env['purchase.order'].search([], limit=1)
+        return self.env['purchase.order'].search([('name', '=', self.origin)], limit=1)
 
     purchase_order = fields.Many2one('purchase.order', string="Orden de compra", default=_default_purchase_order, required=True)
 
