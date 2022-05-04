@@ -18,12 +18,12 @@ class StockPicking(models.Model):
     #         return {'domain': {'purchase_order': purchase_order_domain}}
     @api.model
     def _set_purchase_order_domain(self):
-        if (self.origin):
             # Definimos el dominio
             return [("name","=", self.origin)]
 
     @api.model
     def _default_purchase_order(self):
-        return self.env['purchase.order'].search([('name', '=', 'origin')], limit=1)
+        instance = self.env['purchase.order'].search([('name', '=', 'origin')], limit=1)
+        return instance.id
 
     purchase_order = fields.Many2one('purchase.order', string="Orden de compra", default=_default_purchase_order, required=True, domain=_set_purchase_order_domain)
