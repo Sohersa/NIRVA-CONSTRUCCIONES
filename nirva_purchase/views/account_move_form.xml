@@ -13,7 +13,7 @@
 
         
         <field name="partner_id" position="after">
-          <label for="ref" attrs="{'invisible':[('move_type', 'not in', ('in_invoice', 'in_receipt', 'in_refund'))]}"/>
+          <label for="ref" string="Referencia de Factura (SAT)" attrs="{'invisible':[('move_type', 'not in', ('in_invoice', 'in_receipt', 'in_refund'))]}"/>
           <field name="ref" nolabel="1" attrs="{'invisible':[('move_type', 'not in', ('in_invoice', 'in_receipt', 'in_refund'))]}"/>
           <field name="ref" attrs="{'invisible':[('move_type', 'in', ('in_invoice', 'in_receipt', 'in_refund', 'out_invoice', 'out_refund'))]}"/>
         </field>
