@@ -7,7 +7,7 @@
               inherit_id="account.report_invoice_document">
 
       <xpath expr="/t/t/div/h2" position="before">
-        <div style="page-break-before: always;">
+        <div style="page-break-after: always;">
 
           <h2><span>Datos de compra</span></h2>
           <div class="row mt32 mb32" id="purchase_order_data">    
