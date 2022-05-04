@@ -6,9 +6,12 @@ class StockPicking(models.Model):
 
     _inherit='stock.picking'
 
+    def _set_purchase_order_init(self):
+        return [('name', '=', self.origin)]
+
     # Agregamos un campo relacional para poder acceder a la orden
     # de compra de la cuál deriva la recepción de los productos
-    purchase_order = fields.Many2one('purchase.order', string='Orden de compra')
+    purchase_order = fields.Many2one('purchase.order', string='Orden de compra', domain=_set_purchase_order_init)
 
     # Vinculamos la orden de compra al recibo en función a campo relacional
     @api.onchange('origin')
