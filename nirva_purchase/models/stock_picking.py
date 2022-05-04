@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from nirva_purchase.models import purchase_order
 from odoo import models, fields, api
 
 class StockPicking(models.Model):
