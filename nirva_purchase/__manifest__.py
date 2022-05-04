@@ -26,7 +26,6 @@
     'data': [
         # 'security/ir.model.access.csv',
         'security/security.xml',
-        'views/account_move_form.xml',
         'views/purchase_order_form.xml',
         'views/purchase_requisition_form.xml',
         'reports/account_report_invoice_inherit.xml'
