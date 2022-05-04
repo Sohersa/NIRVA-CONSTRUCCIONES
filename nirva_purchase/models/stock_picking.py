@@ -26,5 +26,5 @@ class StockPicking(models.Model):
     def _set_purchase_order_domain(self):
         for rec in self:
             # Definimos el dominio
-            purchase_order_domain = [["name","in", rec.origin]]
+            purchase_order_domain = [["name","=", rec.origin]]
             return {'domain': {'purchase_order': purchase_order_domain}}
