@@ -16,7 +16,7 @@
     'version': '0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'hr', 'account', 'purchase_requisition'],
+    'depends': ['base', 'purchase', 'hr', 'account', 'purchase_requisition', 'stock'],
 
     # always loaded
     'data': [
@@ -25,6 +25,7 @@
         'views/purchase_order_form.xml',
         'views/purchase_requisition_form.xml',
         'reports/account_report_invoice_inherit.xml'
+        'reports/stock_report_deliveryslip.xml'
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
