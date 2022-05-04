@@ -18,3 +18,11 @@ class StockPicking(models.Model):
             #Definimos el dominio acotándolo sólo al que coincida con el nombre de origen
             purchase_order_by_name = [('name', "=", rec.origin)]
             return {'domain': {'purchase_order': purchase_order_by_name}}
+
+    @api.multi
+    # Filtramos el dominio del campo purchase_order
+    def _set_purchase_order_2(self):
+        for rec in self:
+            #Definimos el dominio acotándolo sólo al que coincida con el nombre de origen
+            purchase_order_by_name = [('name', "=", rec.origin)]
+            return {'domain': {'purchase_order': purchase_order_by_name}}
