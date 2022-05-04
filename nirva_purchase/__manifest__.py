@@ -25,7 +25,7 @@
         'views/purchase_order_form.xml',
         'views/purchase_requisition_form.xml',
         'reports/account_report_invoice_inherit.xml',
-        'reports/stock_report_deliveryslip.xml'
+        'reports/stock_report_delivery_inherit.xml'
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
