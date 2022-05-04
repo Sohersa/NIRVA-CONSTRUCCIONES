@@ -4,9 +4,9 @@
   <data>
 
     <template id="sohersa_nirva_stock_report_deliveryslip" 
-              inherit_id="stock.report_deliveryslip">
+              inherit_id="stock.report_delivery_document">
 
-      <xpath expr="/t/t/div/h2" position="before">
+      <xpath expr="/t/t/t/div/div[first()]" position="before">
 
         <h2><span>Datos de la obra</span></h2>
         <div class="row mt32 mb32" id="delivery_traceability">
