@@ -24,6 +24,7 @@
         'security/security.xml',
         'views/purchase_order_form.xml',
         'views/purchase_requisition_form.xml',
+        'stock_picking_form.xml',
         'reports/account_report_invoice_inherit.xml',
         'reports/stock_report_delivery_inherit.xml'
         # 'views/templates.xml',

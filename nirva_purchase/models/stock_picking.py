@@ -17,5 +17,5 @@ class StockPicking(models.Model):
         for rec in self:
             if(rec.origin):
                 #Definimos el dominio acotándolo sólo al que coincida con el nombre de origen
-                purchase_order_id = [('name', "=", rec.origin)]
-                return {'domain': {'purchase_order': purchase_order_id}}
+                purchase_order_by_name = [('name', "=", rec.origin)]
+                return {'domain': {'purchase_order': purchase_order_by_name}}
