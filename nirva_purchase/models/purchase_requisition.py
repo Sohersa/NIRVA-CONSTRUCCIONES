@@ -18,5 +18,5 @@ class PurchaseRequisition(models.Model):
     def _overwrite_obra_domain(self): 
         return ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", self.env.company.id)]
 
-    x_studio_obra = fields.Many2one('stock.picking.type', string='Obra actualizadaaaa', domain=_overwrite_obra_domain)
-    x_studio_subcontrato = fields.Many2one('stock.location', string='Concepto actualizadooo', domain=[('id', '=', '-1')])
+    x_studio_obra = fields.Many2one('stock.picking.type', string='Obra', domain=_overwrite_obra_domain)
+    x_studio_subcontrato = fields.Many2one('stock.location', string='Concepto (Contrato/Subcontrato)', domain=[('id', '=', '-1')])
