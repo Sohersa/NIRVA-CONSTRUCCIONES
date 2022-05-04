@@ -82,11 +82,23 @@
         </div>
 
         <h2><span>Datos de trazabilidad</span></h2>
-        <div class="row mt32 mb32" id="trazabilidad">      
+        <div class="row mt32 mb32" id="trazabilidad">
+
+          <div class="col-auto col-3 mw-100 mb-2">
+            <strong>Requisición</strong>
+            <p class="m-0" t-field="o.x_studio_orden.x_studio_requisicin" />
+          </div>
+
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Orden de compra</strong>
             <p class="m-0" t-field="o.x_studio_folio" />
           </div>
+
+          <div class="col-auto col-3 mw-100 mb-2">
+            <strong>Referencia fiscal</strong>
+            <p class="m-0" t-field="o.ref" />
+          </div>
+
         </div>
       </xpath>
 
