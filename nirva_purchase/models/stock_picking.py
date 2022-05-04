@@ -10,12 +10,12 @@ class StockPicking(models.Model):
     # # de compra de la cuál deriva la recepción de los productos
     # purchase_order = fields.Many2one('purchase.order', string='Orden de compra', default=)
 
-    @api.onchange('origin')
-    def _set_purchase_order_domain(self):
-        for rec in self:
-            # Definimos el dominio
-            purchase_order_domain = [("name","=", rec.origin)]
-            return {'domain': {'purchase_order': purchase_order_domain}}
+    # @api.onchange('origin')
+    # def _set_purchase_order_domain(self):
+    #     for rec in self:
+    #         # Definimos el dominio
+    #         purchase_order_domain = [("name","=", rec.origin)]
+    #         return {'domain': {'purchase_order': purchase_order_domain}}
 
     # @api.model
     # def _set_purchase_order_domain(self):
@@ -27,9 +27,9 @@ class StockPicking(models.Model):
     #     instance = self.env['purchase.order'].search([('name', '=', 'origin')], limit=1)
     #     return instance.id
 
-    purchase_order = fields.Many2one('purchase.order', string="Orden de compra", required=True)
-
-    @api.onchange('origin')
+    @api.model
     def _default_purchase_order(self):
-        instance = self.env['purchase.order'].search([('name', '=', 'origin')], limit=1)
-        self.purchase_order = instance.id
+        return self.env['purchase.order'].search([], limit=1)
+
+    purchase_order = fields.Many2one('purchase.order', string="Orden de compra", default=_default_purchase_order, required=True)
+
