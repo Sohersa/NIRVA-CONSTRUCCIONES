@@ -13,15 +13,15 @@
 
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Obra</strong>
-            <p t-field="o.origin.name"/>
+            <p t-field="o.purchase_order.name"/>
           </div>
 
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Concepto</strong>
-            <p t-field="o.origin.x_subcontrato.name"/>
+            <p t-field="o.purchase_order.x_subcontrato.name"/>
           </div>
 
-          <div t-if="not o.partner_id" class="col-auto col-3 mw-100 mb-2">
+          <div t-if="not o.partner_id.parent_id" class="col-auto col-3 mw-100 mb-2">
             <strong>Proveedor</strong>
             <p class="m-0" t-field="o.partner_id.name" />
           </div>
