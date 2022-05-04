@@ -97,6 +97,11 @@
             </div>
 
             <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Referencia interna</strong>
+              <p class="m-0" t-field="o.name" />
+            </div>
+
+            <div class="col-auto col-3 mw-100 mb-2">
               <strong>Referencia fiscal</strong>
               <p class="m-0" t-field="o.ref" />
             </div>
