@@ -9,8 +9,9 @@ class StockPicking(models.Model):
     # Filtramos el dominio del campo purchase_order
     def _set_purchase_order(self):
         #Definimos el dominio acotándolo sólo al que coincida con el nombre de origen
-        purchase_order_by_name = [('name', "=", self.origin)]
-        return {'domain': {'purchase_order': purchase_order_by_name}}
+        # purchase_order_by_name = [('name', "=", self.origin)]
+        # return {'domain': {'purchase_order': purchase_order_by_name}}
+        return [('name', "=", self.origin)]
 
     # Agregamos un campo relacional para poder acceder a la orden
     # de compra de la cuál deriva la recepción de los productos
