@@ -5,11 +5,17 @@
 
     <template id="sohersa_nirva_stock_report_deliveryslip" 
               inherit_id="stock.report_delivery_document">
+      
+      <!-- TÍTULO -->
+      <xpath expr="/t/t/t/div/h2[1]" position="repalce">
+        <h2 style="text-align: right;"><span>Recibo de entrega - </span><span t-field="o.name"></span></h2>
+      </xpath>
 
-      <xpath expr="/t/t/t/div/div[1]" position="before">
-
+      <xpath expr="/t/t/t/div/div[1]" position="repalce">
+        
+        <!-- DATOS DE RECEPCIÓN PT 1 -->
         <h2><span>Datos de la recepción</span></h2>
-        <div class="row mt32 mb32" id="delivery_traceability">
+        <div class="row mt32 mb32" id="delivery_reception_data_1">
 
           <div class="col-auto col-3 mw-100 mb-2">
             <strong>Obra</strong>
@@ -37,6 +43,45 @@
           </div>
         
         </div>
+
+        <!-- DATOS DE RECEPCIÓN PT 2 -->
+        <div class="row mt32 mb32" id="delivery_reception_data_2">
+          
+          <div t-if="o.state == 'done'" class="col-auto col-3 mw-100 mb-2">
+            <strong>Fecha de traslado</strong>
+            <p t-field="o.date_done"/>
+          </div>
+
+          <div t-if="o.state != 'done'" class="col-auto col-3 mw-100 mb-2">
+            <strong>Fecha estimada de recepción</strong>
+            <p t-field="o.scheduled_date"/>
+          </div>
+
+        </div>
+
+        <!-- DATOS DE TRAZABILIDAD -->
+        <h2 t-if="o.purchase_id != False"><span>Datos de trazabilidad</span></h2>
+        <div t-if="o.purchase_id != False" class="row mt32 mb32" id="delivery_traceability">
+          
+          <div class="col-auto col-3 mw-100 mb-2">
+            <strong>Requisición</strong>
+            <p t-field="o.purchase_id.x_studio_requisicin"/>
+          </div>
+
+          <div class="col-auto col-3 mw-100 mb-2">
+            <strong>Orden de compra</strong>
+            <p t-field="o.purchase_id.x_studio_referencia"/>
+          </div>
+
+          <div class="col-auto col-3 mw-100 mb-2">
+            <strong>Recepción</strong>
+            <p t-field="o.name"/>
+          </div>
+
+        </div>
+
+        <!-- PRODUCTOS RECIBIDOS -->
+        <h2><span>Productos recibidos</span></h2>
 
       </xpath>
 
