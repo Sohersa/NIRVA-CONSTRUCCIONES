@@ -7,11 +7,11 @@
               inherit_id="stock.report_delivery_document">
       
       <!-- TÍTULO -->
-      <xpath expr="/t/t/t/div/h2[1]" position="repalce">
+      <xpath expr="/t/t/t/div/h2[1]" position="replace">
         <h2 style="text-align: right;"><span>Recibo de entrega - </span><span t-field="o.name"></span></h2>
       </xpath>
 
-      <xpath expr="/t/t/t/div/div[1]" position="repalce">
+      <xpath expr="/t/t/t/div/div[1]" position="replace">
         
         <!-- DATOS DE RECEPCIÓN PT 1 -->
         <h2><span>Datos de la recepción</span></h2>
