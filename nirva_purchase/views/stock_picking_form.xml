@@ -9,7 +9,7 @@
       <field name="arch" type="xml">
 
         <field name="origin" position="after">
-          <field name="purchase_order" />
+          <field name="purchase_id" />
         </field>
 
         <field name="purchase_id" position="attributes">
