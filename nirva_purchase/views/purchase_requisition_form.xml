@@ -24,7 +24,7 @@
                 </field>
                 <field name="user_id" position="attributes">
                     <attribute name="attrs">
-                    {'readonly': [('state','not in',('draft','in_progress','open'))], 'domain':[('share', '=', False)], 'invisible':True}
+                    {'readonly': [('state','not in',('draft','in_progress','open'))], 'invisible':True}
                     </attribute>
                 </field>
                 <field name="origin" position="attributes">
