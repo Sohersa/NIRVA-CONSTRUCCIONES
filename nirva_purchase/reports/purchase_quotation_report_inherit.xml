@@ -6,7 +6,7 @@
     <template id="sohersa_nirva_report_purchasequotation" 
               inherit_id="purchase.report_purchasequotation_document">
 
-      <xpath expr="/t/div[@class='page']/h2" position="before">
+      <xpath expr="/t/t/div[@class='page']/h2" position="before">
 
           <h2><span>Datos de compra</span></h2>
           <div class="row mt32 mb32" id="purchase_order_data">    
