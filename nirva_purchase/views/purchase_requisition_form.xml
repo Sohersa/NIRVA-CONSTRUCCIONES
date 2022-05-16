@@ -10,6 +10,7 @@
                 <field name="vendor_id" position="replace">
                     <field name="x_studio_obra"/>
                     <field name="x_studio_subcontrato"/>
+                    <field name="x_studio_solicita" />
                 </field>
                 <field name="ordering_date" position="attributes">
                     <attribute name="attrs">
@@ -20,6 +21,19 @@
                     <attribute name="attrs">
                     {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
                     </attribute>
+                </field>
+                <field name="user_id" position="attributes">
+                    <attribute name="attrs">
+                    {'readonly': [('state','not in',('draft','in_progress','open'))], 'domain':[('share', '=', False)], 'invisible':True}
+                    </attribute>
+                </field>
+                <field name="origin" position="attributes">
+                    <attribute name="attrs">
+                    {'invisible':True}
+                    </attribute>
+                </field>
+                <field name="company_id" position="after">
+                    <field name="x_studio_referencia" />
                 </field>
             </field>
         </record>

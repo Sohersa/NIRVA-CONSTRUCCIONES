@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+
+    <template id="sohersa_nirva_report_purchaserequisition" 
+              inherit_id="purchase_requisition.report_purchaserequisitions">
+
+      <!-- TÍTULO -->
+      <xpath expr="/t/t/t/t/div/h2" position="replace">
+        <h2>Licitación
+            <span t-field="o.x_studio_referencia"/>
+        </h2>
+      </xpath>
+
+      <!-- INFORMACIÓN GENERAL -->
+      <xpath expr="/t/t/t/t/div/div[@class='row mt32 mb32']" position="replace">
+
+          <h2><span>Datos de Licitación</span></h2>    
+          <div class="row mt32 mb32">    
+
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Obra</strong>
+              <p class="m-0" t-field="o.x_studio_obra.warehouse_id.name" />
+            </div>
+
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Dirección</strong>
+              <p class="m-0" t-field="o.x_studio_obra.warehouse_id.partner_id.contact_address_complete" />
+            </div>
+
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Concepto</strong>
+              <p class="m-0" t-field="o.x_studio_subcontrato" />
+            </div>
+            
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Solicita</strong>
+              <p class="m-0" t-field="o.x_studio_solicita" />
+            </div>
+
+          </div>
+
+          <div class="row mt32 mb32">
+
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Fecha de requisición</strong>
+              <p class="m-0" t-field="o.ordering_date" />
+            </div>
+
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Fecha de límite</strong>
+              <p class="m-0" t-field="o.end_date" />
+            </div>
+
+          </div>
+
+      </xpath>
+
+    </template>
+
+  </data>
+</odoo>
