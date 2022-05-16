@@ -22,12 +22,17 @@
     'data': [
         # 'security/ir.model.access.csv',
         'security/security.xml',
+        
+        # FORM VIEWS
         'views/purchase_order_form.xml',
         'views/purchase_requisition_form.xml',
         'views/stock_picking_form.xml',
+        'views/account_move_form.xml'
+        # 'views/templates.xml',
+
+        # REPORTS
         'reports/account_report_invoice_inherit.xml',
         'reports/stock_report_delivery_inherit.xml'
-        # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [
