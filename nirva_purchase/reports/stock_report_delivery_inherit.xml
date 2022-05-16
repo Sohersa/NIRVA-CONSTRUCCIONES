@@ -85,6 +85,12 @@
 
       </xpath>
 
+      <!-- NOTAS -->
+      <xpath expr="/t/t/t/div/table[last()]" position="replace">
+        <h2 style="text-align: right;"><span>Notas del pedido</span></h2>
+        <p t-field="o.note"></p>
+      </xpath>
+
     </template>
 
   </data>
