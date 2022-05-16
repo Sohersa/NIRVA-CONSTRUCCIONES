@@ -12,11 +12,11 @@
                     <field name="x_studio_subcontrato"/>
                     <field name="x_studio_solicita" />
                 </field>
-                <field name="ordering_date" position="attributes">
+                <!-- <field name="ordering_date" position="attributes">
                     <attribute name="attrs">
                     {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
                     </attribute>
-                </field>
+                </field> -->
                 <field name="schedule_date" position="attributes">
                     <attribute name="attrs">
                     {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
