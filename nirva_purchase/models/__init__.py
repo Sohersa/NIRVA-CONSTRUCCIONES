@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import purchase_order, purchase_requisition, res_partner
+from . import account_move, purchase_order, purchase_requisition, res_partner

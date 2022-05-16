@@ -102,7 +102,7 @@
             </div>
 
             <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Referencia fiscal</strong>
+              <strong>Referencia UUID</strong>
               <p class="m-0" t-field="o.ref" />
             </div>
 
