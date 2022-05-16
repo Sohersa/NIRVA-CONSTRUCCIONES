@@ -50,7 +50,7 @@
 
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Fecha de límite</strong>
-              <p class="m-0" t-field="o.end_date" />
+              <p class="m-0" t-field="o.date_end" />
             </div>
 
           </div>
