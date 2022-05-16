@@ -32,7 +32,8 @@
 
         # REPORTS
         'reports/account_report_invoice_inherit.xml',
-        'reports/stock_report_delivery_inherit.xml'
+        'reports/stock_report_delivery_inherit.xml',
+        'reports/purchase_quotation_report_inherit.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [
