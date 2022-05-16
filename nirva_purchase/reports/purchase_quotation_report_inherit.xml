@@ -6,6 +6,18 @@
     <template id="sohersa_nirva_report_purchasequotation" 
               inherit_id="purchase.report_purchasequotation_document">
 
+      <xpath expr="/t/t/div[@class='page']/h2" position="replace">
+
+        <h2>Solicitud de cotización
+          <span t-field="o.x_studio_referencia"/>
+        </h2>
+
+        <p>
+          <strong t-field="o.x_studio_requisicin"/>
+        </p>
+        
+      </xpath>
+
       <xpath expr="/t/t/div[@class='page']/h2" position="before">
 
           <h2><span>Datos de compra</span></h2>
@@ -17,7 +29,7 @@
 
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Dirección</strong>
-              <p class="m-0" t-field="o.picking_type_id.warehouse_id.partner_id.contact_address" />
+              <p class="m-0" t-field="o.picking_type_id.warehouse_id.partner_id.contact_address_complete" />
             </div>
 
             <div class="col-auto col-3 mw-100 mb-2">
@@ -51,7 +63,7 @@
 
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Dirección</strong>
-              <p class="m-0" t-field="o.partner_id.contact_address" />
+              <p class="m-0" t-field="o.partner_id.contact_address_complete" />
             </div>
 
             <div class="col-auto col-3 mw-100 mb-2">
@@ -74,17 +86,6 @@
           
           </div>
 
-      </xpath>
-
-      <xpath expr="/t/t/div[@class='page']/h2" position="replace">
-
-        <h2>Solicitud de cotización
-          <span t-field="o.x_studio_referencia"/>
-        </h2>
-
-        <p>
-          <strong t-field="o.x_studio_requisicin"/>
-        </p>
       </xpath>
 
     </template>
