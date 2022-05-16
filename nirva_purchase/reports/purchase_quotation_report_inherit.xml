@@ -76,7 +76,7 @@
 
       </xpath>
 
-      <xpath expr="/t/div[@class='page']/h2" position="replace">
+      <xpath expr="/t/t/div[@class='page']/h2" position="replace">
 
         <h2>Solicitud de cotización
           <span t-field="o.x_studio_referencia"/>
