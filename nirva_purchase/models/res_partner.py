@@ -17,7 +17,7 @@ class ResPartnerExtension(models.Model):
             ('Personas morales con fines no lucrativos' 'Personas morales con fines no lucrativos')
         ]
 
-    # regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal")
+    regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal")
 
     # Configuramos el regimen fiscal al cambiar la naturaleza del contacto
     # @api.onchange('is_company', 'parent_id')
