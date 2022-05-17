@@ -6,7 +6,17 @@ from odoo import models, fields, api
 class ResPartnerExtension(models.Model):
     _inherit = 'res.partner'
 
-    regimen_fiscal = fields.Selection([('Asalariados','Servicios profesionales (honorarios)','Arrendamiento de inmuebles','Actividad empresarial','Incorporación fiscal','General','Personas morales con fines no lucrativos')], string="Regimen Fiscal")
+    def _regimenes_fiscales():
+        return [
+            ('Asalariados', 'Asalariados'), 
+            ('Servicios profesionales (honorarios)','Servicios profesionales (honorarios)'),
+            ('Arrendamiento de inmuebles', 'Arrendamiento de inmuebles'),
+            ('Actividad empresarial', 'Actividad empresarial'),
+            ('Incorporación fiscal', 'Incorporación fiscal'),
+            ('General', 'General'),
+            ('Personas morales con fines no lucrativos' 'Personas morales con fines no lucrativos')
+        ]
+    regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal")
 
     # Configuramos el regimen fiscal al cambiar la naturaleza del contacto
     @api.onchange('is_company', 'parent_id')
