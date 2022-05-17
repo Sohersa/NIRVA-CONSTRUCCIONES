@@ -6,6 +6,12 @@
     <template id="sohersa_nirva_report_purchaseorder" 
               inherit_id="purchase.report_purchaseorder_document">
 
+      <xpath expr="/t/t/div[@class='page']/h2" position="replace">
+      </xpath>
+      <xpath expr="/t/t/div[@class='page']/h2" position="replace">
+      </xpath>
+      <xpath expr="/t/t/div[@class='page']/h2" position="replace">
+      </xpath>
       <!--TÍTULO -->
       <xpath expr="/t/t/div[@class='page']/h2" position="replace">
         <h2 t-if="o.state == 'draft'">Solicitud de cotización - <span t-field="o.x_studio_referencia"/></h2>
@@ -20,11 +26,11 @@
           <div class="row mt32 mb32">
 
             <div class="col-auto col-6 mw-100 mb-2">    
-              <h2>Datos de entrega</h2>
+              <h3>Datos de pedido</h3>
             </div>
 
             <div class="col-auto col-6 mw-100 mb-2">    
-              <h2>Trazabilidad</h2>
+              <h3>Trazabilidad</h3>
             </div>
 
           </div>
@@ -116,30 +122,32 @@
       
       <xpath expr="/t/t/div[@class='page']/div[last()]" position="after">
 
-        <h2>Notas</h2>
-        <div class="row">
-          <strong>Fecha límite de entrega </strong>
-          <p class="m-0" t-field="o.date_order" />
-        </div>
+        <div style="page-break-after: always;">
 
-        <div class="row">
-          <strong>Proveedor </strong>
-          <p t-if="o.partner_id.parent_id" class="m-0" t-field="o.partner_id.parent_id.name" />
-          <p t-if="not o.partner_id.parent_id" class="m-0" t-field="o.partner_id.name" />
-        </div>
+          <h2>Notas</h2>
+          <div>
+            <strong>Fecha límite de entrega </strong>
+            <p t-field="o.date_order" />
+          </div>
 
-        <div t-if="o.partner_id.parent_id" class="row mt32 mb32">
-          <strong>Contacto/sucursal de proveedor </strong>
-          <p class="m-0" t-field="o.partner_id.name" />
-        </div>
-      
-        <div class="row">
+          <div>
+            <strong>Proveedor </strong>
+            <p t-if="o.partner_id.parent_id" t-field="o.partner_id.parent_id.name" />
+            <p t-if="not o.partner_id.parent_id" t-field="o.partner_id.name" />
+          </div>
+
+          <div t-if="o.partner_id.parent_id">
+            <strong>Contacto/sucursal de proveedor </strong>
+            <p t-field="o.partner_id.name" />
+          </div>
+        
           <img src="/web/image/544-a5d1995c/firma%20condeca.png" />
           <p>Daida Patricia Pedraza Garcia</p>
-          <p><strong>FIRMA AUTORIZADA </strong></p>
+          <p><strong>FIRMA AUTORIZADA</strong></p>
           <p>Depto. de compras</p>
-         </div> 
 
+        </div>
+        
       </xpath>
 
     </template>
