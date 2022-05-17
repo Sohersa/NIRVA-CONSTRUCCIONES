@@ -15,7 +15,7 @@
       </xpath>
 
       <!-- INFORMATIONS -->
-      <xpath expr="/t/t/div[@class='page']/div[@id='informations'" position="replace">
+      <xpath expr="/t/t/div[@class='page']/div[@id='informations']" position="replace">
 
           <div class="col-auto col-3 mw-100 mb-2">    
             
