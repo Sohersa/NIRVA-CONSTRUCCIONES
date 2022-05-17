@@ -34,7 +34,7 @@
         # 'views/templates.xml',
 
         # TREE VIEWS
-        'trees/res_partner_bank_tree.xml'
+        'trees/res_partner_bank_tree.xml',
 
         # REPORTS
         'reports/account_report_invoice_inherit.xml',
