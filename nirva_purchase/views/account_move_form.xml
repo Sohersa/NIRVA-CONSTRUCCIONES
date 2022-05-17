@@ -13,7 +13,7 @@
         </xpath>
 
         <field name="ref" position="after">
-          <!-- <field name="regimen_fiscal"/> -->
+          <field name="regimen_fiscal"/>
         </field>
 
       </field>

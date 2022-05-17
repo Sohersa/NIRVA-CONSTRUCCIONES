@@ -111,7 +111,7 @@
           <div class="row mt32 mb32" id="trazabilidad_2">
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Regimen fiscal</strong>
-              <!-- <p class="m-0" t-field="o.regimen_fiscal" /> -->
+              <p class="m-0" t-field="o.regimen_fiscal" />
             </div>
           </div>
 
