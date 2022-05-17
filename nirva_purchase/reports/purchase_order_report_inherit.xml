@@ -141,8 +141,8 @@
             <p t-field="o.partner_id.name" />
           </div>
         
-          <div style="text-aling: center;">
-            <img src="/web/image/544-a5d1995c/firma%20condeca.png" style="margin-left: auto; margin-right: auto;"/>
+          <div style="text-aling: center; width: 100%">
+            <img src="/web/image/544-a5d1995c/firma%20condeca.png" style="width: 50%; margin-left: auto; margin-right: auto;"/>
             <p>Daida Patricia Pedraza Garcia</p>
             <p><strong>FIRMA AUTORIZADA</strong></p>
             <p>Depto. de compras</p>
