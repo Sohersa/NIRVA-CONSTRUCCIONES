@@ -19,14 +19,14 @@ class ResPartnerExtension(models.Model):
     regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal")
 
     # Configuramos el regimen fiscal al cambiar la naturaleza del contacto
-    @api.onchange('is_company', 'parent_id')
-    def _set_regimen_fiscal(self):
-        for rec in self:
-            # Si el contacto es un contacto indivudual y está asociado a una empresa,
-            # entonces, hereda sus datos bancarios de la empresa relacionada...
-            if (not rec.is_company and rec.parent_id and rec.parent_id.regimen_fiscal):
-                # Por tanto, el regimen fiscal debe ser el mismo que la empresa relacionada
-                rec['regimen_fiscal'] = rec.parent_id.regimen_fiscal
+    # @api.onchange('is_company', 'parent_id')
+    # def _set_regimen_fiscal(self):
+    #     for rec in self:
+    #         # Si el contacto es un contacto indivudual y está asociado a una empresa,
+    #         # entonces, hereda sus datos bancarios de la empresa relacionada...
+    #         if (not rec.is_company and rec.parent_id and rec.parent_id.regimen_fiscal):
+    #             # Por tanto, el regimen fiscal debe ser el mismo que la empresa relacionada
+    #             rec['regimen_fiscal'] = rec.parent_id.regimen_fiscal
 
 
     @api.constrains('vat', 'country_id')
