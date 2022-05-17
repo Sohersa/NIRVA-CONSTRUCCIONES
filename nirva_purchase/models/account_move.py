@@ -17,5 +17,5 @@ class AccountMove(models.Model):
             ('General', 'General'),
             ('Personas morales con fines no lucrativos' 'Personas morales con fines no lucrativos')
         ]
-    # regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal", related="partner_id.regimen_fiscal")
-    regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal")
+    regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal", related="partner_id.regimen_fiscal")
+    # regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal")
