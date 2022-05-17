@@ -12,11 +12,6 @@
                     <field name="x_studio_subcontrato"/>
                     <field name="x_studio_solicita" />
                 </field>
-                <!-- <field name="ordering_date" position="attributes">
-                    <attribute name="attrs">
-                    {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
-                    </attribute>
-                </field> -->
                 <field name="schedule_date" position="attributes">
                     <attribute name="attrs">
                     {'readonly': [('state','not in',('draft','in_progress','open','ongoing'))], 'invisible': True}
@@ -37,11 +32,6 @@
                 </field>
             </field>
         </record>
-  
-      <!-- <group>
-        <field name="ordering_date" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
-        <field name="schedule_date" attrs="{'readonly': [('state','not in',('draft','in_progress','open','ongoing'))]}"/>
-    </group> -->
 
     </data>
 </odoo>

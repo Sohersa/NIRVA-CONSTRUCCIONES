@@ -13,7 +13,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'stock',
-    'version': '0.0.6',
+    'version': '0.0.7',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'purchase', 'hr', 'account', 'purchase_requisition', 'stock'],
@@ -33,6 +33,7 @@
         # REPORTS
         'reports/account_report_invoice_inherit.xml',
         'reports/stock_report_delivery_inherit.xml',
+        'reports/purchase_order_report_inherit.xml',
         'reports/purchase_quotation_report_inherit.xml',
         'reports/purchase_requisition_report_inherit.xml',
     ],
