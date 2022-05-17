@@ -7,7 +7,7 @@ class AccountMove(models.Model):
 
     ref = fields.Char(string="Referenia UUID")
 
-    def _regimenes_fiscales():
+    def _regimenes_fiscales(self):
         return [
             ('Asalariados', 'Asalariados'), 
             ('Servicios profesionales (honorarios)','Servicios profesionales (honorarios)'),
