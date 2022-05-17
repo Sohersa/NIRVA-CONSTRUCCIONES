@@ -1,7 +1,7 @@
 <odoo>
   <data>
     
-    <!-- Customizations in Purchase Order Form -->
+    <!-- Customizations in Stock Picking Form -->
     <record model="ir.ui.view" id="nirva_stock_picking_form">
       <field name="name">stock_picking_form_customizations</field>
       <field name="model">stock.picking</field>

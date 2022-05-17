@@ -60,7 +60,7 @@
             </div>
           </div>
 
-          <h2><span>Datos de pago</span></h2>
+          <h2><span>Datos bancarios de proveedor</span></h2>
           <div class="row mt32 mb32" id="partner_bank_data">
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Banco</strong>
@@ -73,13 +73,13 @@
             </div>
 
             <div class="col-auto col-3 mw-100 mb-2">
-              <strong>CLABE</strong>
-              <p class="m-0" t-field="o.partner_bank_id.l10n_mx_edi_clabe" />
+              <strong>Referencia bancaria</strong>
+              <p class="m-0" t-field="o.partner_bank_id.referencia_bancaria" />
             </div>
 
             <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Fecha de pago</strong>
-              <p class="m-0" t-field="o.invoice_date" />
+              <strong>CLABE</strong>
+              <p class="m-0" t-field="o.partner_bank_id.l10n_mx_edi_clabe" />
             </div>
           </div>
 
@@ -112,6 +112,11 @@
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Regimen fiscal</strong>
               <p class="m-0" t-field="o.regimen_fiscal" />
+            </div>
+            
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Fecha de pago</strong>
+              <p class="m-0" t-field="o.invoice_date" />
             </div>
           </div>
 

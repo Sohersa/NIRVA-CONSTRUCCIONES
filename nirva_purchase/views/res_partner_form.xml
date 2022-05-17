@@ -1,7 +1,7 @@
 <odoo>
   <data>
     
-    <!-- Customizations in Purchase Order Form -->
+    <!-- Customizations in Res Partner Form -->
     <record model="ir.ui.view" id="nirva_res_partner_form">
       <field name="name">res_partner_form_customizations</field>
       <field name="model">res.partner</field>
