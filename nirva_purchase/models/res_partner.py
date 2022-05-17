@@ -24,7 +24,7 @@ class ResPartnerExtension(models.Model):
         for rec in self:
             # Si el contacto es un contacto indivudual y está asociado a una empresa,
             # entonces, hereda sus datos bancarios de la empresa relacionada...
-            if (not rec.is_company and rec.parent_id):
+            if (not rec.is_company and rec.parent_id and rec.parent_id.regimen_fiscal):
                 # Por tanto, el regimen fiscal debe ser el mismo que la empresa relacionada
                 rec['regimen_fiscal'] = rec.parent_id.regimen_fiscal
 
