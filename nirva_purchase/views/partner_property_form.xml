@@ -4,7 +4,7 @@
     <!-- Customizations in ResPartnerBank Form -->
     <record model="ir.ui.view" id="nirva_partner_property_form">
       <field name="name">res_partner_property_form_customizations</field>
-      <field name="model">res.partner.bank</field>
+      <field name="model">res.partner</field>
       <field name="inherit_id" ref="account.view_partner_property_form"/>
       <field name="arch" type="xml">
 
