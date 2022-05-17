@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo.addons.base_vat.models.res_partner import ResPartner
+# from odoo.addons.base_vat.models.res_partner import ResPartner
 from odoo import models, fields, api
 
 class ResPartnerExtension(models.Model):
@@ -30,8 +30,8 @@ class ResPartnerExtension(models.Model):
     #             rec['regimen_fiscal'] = rec.parent_id.regimen_fiscal
 
 
-    @api.constrains('vat', 'country_id')
-    def check_vat_extended(self):
-        return True
+    # @api.constrains('vat', 'country_id')
+    # def check_vat_extended(self):
+    #     return True
 
-    ResPartner.check_vat = check_vat_extended
+    # ResPartner.check_vat = check_vat_extended
