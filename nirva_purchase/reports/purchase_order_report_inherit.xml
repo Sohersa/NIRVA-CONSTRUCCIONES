@@ -82,7 +82,7 @@
           <h2>Productos</h2>
       </xpath>
       
-      <xpath expr="/t/t/div[@class='page']/div[laste()]" position="after">
+      <xpath expr="/t/t/div[@class='page']/div[last()]" position="after">
 
         <h2>Notas</h2>
         <div class="row mt32 mb32">
