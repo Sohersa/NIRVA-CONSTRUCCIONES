@@ -9,75 +9,107 @@
       <!--TÍTULO -->
       <xpath expr="/t/t/div[@class='page']/h2" position="replace">
         <h2 t-if="o.state == 'draft'">Solicitud de cotización - <span t-field="o.x_studio_referencia"/></h2>
-        <h2 t-if="o.state in ['sent', 'to approve']">Orden de compra<span t-field="o.x_studio_referencia"/></h2>
-        <h2 t-if="o.state in ['purchase', 'done']">Orden de compra<span t-field="o.x_studio_referencia"/></h2>
-        <h2 t-if="o.state == 'cancel'">Orden de compra cancelada<span t-field="o.x_studio_referencia"/></h2>
+        <h2 t-if="o.state in ['sent', 'to approve']">Orden de compra - <span t-field="o.x_studio_referencia"/></h2>
+        <h2 t-if="o.state in ['purchase', 'done']">Orden de compra - <span t-field="o.x_studio_referencia"/></h2>
+        <h2 t-if="o.state == 'cancel'">Orden de compra cancelada - <span t-field="o.x_studio_referencia"/></h2>
       </xpath>
 
       <!-- INFORMATIONS -->
       <xpath expr="/t/t/div[@class='page']/div[@id='informations']" position="replace">
 
-          <div class="col-auto col-3 mw-100 mb-2">    
-            
-            <h2>Datos de entrega</h2>
-            <div class="row mt32 mb32">
-              <strong>Obra</strong>
-              <p class="m-0" t-field="o.picking_type_id.warehouse_id.name" />
+          <div class="row mt32 mb32">
+
+            <div class="col-auto col-6 mw-100 mb-2">    
+              <h2>Datos de entrega</h2>
             </div>
 
-            <div class="row mt32 mb32">
-              <strong>Dirección</strong>
-              <p class="m-0" t-field="o.picking_type_id.warehouse_id.partner_id.contact_address_complete" />
-            </div>
-
-            <div class="row mt32 mb32">
-              <strong>Concepto</strong>
-              <p class="m-0" t-field="o.x_subcontrato" />
-            </div>
-            
-            <div class="row mt32 mb32">
-              <strong>Contacto</strong>
-              <p class="m-0" t-field="o.x_studio_contacto.name" />
-            </div>
-            
-            <div class="row mt32 mb32">
-              <strong>Teléfono</strong>
-              <p class="m-0" t-field="o.x_studio_telefono" />
+            <div class="col-auto col-6 mw-100 mb-2">    
+              <h2>Trazabilidad</h2>
             </div>
 
           </div>
 
-          <div class="col-auto col-3 mw-100 mb-2">
+          <div class="row mt32 mb32">
+            
+            <!-- 1 -->
+            <div class="col-auto col-6 mw-100 mb-2">    
+              <strong>Obra</strong>
+              <p class="m-0" t-field="o.picking_type_id.warehouse_id.name" />
+            </div>
 
-            <h2>Trazabilidad</h2>
-            <div class="row mt32 mb32">
+            <!-- 1 -->
+            <div class="col-auto col-6 mw-100 mb-2">
               <strong>Requisición</strong>
               <p class="m-0" t-field="o.x_studio_requisicin" />
             </div>
             
-            <div class="row mt32 mb32">
+          </div>
+
+          <div class="row mt32 mb32">
+
+            <!-- 2 -->
+            <div class="col-auto col-6 mw-100 mb-2">
+              <strong>Dirección</strong>
+              <p class="m-0" t-field="o.picking_type_id.warehouse_id.partner_id.contact_address_complete" />
+            </div>
+            
+            <!-- 2 -->
+            <div class="col-auto col-6 mw-100 mb-2">
               <strong>Fecha de requisición</strong>
               <p class="m-0" t-field="o.x_studio_fecha_de_requisicion" />
             </div>
+
+          </div>
+
+          <div class="row mt32 mb32">
+
+            <!-- 3 -->
+            <div class="col-auto col-6 mw-100 mb-2">
+              <strong>Concepto</strong>
+              <p class="m-0" t-field="o.x_subcontrato" />
+            </div>
             
-            <div class="row mt32 mb32">
+            <!-- 3 -->
+            <div class="col-auto col-6 mw-100 mb-2">
               <strong>Orden de compra</strong>
               <p class="m-0" t-field="o.x_studio_referencia" />
             </div>
 
-            <div class="row mt32 mb32">
+          </div>
+
+          <div class="row mt32 mb32">
+            
+            <!-- 4 -->
+            <div class="col-auto col-6 mw-100 mb-2">
+              <strong>Contacto</strong>
+              <p class="m-0" t-field="o.x_studio_contacto.name" />
+            </div>
+
+            <!-- 4 -->
+            <div class="col-auto col-6 mw-100 mb-2">
               <strong>Fecha de confirmación</strong>
               <p class="m-0" t-field="o.date_approve" />
             </div>
 
-            <div class="row mt32 mb32">
+          </div>
+
+          <div class="row mt32 mb32">
+
+            <!-- 5 -->
+            <div class="col-auto col-6 mw-100 mb-2">
+              <strong>Teléfono</strong>
+              <p class="m-0" t-field="o.x_studio_telefono" />
+            </div>
+
+            <!-- 5 -->
+            <div class="col-auto col-6 mw-100 mb-2">
               <strong>Autoriza</strong>
               <p class="m-0" t-field="o.x_studio_autoriza" />
             </div>
 
           </div>
 
-          <p><strong>Importante:</strong> Favor de comprobar datos para depósito o traspaso bancario.</p>
+          <p><strong>Importante: </strong> Favor de comprobar datos para depósito o traspaso bancario.</p>
 
           <h2>Productos</h2>
       </xpath>
@@ -85,26 +117,26 @@
       <xpath expr="/t/t/div[@class='page']/div[last()]" position="after">
 
         <h2>Notas</h2>
-        <div class="row mt32 mb32">
-          <strong>Fecha límite de entrega</strong>
+        <div class="row">
+          <strong>Fecha límite de entrega </strong>
           <p class="m-0" t-field="o.date_order" />
         </div>
 
-        <div class="row mt32 mb32">
-          <strong>Proveedor</strong>
+        <div class="row">
+          <strong>Proveedor </strong>
           <p t-if="o.partner_id.parent_id" class="m-0" t-field="o.partner_id.parent_id.name" />
           <p t-if="not o.partner_id.parent_id" class="m-0" t-field="o.partner_id.name" />
         </div>
 
         <div t-if="o.partner_id.parent_id" class="row mt32 mb32">
-          <strong>Contacto/sucursal de proveedor</strong>
+          <strong>Contacto/sucursal de proveedor </strong>
           <p class="m-0" t-field="o.partner_id.name" />
         </div>
       
-        <div class="row mt32 mb32">
+        <div class="row">
           <img src="/web/image/544-a5d1995c/firma%20condeca.png" />
           <p>Daida Patricia Pedraza Garcia</p>
-          <p><strong>FIRMA AUTORIZADA</strong></p>
+          <p><strong>FIRMA AUTORIZADA </strong></p>
           <p>Depto. de compras</p>
          </div> 
 
