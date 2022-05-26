@@ -60,7 +60,7 @@ class PurchaseRequisition(models.Model):
                 'view_mode': 'form',
                 'view_id': view_id,
                 'target': 'current',
-                'purchase_order_id': request_for_quotation_id
+                'res_id': request_for_quotation_id
             }
 
             return res
