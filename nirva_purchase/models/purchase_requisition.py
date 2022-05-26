@@ -41,3 +41,26 @@ class PurchaseRequisition(models.Model):
                     'product_qty': purchase_requisition_line.product_qty,
                     'product_id': purchase_requisition_line.product_id.id
                 })
+
+            # Get the client id from transport form
+            request_for_quotation_id = request_for_quotation.id
+                
+            #Initialize required parameters for opening the form view of invoice
+            #Get the view ref. by paasing module & name of the required form
+            view_ref = self.env['ir.model.data'].get_object_reference('purchase', 'purchase.order.form')
+            view_id = view_ref[1] if view_ref else False
+
+            #Let's prepare a dictionary with all necessary info to open create invoice form with          
+            #customer/client pre-selected
+            res = {
+                'type': 'ir.actions.act_window',
+                'name': ('Solicitud de cotización'),
+                'res_model': 'purchase.order',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'view_id': view_id,
+                'target': 'current',
+                'purchase_order_id': request_for_quotation_id
+            }
+
+            return res
