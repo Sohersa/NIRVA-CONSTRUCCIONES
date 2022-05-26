@@ -31,6 +31,12 @@
                     <field name="x_studio_referencia" />
                 </field>
 
+              <field name="partner_id" position="attributes">
+                    <attribute name="attrs">
+                    {'required':False}
+                    </attribute>
+                </field>
+
                 <button name="631" position="after">
                     <button name="action_custom_rfq" type="object" string="Mi cotización"/>
                 </button>
