@@ -20,3 +20,16 @@ class PurchaseRequisition(models.Model):
 
     x_studio_obra = fields.Many2one('stock.picking.type', string='Obra', domain=_overwrite_obra_domain)
     x_studio_subcontrato = fields.Many2one('stock.location', string='Concepto (Contrato/Subcontrato)', domain=[('id', '=', '-1')])
+
+    def action_custom_rfq(self):
+        for requisition in self:
+            request_for_quotation = requisition.env['purchase.order'].create({
+                'company_id': requisition.env.company.id,
+                'currency_id': requisition.env.company.currency_id.id,
+                'date_order': requisition.date_end,
+                'name': 'Borrador de Solicitud de cotización',
+                'picking_type_id': requisition.x_studio_obra.id,
+
+                'state': 'draft',
+                'requisition_id': requisition.id,
+            })
