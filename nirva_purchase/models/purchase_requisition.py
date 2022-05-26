@@ -27,8 +27,17 @@ class PurchaseRequisition(models.Model):
                 'company_id': requisition.env.company.id,
                 'currency_id': requisition.env.company.currency_id.id,
                 'date_order': requisition.date_end,
-                'name': 'Borrador de Solicitud de cotización',
+                'name': 'Borrador de RFQ',
                 'picking_type_id': requisition.x_studio_obra.id,
                 'state': 'draft',
                 'requisition_id': requisition.id,
             })
+
+            for purchase_requisition_line in requisition.line_ids:
+                purchase_order_line = request_for_quotation.env['purchase.order.line'].create({
+                    'name': purchase_requisition_line.product_id.name,
+                    'order_id': request_for_quotation.id,
+                    'price_unit': 0,
+                    'product_qty': purchase_requisition_line.product_qty,
+                    'product_id': purchase_requisition_line.product_id
+                })
