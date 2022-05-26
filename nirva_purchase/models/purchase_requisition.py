@@ -47,7 +47,7 @@ class PurchaseRequisition(models.Model):
                 
             #Initialize required parameters for opening the form view of invoice
             #Get the view ref. by paasing module & name of the required form
-            view_ref = self.env['ir.model.data'].get_object_reference('purchase', 'purchase.order.form')
+            view_ref = self.env['ir.model.data'].get_object_reference('purchase', 'purchase_order_form')
             view_id = view_ref[1] if view_ref else False
 
             #Let's prepare a dictionary with all necessary info to open create invoice form with          
