@@ -39,5 +39,5 @@ class PurchaseRequisition(models.Model):
                     'order_id': request_for_quotation.id,
                     'price_unit': 0,
                     'product_qty': purchase_requisition_line.product_qty,
-                    'product_id': purchase_requisition_line.product_id
+                    'product_id': purchase_requisition_line.product_id.id
                 })
