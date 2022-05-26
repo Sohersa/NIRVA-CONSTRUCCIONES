@@ -29,7 +29,7 @@ class PurchaseRequisition(models.Model):
                 'date_order': requisition.date_end,
                 'name': 'Borrador de Solicitud de cotización',
                 'picking_type_id': requisition.x_studio_obra.id,
-
+                'parnet_id': False,
                 'state': 'draft',
                 'requisition_id': requisition.id,
             })

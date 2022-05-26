@@ -6,8 +6,6 @@ class PurchaseOrder(models.Model):
 
     _inherit='purchase.order'
 
-    partner_id = fields.Many2one('res.partner', string='Proveedor', requierd=False)
-
     # Estableciendo el campo de empresa
     enterprise_domain = ['&', ('is_company', '=', True), ('parent_id', '=', False)]
     empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
