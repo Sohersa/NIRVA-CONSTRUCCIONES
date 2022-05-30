@@ -42,13 +42,13 @@
                     <attribute name="attrs">
                         {'invisible': [('state', '!=', 'open')]}
                     </attribute>
-                </bnutton>
+                </button>
 
                 <button name="action_custom_rfq" position="attributes">
                     <attribute name="attrs">
                         {'invisible': [('state', 'not in', ('in_progress', 'ongoing'))]}
                     </attribute>
-                </bnutton>
+                </button>
             </field>
         </record>
 
