@@ -31,7 +31,7 @@
                     <field name="x_studio_referencia" />
                 </field>
 
-                <button name="631" position="after">
+                <button name="631" position="replace">
                     <button name="action_custom_rfq" type="object" string="Mi cotización"/>
                 </button>
             </field>

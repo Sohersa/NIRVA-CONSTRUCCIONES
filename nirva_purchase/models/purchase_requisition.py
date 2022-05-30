@@ -23,11 +23,12 @@ class PurchaseRequisition(models.Model):
 
     def action_custom_rfq(self):
         for requisition in self:
+            purchase_order_count = requisition.env['purchase.order'].search_count([('state', '!=', False)])
             request_for_quotation = requisition.env['purchase.order'].create({
                 'company_id': requisition.env.company.id,
                 'currency_id': requisition.env.company.currency_id.id,
                 'date_order': requisition.date_end,
-                'name': 'Borrador de RFQ',
+                'name': 'P' + '{:0>5}'.format(purchase_order_count),
                 'picking_type_id': requisition.x_studio_obra.id,
                 'state': 'draft',
                 'requisition_id': requisition.id,
