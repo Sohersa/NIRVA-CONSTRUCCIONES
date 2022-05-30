@@ -38,7 +38,7 @@
                     <button name="action_custom_rfq" type="object" string="Mi cotización"/>
                 </button>
 
-                <button name="action_custom_rfq" position="attributes" class="btn-primary">
+                <!-- <button name="action_custom_rfq" position="attributes" class="btn-primary">
                     <attribute name="attrs">
                         {'invisible': [('state', '!=', 'open')]}
                     </attribute>
@@ -48,7 +48,7 @@
                     <attribute name="attrs">
                         {'invisible': [('state', 'not in', ('in_progress', 'ongoing'))]}
                     </attribute>
-                </button>
+                </button> -->
             </field>
         </record>
 
