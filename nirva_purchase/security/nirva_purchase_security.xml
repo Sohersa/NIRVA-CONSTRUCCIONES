@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <!-- Categoría - Módulo de compras -->
+    <record id="module_category_compras" model="ir.module.category">
+        <field name="name">Nirva</field>
+        <field name="sequence">1</field>
+    </record>
+
+    
+    <!-- Sub-categoría - Contratos -->
+    <record id="module_category_compras_contratos" model="ir.module.category">
+        <field name="name">Contratos</field>
+        <field name="sequence">1</field>
+        <field name="parent_id" ref="module_category_compras"/>
+    </record>
+
+        <!-- Grupo - Usuario -->
+        <record id="group_compras_contratos_usuario" model="res.groups">
+            <field name="name">Usuario</field>
+            <field name="comment">Puede ver las ubicaciones (contratos/subcontratos) creadas en los almacenes (obras).</field>
+            <field name="category_id" ref="module_category_compras_contratos"/>
+        </record>
+
+        <!-- Grupo - Administrador -->
+        <record id="group_compras_contratos_administrador" model="res.groups">
+            <field name="name">Administrador</field>
+            <field name="comment">Puede crear ubicaciones (contratos/subcontratos) en los almacenes (obras).</field>
+            <field name="category_id" ref="module_category_compras_contratos"/>
+            <field name="implied_ids" eval="[(4, ref('group_compras_contratos_usuario'))]"/>
+        </record>
+    
+    <!-- Sub-categoría - Recepciones -->
+    <record id="module_category_compras_recepciones" model="ir.module.category">
+        <field name="name">Recepciones</field>
+        <field name="sequence">2</field>
+        <field name="parent_id" ref="module_category_compras"/>
+    </record>
+
+        <!-- Grupo - Obra -->
+        <record id="group_compras_recepciones_obra" model="res.groups">
+            <field name="name">Obra</field>
+            <field name="comment">Puede validar recepciones en obra.</field>
+            <field name="category_id" ref="module_category_compras_recepciones"/>
+        </record>
+
+        <!-- Grupo - Oficina -->
+        <record id="group_compras_recepciones_oficina" model="res.groups">
+            <field name="name">Oficina</field>
+            <field name="comment">Puede validar recepciones en oficina.</field>
+            <field name="category_id" ref="module_category_compras_recepciones"/>
+        </record>
+
+
+</odoo>
