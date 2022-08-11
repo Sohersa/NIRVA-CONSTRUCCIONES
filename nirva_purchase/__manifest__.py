@@ -21,8 +21,8 @@
     # always loaded
     'data': [
         # SECURITY
-        'security/ir.model.access.csv',
         'security/nirva_purchase_security.xml',
+        'security/ir.model.access.csv',
         
         # FORM VIEWS
         'views/purchase_order_form.xml',
