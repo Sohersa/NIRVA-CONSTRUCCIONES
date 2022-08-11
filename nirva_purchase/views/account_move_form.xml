@@ -14,6 +14,7 @@
 
         <field name="ref" position="after">
           <field name="regimen_fiscal"/>
+          <field name="factura_sat"/>
         </field>
 
       </field>

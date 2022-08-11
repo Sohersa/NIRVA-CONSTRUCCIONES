@@ -6,6 +6,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     ref = fields.Char(string="Referenia UUID")
+    factura_sat = fields.Binary(string="Factura SAT")
 
     def _regimenes_fiscales(self):
         return [
