@@ -35,7 +35,7 @@
                 </button>
 
                 <button name="631" position="replace">
-                    <button name="action_custom_rfq" type="object" string="Mi cotización" class="btn-primary"/>
+                    <button name="action_custom_rfq" type="object" string="Solicitar cotización" class="btn-primary"/>
                 </button>
 
                 <button name="action_custom_rfq" position="attributes">

@@ -122,7 +122,7 @@
       
       <xpath expr="/t/t/div[@class='page']/div[last()]" position="after">
 
-        <div style="page-break-before: always;">
+        <div style="page-break-before: auto;">
 
           <h2>Notas</h2>
           <div>
