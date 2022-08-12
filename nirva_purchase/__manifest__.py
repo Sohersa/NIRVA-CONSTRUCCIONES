@@ -32,7 +32,9 @@
         'views/res_partner_form.xml',
         'views/res_partner_bank_form.xml',
         'views/partner_property_form.xml',
-        # 'views/templates.xml',
+
+        # MENUS
+        'views/stock_location_menu.xml',
 
         # TREE VIEWS
         'trees/res_partner_bank_tree.xml',

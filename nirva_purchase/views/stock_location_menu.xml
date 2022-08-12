@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="nirva_stock_menu_warehouse_report" model="ir.ui.menu">
+        <field name="name">stock_menu_warehouse_report_customizations</field>
+        <field name="model">ir.ui.menu</field>
+        <field name="inherit_id" ref="stock.menu_warehouse_report"/>
+        <field name="groups_id" eval="[(4, ref('group_compras_contratos_administrador'))]"/>
+    </record>  
+</odoo>
