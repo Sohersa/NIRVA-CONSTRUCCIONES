@@ -28,7 +28,7 @@
             <field name="name">Administrador</field>
             <field name="comment">Puede crear ubicaciones (contratos/subcontratos) en los almacenes (obras).</field>
             <field name="category_id" ref="module_category_compras_contratos"/>
-            <field name="implied_ids" eval="[(4, ref('group_compras_contratos_usuario')), (4, ref('45'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_compras_contratos_usuario')), (4, ref('stock.group_stock_manager'))]"/>
         </record>
     
     <!-- Sub-categoría - Recepciones -->
