@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="stock.menu_warehouse_report" model="ir.ui.menu">
-        <field name="groups_id" eval="[(4, ref('group_compras_contratos_administrador'))]"/>
+        <field name="groups_id" eval="[(4, ref('group_compras_contratos_usuario'))]"/>
     </record>
 
 </odoo>
