@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_nirva_purchase_location_usuario,nirva_purchase.location.usuario,stock.model_stock_location,nirva_purchase.group_compras_contratos_usuario,1,1,0,0
-access_nirva_purchase_location_administrador,nirva_purchase.location.administrador,stock.model_stock_location,nirva_purchase.group_compras_contratos_administrador,1,0,0,0
+access_nirva_purchase_location_administrador,nirva_purchase.location.administrador,stock.model_stock_location,nirva_purchase.group_compras_contratos_administrador,1,1,1,1
