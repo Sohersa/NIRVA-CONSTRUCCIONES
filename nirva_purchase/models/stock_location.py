@@ -19,11 +19,10 @@ class StockLocation(models.Model):
                 rec['name'] = rec.warehouse_id.name + '/CONTRATO ' + rec['name']
                 return
 
-    @api.multi
     def _set_is_contract(self):
-        for rec in self:
-            if(rec.location_id == False):
-                if(rec.usage == 'transit'):
-                    rec.update({"is_contract": True})
-                    return rec
-                return rec
+        for location in self:
+            if(location.location_id == False):
+                if(location.usage == 'transit'):
+                    location.update({"is_contract": True})
+                    return
+                return

@@ -21,12 +21,12 @@
   <!-- Registin action -->
   <record model="ir.actions.server" id="nirva_actions_set_contracts">
     <field name="name">Identificar contratos</field>
-    <field name="type">ir.actions.server</field>
     <field name="model_id" ref="stock.model_stock_location"/>
     <field name="binding_model_id" ref="stock.model_stock_location"/>
+    <field name="binding_view_type">list</field>
     <field name="state">code</field>
     <field name="code">
-      self._set_is_contract()
+      action = records._set_is_contract()
     </field>
 
   </record>
