@@ -22,7 +22,5 @@ class StockLocation(models.Model):
     def _set_is_contract(self):
         for location in self:
             if(location.location_id == False):
-                if(location.usage == 'transit'):
-                    location.update({"is_contract": True})
-                    return
+                location["is_contract"] = True
                 return
