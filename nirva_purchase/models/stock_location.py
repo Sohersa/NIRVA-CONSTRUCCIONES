@@ -16,5 +16,13 @@ class StockLocation(models.Model):
             # Si hay una almacén establecido...
             if(rec.warehouse_id):
                 # Agregamos el nombre del almacén al nombre de la ubicación
-                rec['name'] = rec.warehouse_id.name + '/Contrato ' + rec['name']
+                rec['name'] = rec.warehouse_id.name + '/CONTRATO ' + rec['name']
+                return
+    
+    def _set_is_contract(self):
+        for rec in self:
+            if(rec.location_id & rec.usage == 'transit'):
+                return
+            else:
+                rec['is_contract'] = True
                 return
