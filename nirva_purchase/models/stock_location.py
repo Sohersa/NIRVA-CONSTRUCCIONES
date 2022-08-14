@@ -21,8 +21,7 @@ class StockLocation(models.Model):
 
     def _set_is_contract(self):
         for location in self:
-            if(location.location_id):
-                return
-            else:
+            if not location.location_id and location.usage == "transit":
                 location["is_contract"] = True
                 return
+        self._onchange_warehouse()
