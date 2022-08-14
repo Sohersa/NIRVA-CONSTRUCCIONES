@@ -26,7 +26,7 @@
     <field name="binding_model_id" ref="stock.model_stock_location"/>
     <field name="state">code</field>
     <field name="code">
-      records._set_is_contract()
+      self._set_is_contract()
     </field>
 
   </record>
