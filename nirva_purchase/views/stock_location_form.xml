@@ -23,7 +23,6 @@
     <field name="name">Identificar contratos</field>
     <field name="model_id" ref="stock.model_stock_location"/>
     <field name="binding_model_id" ref="stock.model_stock_location"/>
-    <field name="binding_view_type">list</field>
     <field name="state">code</field>
     <field name="code">
       action = records._set_is_contract()
