@@ -21,6 +21,8 @@ class StockLocation(models.Model):
 
     def _set_is_contract(self):
         for location in self:
-            if(location.location_id == False):
+            if(location.location_id):
+                return
+            else:
                 location["is_contract"] = True
                 return
