@@ -23,6 +23,6 @@ class StockLocation(models.Model):
         for rec in self:
             if(rec.location_id == False):
                 if(rec.usage == 'transit'):
-                    rec['is_contract'] = True
-                    return
-                return
+                    rec.update({"is_contract": True})
+                    return rec
+                return rec
