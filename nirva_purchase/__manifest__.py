@@ -13,7 +13,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'stock',
-    'version': '0.0.8',
+    'version': '0.0.7',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'purchase', 'hr', 'account', 'purchase_requisition', 'stock'],
