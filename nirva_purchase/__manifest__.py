@@ -27,6 +27,7 @@
         # FORM VIEWS
         'views/purchase_order_form.xml',
         'views/purchase_requisition_form.xml',
+        'views/stock_location_form.xml',
         'views/stock_picking_form.xml',
         'views/account_move_form.xml',
         'views/res_partner_form.xml',
