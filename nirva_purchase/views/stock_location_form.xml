@@ -8,23 +8,12 @@
         <field name="inherit_id" ref="stock.view_location_form"/>
         <field name="arch" type="xml">
   
-          <field name="location_id" position="after">
-            <field name="is_contract"/>
-            <field name="warehouse_id"/>
-          </field>
-
-          <field name="is_contract" position="attributes">
-            <attribute name="string">Es un contrato</attribute>
-            <attribute name="attrs">
-                {'invisible': [('location_id', '!=', False)]}
-            </attribute>
-          </field>
-
-          <field name="warehouse_id" position="attributes">
-            <attribute name="attrs">
-                {'invisible': [('is_contract', '=', False)]}
-            </attribute>
-          </field>
+          <xpath expr="//form/sheet/group/group" position="before">
+            <group string="Establecer contrato" name="contracts">
+              <field name="is_contract" attrs="{'invisible': [('location_id', '!=', False)]}"/>
+              <field name="warehouse_id" attrs="{'invisible': [('is_contract', '=', False)]}"/>
+            </group>
+          </xpath>
   
         </field>
       </record>
