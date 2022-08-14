@@ -14,15 +14,16 @@
           </field>
 
           <field name="is_contract" position="attributes">
-                <attribute name="attrs">
-                    {'invisible': [('location_id', '!=', False)]}
-                </attribute>
+            <attribute name="string">Es un contrato</attribute>
+            <attribute name="attrs">
+                {'invisible': [('location_id', '!=', False)]}
+            </attribute>
           </field>
 
           <field name="warehouse_id" position="attributes">
-                <attribute name="attrs">
-                    {'invisible': [('is_contract', '=', False)]}
-                </attribute>
+            <attribute name="attrs">
+                {'invisible': [('is_contract', '=', False)]}
+            </attribute>
           </field>
   
         </field>
