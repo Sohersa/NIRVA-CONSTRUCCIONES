@@ -23,4 +23,3 @@ class StockLocation(models.Model):
         for location in self:
             if not location.location_id and location.usage == "transit":
                 location["is_contract"] = True
-                return
