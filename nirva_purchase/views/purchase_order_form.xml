@@ -10,6 +10,9 @@
         <field name="partner_id" position="before">
           <field name="empresa_id" />
         </field>
+        <field name="x_subcontrato" position="attributes">
+          <attribute name="string">Concepto (Constrato/Subcontrato)</attribute>
+        </field>
       </field>
     </record>
 

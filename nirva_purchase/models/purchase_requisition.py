@@ -7,12 +7,12 @@ class PurchaseRequisition(models.Model):
     _inherit='purchase.requisition'
 
     @api.onchange('x_studio_obra')
-    # Filtramos el dominio del campo purchase_requisition.x_subcontrato [Concepto]
+    # Filtramos el dominio del campo purchase_requisition.x_studio_subcontrato [Concepto]
     def _set_stock_location_domain(self):
         for rec in self:
             if(rec.x_studio_obra.warehouse_id):
                 #Definimos el dominio
-                ubicaciones_domain = [('location_id.name', "ilike", rec.x_studio_obra.warehouse_id.name)]
+                ubicaciones_domain = ["|", ('warehouse_id.id', "=", rec.x_studio_obra.warehouse_id.id), ('location_id.warehouse_id.id', "=", rec.x_studio_obra.warehouse_id.id)]
                 return {'domain': {'x_studio_subcontrato': ubicaciones_domain}}
 
     def _overwrite_obra_domain(self): 

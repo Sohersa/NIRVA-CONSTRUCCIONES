@@ -32,3 +32,12 @@ class PurchaseOrder(models.Model):
             # Definimos el dominio
             obra_domain = ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", rec.env.company.id)]
             return {'domain': {'picking_type_id': obra_domain}}
+
+    # Filtramos el dominio del campo purchase_order.x_subcontrato [Concepto]
+    @api.onchange('picking_type_id')
+    def _set_stock_location_domain(self):
+        for rec in self:
+            if(rec.picking_type_id.warehouse_id):
+                #Definimos el dominio de las ubicaciones
+                ubicaciones_domain = ["|", ('warehouse_id.id', "=", rec.picking_type_id.warehouse_id.id), ('location_id.warehouse_id.id', "=", rec.picking_type_id.warehouse_id.id)]
+                return {'domain': {'x_subcontrato': ubicaciones_domain}}
