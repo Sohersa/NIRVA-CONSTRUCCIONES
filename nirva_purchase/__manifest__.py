@@ -16,7 +16,7 @@
     'version': '0.0.7',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'hr', 'account', 'purchase_requisition', 'stock'],
+    'depends': ['base', 'purchase', 'hr', 'account', 'purchase_requisition', 'stock', 'hr_expenses'],
 
     # always loaded
     'data': [
@@ -33,6 +33,7 @@
         'views/res_partner_form.xml',
         'views/res_partner_bank_form.xml',
         'views/partner_property_form.xml',
+        'views/hr_expense_form.xml',
 
         # MENUS
         'views/stock_location_menu.xml',
