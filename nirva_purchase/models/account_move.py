@@ -21,7 +21,7 @@ class AccountMove(models.Model):
 
     def open_account_move_payments(self):
         return {
-            'name': _('Pagos'),
+            'name': 'Pagos',
             'domain': [('ref', '=', self.name)],
             'view_type': 'form',
             'res_model': 'account.payment',
