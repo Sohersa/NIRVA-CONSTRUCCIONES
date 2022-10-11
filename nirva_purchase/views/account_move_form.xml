@@ -17,6 +17,13 @@
                     >
               <field name="payments_count" string="Pagos" widget="statinfo"/>
             </button>
+            <button name="open_account_move_payments" 
+                    type="object" 
+                    icon="fa-credit-card" 
+                    class="oe_stat_button" 
+                    >
+              <field name="payments_count" string="Pagos" widget="statinfo"/>
+            </button>
           </div>
         </xpath>
 
