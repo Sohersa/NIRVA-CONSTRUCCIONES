@@ -34,8 +34,26 @@
                 <button name="631" position="replace">
                 </button>
 
+                <!-- BOTONES EN FUNCIÓN AL GRUPO -->
+                <!-- Solicitud de cotización -->
                 <button name="631" position="replace">
                     <button name="action_custom_rfq" type="object" string="Solicitar cotización" class="btn-primary" groups="purchase.group_purchase_manager"/>
+                </button>
+                <!-- Validación -->
+                <button name="action_open" position="replace">
+                    <button name="action_open" states="in_progress" string="Validate" type="object" class="btn-primary" groups="purchase.group_purchase_manager"/>
+                </button>
+                <!-- Cerrar -->
+                <button name="action_done" position="replace">
+                    <button name="action_done" states="open,ongoing" string="Close" type="object" class="btn-primary" groups="purchase.group_purchase_manager"/>
+                </button>
+                <!-- Restablecer a borrador -->
+                <button name="action_draft" position="replace">
+                    <button name="action_draft" states="cancel" string="Reset to Draft" type="object" groups="purchase.group_purchase_manager"/>
+                </button>
+                <!-- Cancelar -->
+                <button name="action_cancel" position="replace">
+                    <button name="action_cancel" states="draft,in_progress,ongoing" string="Cancel" type="object" groups="purchase.group_purchase_manager"/>
                 </button>
 
                 <button name="action_custom_rfq" position="attributes">
@@ -43,7 +61,6 @@
                         {'invisible': [('state', 'not in', ('ongoing', 'open'))]}
                     </attribute>
                 </button>
-
             </field>
         </record>
 
