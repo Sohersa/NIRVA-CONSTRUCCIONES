@@ -27,7 +27,7 @@
         </field>
 
         <!-- DATOS DE CONTACTO -->
-        <field xpath="//form/sheet/group[1]" position="after">
+        <xpath expr="//form/sheet/group[1]" position="after">
           <group>
             <group>
               <!-- Solicitante -->
@@ -36,7 +36,7 @@
               <field name="oupp_solicita_work_phone" />
             </group>
           </group>
-        </field>
+        </xpath>
 
         <!-- FECHAS -->
         <field name="date_order" position="after">
