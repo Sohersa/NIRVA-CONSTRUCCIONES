@@ -5,8 +5,14 @@ from odoo import models, fields, api
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
+    # Referencia de la factura
     ref = fields.Char(string="Referenia UUID")
+
+    # Archivo de la factura timbrada
     factura_sat = fields.Binary(string="Factura SAT")
+
+    # Creamos el campo de tipo de pago
+    tipo_de_pago = fields.Selection(related="x_studio_orden.tipo_de_pago", string="Tipo de pago")
 
     def _regimenes_fiscales(self):
         return [
