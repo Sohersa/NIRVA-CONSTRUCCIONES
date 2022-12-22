@@ -33,7 +33,7 @@ class AccountMove(models.Model):
     # Obtenemos el número de pagos donde la ref corresponda al nombre de esta factura
     def get_payments_count(self):
         payments_count = self.env['account.payment'].search_count([('ref', '=', self.name)])
-        self.payments_count = payments_count
+        self.oupp_payments_count = payments_count
 
     # Campo computado con la cantidad de pagos asociados a la factura
     oupp_payments_count = fields.Integer(string='Pagos', compute="get_payments_count")
