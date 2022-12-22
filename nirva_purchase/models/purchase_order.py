@@ -7,7 +7,7 @@ class PurchaseOrder(models.Model):
     _inherit='purchase.order'
 
     # Retomamos el campo de quien autoriza
-    autoriza = fields.Many2One(comodel_name="hr.employee", string="Autorizado por", related="requisition_id.autoriza.id")
+    autoriza = fields.Many2one(comodel_name="hr.employee", string="Autorizado por", related="requisition_id.autoriza.id")
     
     partner_id = fields.Many2one('res.partner', string='Proveedor', required=False)
 
