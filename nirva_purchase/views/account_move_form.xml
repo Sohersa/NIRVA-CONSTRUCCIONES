@@ -12,7 +12,7 @@
         <!-- Pagos relacionados -->
         <xpath expr="//form/sheet/div[@class='oe_button_box']/button[1]" position="before">
           <button name="open_account_move_payments" type="object" icon="fa-credit-card" class="oe_stat_button">
-            <field name="payments_count" string="Pagos" widget="statinfo"/>
+            <field name="oupp_payments_count" string="Pagos" widget="statinfo"/>
           </button>
         </xpath>
 
@@ -23,13 +23,13 @@
         </xpath>
         <field name="ref" position="after">
           <!-- Regimen fiscal -->
-          <field name="regimen_fiscal"/>
+          <field name="oupp_regimen_fiscal"/>
           <!-- Factura SAT -->
           <field name="factura_sat"/>
         </field>
         <field name="partner_bank_id" position="after">
           <!-- Tipo de pago -->
-          <field name="tipo_de_pago"/>
+          <field name="oupp_tipo_de_pago"/>
         </field>
 
         <!-- DATOS DE ORDEN DE COMPRA -->
