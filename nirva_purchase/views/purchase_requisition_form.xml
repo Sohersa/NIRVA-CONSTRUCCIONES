@@ -28,7 +28,7 @@
                     </attribute>
                 </field>
                 <field name="company_id" position="after">
-                    <field name="x_studio_referencia" />
+                    <field name="x_studio_referencia"/>
                 </field>
 
                 <button name="631" position="replace">
