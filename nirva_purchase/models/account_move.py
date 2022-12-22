@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 
 class AccountMove(models.Model):
+    # Extendemos del modelo de factura
     _inherit = 'account.move'
 
     # Referencia de la factura
@@ -14,17 +15,10 @@ class AccountMove(models.Model):
     # Creamos el campo de tipo de pago
     tipo_de_pago = fields.Selection(related="x_studio_orden.tipo_de_pago", string="Tipo de pago")
 
-    def _regimenes_fiscales(self):
-        return [
-            ('Asalariados', 'Asalariados'), 
-            ('Servicios profesionales (honorarios)','Servicios profesionales (honorarios)'),
-            ('Arrendamiento de inmuebles', 'Arrendamiento de inmuebles'),
-            ('Actividad empresarial', 'Actividad empresarial'),
-            ('Incorporación fiscal', 'Incorporación fiscal'),
-            ('General', 'General'),
-            ('Personas morales con fines no lucrativos', 'Personas morales con fines no lucrativos')
-        ]
+    # Recuperamos el regimen fiscal directamente desde el partner
+    regimen_fiscal = fields.Selection(related="partner_id.regimen_fiscal", string="Regimen Fiscal")
 
+    # Abrimos la vista con el pago o la lista de pagos relacionadas a la factura
     def open_account_move_payments(self):
         return {
             'name': 'Pagos',
@@ -36,9 +30,10 @@ class AccountMove(models.Model):
             'type': 'ir.actions.act_window'
         }
 
+    # Obtenemos el número de pagos donde la ref corresponda al nombre de esta factura
     def get_payments_count(self):
         payments_count = self.env['account.payment'].search_count([('ref', '=', self.name)])
         self.payments_count = payments_count
 
-    regimen_fiscal = fields.Selection(selection='_regimenes_fiscales', string="Regimen Fiscal", related="partner_id.regimen_fiscal")
+    # Campo computado con la cantidad de pagos asociados a la factura
     payments_count = fields.Integer(string='Pagos', compute="get_payments_count")
