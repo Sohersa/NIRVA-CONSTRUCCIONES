@@ -39,6 +39,8 @@ class AccountMove(models.Model):
     payments_count = fields.Integer(string='Pagos', compute="get_payments_count")
 
     # CAMPOS RELACIONALES
+    # Orden de compra 
+    oupp_po = fields.Many2one("purchase.order", string="Orden de compra")
     # Orden de compra - Referencia interna
     oupp_po_ref = fields.Char(string="Orden de compra (Referencia interna)", related="purchase_id.x_studio_referencia")
     # Obra
@@ -47,3 +49,13 @@ class AccountMove(models.Model):
     oupp_concepto = fields.Many2one("stock.location", string="Concepto (Contrato/Subcontrato)", related="purchase_id.x_subcontrato")
     # Autorizado por
     oupp_autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="purchase_id.autoriza")
+
+    # Manejamos el cambio del campo 
+    @api.onchange('oupp_po')
+    # Filtramos el dominio del campo hr.expense.nirva_contrato [Concepto]
+    def _set_related_fields(self):
+        for move in self:
+            # Verificamos ha establecido una orden de compra
+            if(move.oupp_po):
+                move["purchase_id"] = move.oupp_po
+ 
