@@ -8,6 +8,18 @@ class PurchaseOrder(models.Model):
 
     # Retomamos el campo de quien autoriza
     autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="requisition_id.autoriza")
+
+    # Definimos los tipos de pagos disponibles
+    def _tipos_de_pago(self):
+        return [
+            ('Efectivo', 'Efectivo'), 
+            ('Caja chica', 'Caja chica'), 
+            ('Transferencia','Transferencia'),
+            ('Crédito', 'Crédito')
+        ]
+
+    # Creamos el campo de tipo de pago
+    tipo_de_pago = fields.Selection(selection='_tipos_de_pago', string="Tipo de pago")
     
     partner_id = fields.Many2one('res.partner', string='Proveedor', required=False)
 
