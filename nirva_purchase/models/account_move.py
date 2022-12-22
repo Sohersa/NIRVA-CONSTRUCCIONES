@@ -13,7 +13,7 @@ class AccountMove(models.Model):
     factura_sat = fields.Binary(string="Factura SAT")
 
     # Creamos el campo de tipo de pago
-    tipo_de_pago = fields.Selection(related="x_studio_orden.tipo_de_pago", string="Tipo de pago")
+    tipo_de_pago = fields.Selection(related="purchase_id.tipo_de_pago", string="Tipo de pago")
 
     # Recuperamos el regimen fiscal directamente desde el partner
     regimen_fiscal = fields.Selection(related="partner_id.regimen_fiscal", string="Regimen Fiscal")
