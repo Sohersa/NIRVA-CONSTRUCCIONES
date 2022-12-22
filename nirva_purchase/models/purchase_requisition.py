@@ -8,7 +8,7 @@ class PurchaseRequisition(models.Model):
 
     # Establecemos el dominio de los empleados que pueden autorizar
     def _pueden_autorizar(self):
-        return ["x_studio_autoriza", "=", True]
+        return ["x_studio_autoriza", "!=", False]
 
     # Creamos el campo de las personas que pueden autorizar
     autoriza = fields.Many2one(comodel_name="hr.employee", string="Autorizado por", domain=_pueden_autorizar)
