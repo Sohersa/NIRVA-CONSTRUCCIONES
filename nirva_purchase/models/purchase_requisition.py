@@ -6,6 +6,23 @@ class PurchaseRequisition(models.Model):
 
     _inherit='purchase.requisition'
 
+    x_studio_referencia = fields.Char(string="Referencia interna (Requisición)")
+
+    @api.onchange('x_studio_obra')
+    # Creamos la referencia interna de la requisición
+    def _set_referencia(self):
+        for req in self:
+            if req.x_studio_obra.wharehouse_id.name:
+                # Extraemos el nombre del almacén relacionado
+                name = req.x_studio_obra.wharehouse_id.name
+                # Descomponemos el nombre en un arrar de palabras
+                name_words = name.split(' ')
+                # Generamos el prefijo con la última palabra
+                prefix = name_words[-1][0:5].upper()
+                process = "REQ"
+                ref_int = prefix + "-"+ process + "-" + req.name
+                req['x_studio_referencia'] = ref_int
+
     @api.onchange('x_studio_obra')
     # Filtramos el dominio del campo purchase_requisition.x_studio_subcontrato [Concepto]
     def _set_stock_location_domain(self):
