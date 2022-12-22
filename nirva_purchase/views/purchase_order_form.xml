@@ -26,6 +26,18 @@
           <field name="tipo_de_pago"/>
         </field>
 
+        <!-- DATOS DE CONTACTO -->
+        <field xpath="//form/sheet/group[1]" position="after">
+          <group>
+            <group>
+              <!-- Solicitante -->
+              <field name="oupp_solicita" />
+              <!-- Teléfono de contacto -->
+              <field name="oupp_solicita_work_phone" />
+            </group>
+          </group>
+        </field>
+
         <!-- FECHAS -->
         <field name="date_order" position="after">
           <field name="x_studio_fecha_de_requisicion"/>

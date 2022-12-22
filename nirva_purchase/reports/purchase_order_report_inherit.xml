@@ -45,14 +45,14 @@
               <div class="row mt32 mb32">
                 <div class="col-auto col-6 mw-100 mb-2">
                   <strong>Contacto de entrega</strong>
-                  <p class="m-0" t-field="o.x_studio_contacto.name" />
+                  <p class="m-0" t-field="o.oupp_solicita" />
                 </div>
               </div>
               <!-- Telefono -->
               <div class="row mt32 mb32">
                 <div class="col-auto col-6 mw-100 mb-2">
                   <strong>Teléfono para entrega</strong>
-                  <p class="m-0" t-field="o.x_studio_contacto.work_phone" />
+                  <p class="m-0" t-field="o.oupp_solicita_work_phone" />
                 </div>
               </div>
             </div>
