@@ -9,6 +9,12 @@ class PurchaseOrder(models.Model):
     # Retomamos el campo de quien autoriza
     autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="requisition_id.autoriza")
 
+    # Retomamos el nombre del contacto que solicita
+    oupp_solicita = fields.Many2one("hr.employee", string="Solicita y Recibe", related="requisition_id.x_studio_solicita")
+
+    # Retornamos el número de quien solicita
+    oupp_solicita_work_phone = fields.Char("Solicita y Recibe (Tel)", related="requisition_id.x_studio_solicita.work_phone")
+
     # Definimos los tipos de pagos disponibles
     def _tipos_de_pago(self):
         return [
