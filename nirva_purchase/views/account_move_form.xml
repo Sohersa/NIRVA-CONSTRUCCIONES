@@ -35,6 +35,7 @@
         <!-- DATOS DE ORDEN DE COMPRA -->
         <xpath expr="//form/sheet/group[1]" position="after">
           <group>
+            <field name="oupp_po" />
             <field name="purchase_id" />
             <field name="oupp_po_ref" />
             <field name="oupp_obra" />
