@@ -27,12 +27,12 @@
         </field>
 
         <!-- FECHAS -->
-        <field expr="date_order" position="after">
+        <field name="date_order" position="after">
           <field name="x_studio_fecha_de_requisicion"/>
         </field>
 
         <!-- REFERENCIAS -->
-        <field expr="origin" position="replace">
+        <field name="origin" position="replace">
           <field name="x_studio_requisicin"/>
           <field name="x_studio_referencia" string="Referencia Interna (Cotización / Orden de compra)"/>
         </field>
