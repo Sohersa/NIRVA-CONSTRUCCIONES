@@ -15,17 +15,22 @@
             <!-- Obra -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Obra</strong>
-              <p class="m-0" t-field="o.x_studio_obra.warehouse_id.name" />
+              <p class="m-0" t-field="o.oupp_obra.warehouse_id.name" />
             </div>
             <!-- Dirección -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Dirección</strong>
-              <p class="m-0" t-field="o.x_studio_obra.warehouse_id.partner_id.contact_address" />
+              <p class="m-0" t-field="o.oupp_obra.warehouse_id.partner_id.contact_address" />
             </div>
             <!-- Contrato/Subcontrato -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Concepto</strong>
-              <p class="m-0" t-field="o.x_studio_concepto" />
+              <p class="m-0" t-field="o.oupp_concepto" />
+            </div>
+            <!-- Autoriza -->
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Autorizado por</strong>
+              <p class="m-0" t-field="o.oupp_po.autoriza" />
             </div>
           </div>
 
@@ -83,12 +88,12 @@
             <!-- Regimen fiscal -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Regimen fiscal</strong>
-              <p class="m-0" t-field="o.regimen_fiscal" />
+              <p class="m-0" t-field="o.oupp_regimen_fiscal" />
             </div>
             <!-- Tipo de pago -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Tipo de pago</strong>
-              <p class="m-0" t-field="o.tipo_de_pago" />
+              <p class="m-0" t-field="o.oupp_tipo_de_pago" />
             </div>
             <!-- Fecha de pago -->
             <div class="col-auto col-3 mw-100 mb-2">
@@ -103,12 +108,12 @@
             <!-- Folio de requisicón -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Requisición</strong>
-              <p class="m-0" t-field="o.x_studio_orden.x_studio_requisicin" />
+              <p class="m-0" t-field="o.oupp_po.x_studio_requisicin" />
             </div>
             <!-- Folio de orden de compra -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Orden de compra</strong>
-              <p class="m-0" t-field="o.x_studio_folio" />
+              <p class="m-0" t-field="o.oupp_po.x_studio_referencia" />
             </div>
             <!-- Folio de factura -->
             <div class="col-auto col-3 mw-100 mb-2">
