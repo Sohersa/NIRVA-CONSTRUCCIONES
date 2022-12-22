@@ -13,10 +13,10 @@ class AccountMove(models.Model):
     factura_sat = fields.Binary(string="Factura SAT")
 
     # Creamos el campo de tipo de pago
-    tipo_de_pago = fields.Selection(related="purchase_id.tipo_de_pago", string="Tipo de pago")
+    oupp_tipo_de_pago = fields.Selection(related="oupp_po.tipo_de_pago", string="Tipo de pago")
 
     # Recuperamos el regimen fiscal directamente desde el partner
-    regimen_fiscal = fields.Selection(related="partner_id.regimen_fiscal", string="Regimen Fiscal")
+    oupp_regimen_fiscal = fields.Selection(related="partner_id.regimen_fiscal", string="Regimen Fiscal")
 
     # Abrimos la vista con el pago o la lista de pagos relacionadas a la factura
     def open_account_move_payments(self):
@@ -36,19 +36,19 @@ class AccountMove(models.Model):
         self.payments_count = payments_count
 
     # Campo computado con la cantidad de pagos asociados a la factura
-    payments_count = fields.Integer(string='Pagos', compute="get_payments_count")
+    oupp_payments_count = fields.Integer(string='Pagos', compute="get_payments_count")
 
     # CAMPOS RELACIONALES
     # Orden de compra 
     oupp_po = fields.Many2one("purchase.order", string="Orden de compra")
     # Orden de compra - Referencia interna
-    oupp_po_ref = fields.Char(string="Orden de compra (Referencia interna)", related="purchase_id.x_studio_referencia")
+    oupp_po_ref = fields.Char(string="Orden de compra (Referencia interna)", related="oupp_po.x_studio_referencia")
     # Obra
-    oupp_obra = fields.Many2one("stock.picking.type", string="Obra", related="purchase_id.picking_type_id")
+    oupp_obra = fields.Many2one("stock.picking.type", string="Obra", related="oupp_po.picking_type_id")
     # Concepto
-    oupp_concepto = fields.Many2one("stock.location", string="Concepto (Contrato/Subcontrato)", related="purchase_id.x_subcontrato")
+    oupp_concepto = fields.Many2one("stock.location", string="Concepto (Contrato/Subcontrato)", related="oupp_po.x_subcontrato")
     # Autorizado por
-    oupp_autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="purchase_id.autoriza")
+    oupp_autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="oupp_po.autoriza")
 
     # Manejamos el cambio del campo 
     @api.onchange('oupp_po')
