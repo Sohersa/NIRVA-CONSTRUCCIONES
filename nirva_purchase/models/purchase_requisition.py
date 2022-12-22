@@ -11,7 +11,7 @@ class PurchaseRequisition(models.Model):
         return ["x_studio_autoriza", "=", True]
 
     # Creamos el campo de las personas que pueden autorizar
-    autoriza = fields.Many2One(comodel_name="hr.employee", string="Autorizado por", domain=_pueden_autorizar)
+    autoriza = fields.Many2one(comodel_name="hr.employee", string="Autorizado por", domain=_pueden_autorizar)
 
     x_studio_referencia = fields.Char(string="Referencia interna (Requisición)")
 
