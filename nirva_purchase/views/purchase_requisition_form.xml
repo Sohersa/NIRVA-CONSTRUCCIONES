@@ -34,7 +34,11 @@
                 <button name="631" position="replace">
                 </button>
 
-                <!-- BOTONES EN FUNCIÓN AL GRUPO -->
+                <!-- CAMPOS Y BOTONES EN FUNCIÓN AL GRUPO -->
+                <!-- Autorizado por -->
+                <field name="x_studio_solicita" position="after">
+                    <field name="autoriza" groups="purchase.group_purchase_manager"/>
+                </field>
                 <!-- Solicitud de cotización -->
                 <button name="631" position="replace">
                     <button name="action_custom_rfq" type="object" string="Solicitar cotización" class="btn-primary" groups="purchase.group_purchase_manager"/>
