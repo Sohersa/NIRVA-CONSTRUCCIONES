@@ -32,6 +32,15 @@
           <field name="tipo_de_pago"/>
         </field>
 
+        <!-- DATOS DE ORDEN DE COMPRA -->
+        <xpath expr="//from/sheet/group[1]" position="after">
+          <field name="purchase_id" />
+          <field name="oupp_po_ref" />
+          <field name="oupp_obra" />
+          <field name="oupp_concepto" />
+          <field name="oupp_autoriza" />
+        </xpath>
+
       </field>
     </record>
 

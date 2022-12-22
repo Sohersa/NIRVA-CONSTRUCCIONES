@@ -37,3 +37,13 @@ class AccountMove(models.Model):
 
     # Campo computado con la cantidad de pagos asociados a la factura
     payments_count = fields.Integer(string='Pagos', compute="get_payments_count")
+
+    # CAMPOS RELACIONALES
+    # Orden de compra - Referencia interna
+    oupp_po_ref = fields.Char(string="Orden de compra (Referencia interna)", related="purchase_id.x_studio_referencia")
+    # Obra
+    oupp_obra = fields.Many2one("stock.picking.type", string="Obra", related="purchase_id.picking_type_id")
+    # Concepto
+    oupp_concepto = fields.Many2one("stock.location", string="Concepto (Contrato/Subcontrato)", related="purchase_id.x_subcontrato")
+    # Autorizado por
+    oupp_autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="purchase_id.autoriza")
