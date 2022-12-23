@@ -17,7 +17,7 @@
         </xpath>
 
         <!-- DATOS DE PAGO -->
-        <xpath expr="//form/sheet/gorup/group[@id='header_left_group']/div[1]" position="before">
+        <xpath expr="//form/sheet/group/group[@id='header_left_group']/div[1]" position="before">
           <!-- Empresa -->
           <field name="empresa_id" attrs="{'readonly': [('oupp_po','!=',False)] }"/>
         </xpath>
