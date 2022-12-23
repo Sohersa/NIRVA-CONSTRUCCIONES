@@ -123,28 +123,6 @@
         
         <h2>Productos</h2>
       </xpath>
-      
-      <!-- PIE DE PAGINA -->
-      <xpath expr="/t/t/div[@class='page']/div[last()]" position="after">
-
-        <div style="page-break-before: auto;">
-          <!-- FIRMA -->
-          <div style="width: 100%">
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4">
-                  <img class="mx-auto d-block" src="/web/image/544-a5d1995c/firma%20condeca.png" />  
-                </div>
-                <div class="col-4"></div>
-            </div>
-            <p class="text-center">Daida Patricia Pedraza Garcia</p>
-            <p class="text-center"><strong>FIRMA AUTORIZADA</strong></p>
-            <p class="text-center">Depto. de compras</p>
-          </div>
-        </div>
-        
-      </xpath>
-
     </template>
 
   </data>
