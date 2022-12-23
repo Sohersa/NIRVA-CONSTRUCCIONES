@@ -6,6 +6,26 @@ class AccountMove(models.Model):
     # Extendemos del modelo de factura
     _inherit = 'account.move'
 
+    # Estableciendo un dominio de contactos que sean empresas y que no estén asociados a otro contacto
+    enterprise_domain = ['&', ('is_company', '=', True), ('parent_id', '=', False)]
+    # Declaramos un campo para filtrar a los proveedores en función a su empresa o agrupación
+    empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
+    # Sobre-escribimos el campo 'partner_id' con otra etiqueta
+    partner_id = fields.Many2one('res.partner', string='Proveedor', required=True)
+
+    # Establecemos el dominio de los proveedores al cambiar el campo de empresa
+    @api.onchange('empresa_id')
+    def _onchange_empresa(self):
+        for rec in self:
+            # Si se hay una empresa establecida...
+            if(rec.empresa_id):
+                # devolvemos los partners que estén asociados a la misma
+                return {'domain': {'partner_id': [('parent_id', '=', rec.empresa_id.id)]}}
+            # Caso contrario...
+            else:
+                # Devolvemos todos los partners individuales que no estén asociados a ninguna compañía
+                return {'domain': {'partner_id': ['&', ('is_company', '=', False), ('parent_id', '=', False)]}}
+
     # Referencia de la factura
     ref = fields.Char(string="Referenia UUID")
 
@@ -58,4 +78,6 @@ class AccountMove(models.Model):
             # Verificamos ha establecido una orden de compra
             if(move.oupp_po):
                 move["purchase_id"] = move.oupp_po
+                move["partner_id"] = move.oupp_po.partner_id
+                move["empresa_id"] = move.oupp_po.empresa_id
  
