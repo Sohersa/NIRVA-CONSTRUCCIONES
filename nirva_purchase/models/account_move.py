@@ -75,7 +75,7 @@ class AccountMove(models.Model):
     # Filtramos el dominio del campo hr.expense.nirva_contrato [Concepto]
     def _set_related_fields(self):
         for move in self:
-            # Verificamos ha establecido una orden de compra
+            # Verificamos que se haya establecido una orden de compra
             if(move.oupp_po):
                 move["purchase_id"] = move.oupp_po
                 move["partner_id"] = move.oupp_po.partner_id
