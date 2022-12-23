@@ -8,14 +8,9 @@ class AccountMove(models.Model):
 
     # Estableciendo un dominio de contactos que sean empresas y que no estén asociados a otro contacto
     enterprise_domain = ['&', ('is_company', '=', True), ('parent_id', '=', False)]
-    # Definimos cuándo los datos del proveedor deben ser de sólo lectura
-    def _partner_readonly(self):
-        if (self.oupp_po):
-            return True
     # Declaramos un campo para filtrar a los proveedores en función a su empresa o agrupación
-    empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain, readonly=_partner_readonly)
-    # Sobre-escribimos el campo 'partner_id' con otra etiqueta
-    partner_id = fields.Many2one('res.partner', string='Proveedor', required=True, readonly=_partner_readonly)
+    empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
+    partner_id = fields.Many2one('res.partner', string='Proveedor', required=True)
 
     # Establecemos el dominio de los proveedores al cambiar el campo de empresa
     @api.onchange('empresa_id')
@@ -84,4 +79,5 @@ class AccountMove(models.Model):
                 move["purchase_id"] = move.oupp_po
                 move["partner_id"] = move.oupp_po.partner_id
                 move["empresa_id"] = move.oupp_po.empresa_id
+
  
