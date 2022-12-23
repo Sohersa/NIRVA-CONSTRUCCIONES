@@ -17,6 +17,9 @@
         </xpath>
 
         <!-- DATOS DE PAGO -->
+        <field name="partner_id" position="before">
+          <field name="empresa_id" />
+        </field>
         <!-- Referencia UUID -->
         <xpath expr="//form/sheet/group/group/label" position="attributes">
           <attribute name="string">Referencia UUID</attribute>
