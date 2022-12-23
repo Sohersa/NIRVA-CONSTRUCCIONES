@@ -17,8 +17,13 @@
         </xpath>
 
         <!-- DATOS DE PAGO -->
-        <field name="partner_id" position="before">
-          <field name="empresa_id" />
+        <xpath expr="//form/sheet/gorup/group[@id='header_left_group']/div[1]" position="before">
+          <!-- Empresa -->
+          <field name="empresa_id" attrs="{'readonly': [('oupp_po','!=',False)] }"/>
+        </xpath>
+        <!-- Proveedor -->
+        <field name="partner_id" position="attributes">
+          <attribute name="readonly">[('oupp_po', '!=', False)]</attribute>
         </field>
         <!-- Referencia UUID -->
         <xpath expr="//form/sheet/group/group/label" position="attributes">
