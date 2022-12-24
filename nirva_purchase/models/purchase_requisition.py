@@ -15,9 +15,9 @@ class PurchaseRequisition(models.Model):
     # Creamos la referencia interna de la requisición
     def _set_referencia(self):
         for req in self:
-            if req.x_studio_obra.wharehouse_id.name:
+            if req.x_studio_obra.warehouse_id.name:
                 # Extraemos el nombre del almacén relacionado
-                name = req.x_studio_obra.wharehouse_id.name
+                name = req.x_studio_obra.warehouse_id.name
                 # Descomponemos el nombre en un arrar de palabras
                 name_words = name.split(' ')
                 # Generamos el prefijo con la última palabra
