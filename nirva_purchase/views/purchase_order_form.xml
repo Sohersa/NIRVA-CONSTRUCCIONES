@@ -11,7 +11,7 @@
         <!-- DATOS DE COMPRA -->
         <!-- Empresa -->
         <field name="partner_id" position="before">
-          <field name="empresa_id" />
+          <field name="empresa_id" options="{'no_create':True, 'no_open':True}"/>
         </field>
         <!-- Autorización -->
         <field name="partner_ref" position="replace">
@@ -19,9 +19,9 @@
         </field>
         <field name="requisition_id" position="after">
           <!-- Tipo de operación (Obra) -->
-          <field name="picking_type_id" string="Obra"/>
+          <field name="picking_type_id" string="Obra" options="{'no_create':True, 'no_open':True}"/>
           <!-- Ubicación de destino (Concepto) -->
-          <field name="x_subcontrato" string="Concepto (Contrato/Subcontrato)"/>
+          <field name="x_subcontrato" string="Concepto (Contrato/Subcontrato)" options="{'no_create':True, 'no_open':True}"/>
           <!-- Tipo de pago -->
           <field name="tipo_de_pago"/>
         </field>
@@ -31,7 +31,7 @@
           <group>
             <group>
               <!-- Solicitante -->
-              <field name="oupp_solicita" />
+              <field name="oupp_solicita"/>
               <!-- Teléfono de contacto -->
               <field name="oupp_solicita_work_phone" />
             </group>

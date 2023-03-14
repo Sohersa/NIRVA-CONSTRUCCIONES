@@ -8,9 +8,9 @@
             <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
             <field name="arch" type="xml">
                 <field name="vendor_id" position="replace">
-                    <field name="x_studio_obra"/>
-                    <field name="x_studio_subcontrato"/>
-                    <field name="x_studio_solicita" />
+                    <field name="x_studio_obra" options="{'no_create':True, 'no_open':True}" />
+                    <field name="x_studio_subcontrato" options="{'no_create':True, 'no_open':True}" />
+                    <field name="x_studio_solicita" options="{'no_create':True, 'no_open':True}" />
                 </field>
                 <field name="schedule_date" position="attributes">
                     <attribute name="attrs">
@@ -37,7 +37,7 @@
                 <!-- CAMPOS Y BOTONES EN FUNCIÓN AL GRUPO -->
                 <!-- Autorizado por -->
                 <field name="x_studio_solicita" position="after">
-                    <field name="autoriza" groups="purchase.group_purchase_manager"/>
+                    <field name="autoriza" groups="purchase.group_purchase_manager" options="{'no_create':True, 'no_open':True}"/>
                 </field>
                 <!-- Solicitud de cotización -->
                 <button name="631" position="replace">
