@@ -13,6 +13,11 @@
                         <field name="nirva_contrato" />
                     </group>
                 </xpath>
+
+                <xpath expr="//form/sheet/notebook/field[@name='expense_line_ids']/tree/field[@name='company_id']" position="after">
+                        <field name="nirva_obra" optional="hide"/>
+                        <field name="nirva_contrato" optional="hide"/>
+                </xpath>
             </field>
         </record>
 
