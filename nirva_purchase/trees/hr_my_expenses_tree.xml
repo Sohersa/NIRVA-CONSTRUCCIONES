@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="nirva_view_my_expenses_tree" model="ir.ui.view">
+            <field name="name">nirva_view_my_expenses_tree</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_my_expenses_tree" />
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="nirva_obra" />
+                    <field name="nirva_contrato" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo> 
