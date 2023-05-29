@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class HrExpenseSheet(models.Model):
     #Extendemos el modelo de gastos
@@ -24,3 +25,19 @@ class HrExpenseSheet(models.Model):
     nirva_obra = fields.Many2one('stock.picking.type', string='Obra', domain=_overwrite_obra_domain)
     # Generamos un atributo que nos permita ligar el gasto a las ubicaciones de un almacén (contrato o subcontrato de una obra)
     nirva_contrato = fields.Many2one('stock.location', string='Concepto (Contrato/Subcontrato)', domain=[('id', '=', '-1')])
+
+    # Manejamos el cambio del contrato 
+    @api.onchange('nirva_obra', 'nirva_contrato')
+    # Verificamos la consistencia en las obras (warehouses) y los contratos (locations)
+    def _check_consistent_location_and_wharehouse(self):
+        for rec in self:
+            # Verificamos que exista un alamacén y una ubicación establecida
+            if (rec.nirva_obra.warehouse_id or rec.nirva_contrato.id):
+                # Iteramos sobre las líneas de gastos incluídas en el reporte
+                for expense in rec.expense_line_ids:
+                    # Revisamos si el gasto también tiene un almacén y una ubicación
+                    if (expense.nirva_obra.warehouse_id or expense.nirva_contrato.id):
+                        # Revisamos si hay alguna variación tanto en el almacén como la ubicación 
+                        if (expense.nirva_obra.warehouse_id != rec.nirva_obra.warehouse_id or expense.nirva_contrato.id != rec.nirva_contrato.id):
+                            # Mostramos un error de validación
+                            raise ValidationError(_("Verifique que todos los gastos pertenezcan a la misma obra y contrato."))
