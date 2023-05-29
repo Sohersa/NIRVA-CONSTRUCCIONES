@@ -21,6 +21,6 @@ class HrExpense(models.Model):
         return ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", self.env.company.id)]
 
     # Generamos un atributo que nos permita ligar el gasto a las recepciones de un almacén (representativo de una obra)
-    nirva_obra = fields.Many2one('stock.picking.type', string='Obra', domain=_overwrite_obra_domain)
+    nirva_obra = fields.Many2one('stock.picking.type', string='Obra', domain=_overwrite_obra_domain, tracking=True)
     # Generamos un atributo que nos permita ligar el gasto a las ubicaciones de un almacén (contrato o subcontrato de una obra)
-    nirva_contrato = fields.Many2one('stock.location', string='Concepto (Contrato/Subcontrato)', domain=[('id', '=', '-1')])
+    nirva_contrato = fields.Many2one('stock.location', string='Concepto (Contrato/Subcontrato)', domain=[('id', '=', '-1')], tracking=True)
