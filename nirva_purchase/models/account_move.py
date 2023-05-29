@@ -10,7 +10,7 @@ class AccountMove(models.Model):
     enterprise_domain = ['&', ('is_company', '=', True), ('parent_id', '=', False)]
     # Declaramos un campo para filtrar a los proveedores en función a su empresa o agrupación
     empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
-    partner_id = fields.Many2one('res.partner', string='Proveedor', required=True)
+    partner_id = fields.Many2one('res.partner', string='Proveedor')
 
     # Establecemos el dominio de los proveedores al cambiar el campo de empresa
     @api.onchange('empresa_id')
