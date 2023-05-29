@@ -36,13 +36,13 @@ class HrExpenseSheet(models.Model):
                 # Iteramos sobre las líneas de gastos incluídas en el reporte
                 for expense in rec.expense_line_ids:
                     # Revisamos si tanto el gasto como el reporte tienen un almacén
-                    if (expense.nirva_obra.warehouse_id and expense.nirva_obra.warehouse_id):
+                    if (expense.nirva_obra.warehouse_id and rec.nirva_obra.warehouse_id):
                         # Revisamos si hay alguna variación en el almacén 
                         if (expense.nirva_obra.warehouse_id != rec.nirva_obra.warehouse_id):
                             # Mostramos un error de validación
                             raise ValidationError(_("Verifique que todos los gastos pertenezcan a la misma obra."))
                     # Revisamos si tanto el gasto como el reporte tienen una ubicación
-                    if (expense.nirva_contrato.id and expense.nirva_contrato.id):
+                    if (expense.nirva_contrato.id and rec.nirva_contrato.id):
                         # Revisamos si hay alguna variación en la ubicación 
                         if (expense.nirva_contrato.id != rec.nirva_contrato.id):
                             # Mostramos un error de validación
