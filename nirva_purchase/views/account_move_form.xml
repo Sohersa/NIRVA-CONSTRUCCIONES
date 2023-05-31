@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    
+
     <!-- Customizations in Account Move Form -->
     <record model="ir.ui.view" id="nirva_account_move_form">
       <field name="name">account_move_form_customizations</field>
@@ -8,14 +8,44 @@
       <field name="inherit_id" ref="account.view_move_form"/>
       <field name="arch" type="xml">
 
+        <!-- BOTONES INTELIGENTES -->
+        <!-- Pagos relacionados -->
+        <xpath expr="//form/sheet/div[@class='oe_button_box']/button[1]" position="before">
+          <button name="open_account_move_payments" type="object" icon="fa-credit-card" class="oe_stat_button">
+            <field name="oupp_payments_count" string="Pagos" widget="statinfo"/>
+          </button>
+        </xpath>
+
+        <!-- DATOS DE PAGO -->
+        <xpath expr="//form/sheet/group/group[@id='header_left_group']/div[1]" position="before">
+          <!-- Empresa -->
+          <field name="empresa_id"/>
+        </xpath>
+        <!-- Referencia UUID -->
         <xpath expr="//form/sheet/group/group/label" position="attributes">
           <attribute name="string">Referencia UUID</attribute>
         </xpath>
-
         <field name="ref" position="after">
-          <field name="regimen_fiscal"/>
+          <!-- Regimen fiscal -->
+          <field name="oupp_regimen_fiscal"/>
+          <!-- Factura SAT -->
           <field name="factura_sat"/>
         </field>
+        <field name="partner_bank_id" position="after">
+          <!-- Tipo de pago -->
+          <field name="oupp_tipo_de_pago"/>
+        </field>
+
+        <!-- DATOS DE ORDEN DE COMPRA -->
+        <xpath expr="//form/sheet/group[1]" position="after">
+          <group>
+            <field name="oupp_po" />
+            <field name="oupp_po_ref" />
+            <field name="oupp_obra" />
+            <field name="oupp_concepto" />
+            <field name="oupp_autoriza" />
+          </group>
+        </xpath>
 
       </field>
     </record>

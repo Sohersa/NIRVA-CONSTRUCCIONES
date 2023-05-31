@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+
+        <!-- Customizations in Hr Expense form -->
+        <record model="ir.ui.view" id="nirva_hr_expense_form">
+            <field name="name">hr_expense_customizations</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group/group[last()]" position="after">
+                    <group string="Vincular a obra" name="obra">
+                        <field name="nirva_obra" attrs="{'readonly': [('sheet_id', '!=', False)]}"/>
+                        <field name="nirva_contrato" attrs="{'readonly': [('sheet_id', '!=', False)]}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

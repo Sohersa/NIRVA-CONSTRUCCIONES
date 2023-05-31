@@ -9,114 +9,121 @@
       <xpath expr="/t/t/div/h2" position="before">
         <div style="page-break-after: auto;">
 
+          <!-- [SECTION] - COMPRA -->
           <h2><span>Datos de compra</span></h2>
-          <div class="row mt32 mb32" id="purchase_order_data">    
+          <div class="row mt32 mb32" id="purchase_order_data">
+            <!-- Obra -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Obra</strong>
-              <p class="m-0" t-field="o.x_studio_obra.warehouse_id.name" />
+              <p class="m-0" t-field="o.oupp_obra.warehouse_id.name" />
             </div>
-
+            <!-- Dirección -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Dirección</strong>
-              <p class="m-0" t-field="o.x_studio_obra.warehouse_id.partner_id.contact_address" />
+              <p class="m-0" t-field="o.oupp_obra.warehouse_id.partner_id.contact_address" />
             </div>
-
+            <!-- Contrato/Subcontrato -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Concepto</strong>
-              <p class="m-0" t-field="o.x_studio_concepto" />
+              <p class="m-0" t-field="o.oupp_concepto" />
             </div>
-            
+            <!-- Autoriza -->
             <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Autoriza</strong>
-              <p class="m-0" t-field="o.x_autoriza" />
+              <strong>Autorizado por</strong>
+              <p class="m-0" t-field="o.oupp_po.autoriza" />
             </div>
           </div>
 
+          <!-- [SECTION] - PROVEEDOR - GENERALES -->
           <h2><span>Datos de proveedor</span></h2>
           <div class="row mt32 mb32" id="partner_contact_data">
-            <div t-if="not o.partner_id" class="col-auto col-3 mw-100 mb-2">
+            <!-- Proveedor -->
+            <div class="col-auto col-3 mw-100 mb-2">
               <strong>Proveedor</strong>
-              <p class="m-0" t-field="o.partner_id.name" />
+              <p class="m-0" t-if="o.partner_id.parent_id" t-field="o.partner_id.parent_id.name" />
+              <p class="m-0" t-if="not o.partner_id.parent_id" t-field="o.partner_id.name" />
             </div>
-
-            <div t-if="o.partner_id.parent_id" class="col-auto col-3 mw-100 mb-2">
-              <strong>Proveedor</strong>
-              <p class="m-0" t-field="o.partner_id.parent_id.name" />
-            </div>
-            
+            <!-- Contacto -->
             <div t-if="o.partner_id.parent_id" class="col-auto col-3 mw-100 mb-2">
               <strong>Contacto/Sucursal</strong>
               <p class="m-0" t-field="o.partner_id.name" />
             </div>
-
+            <!-- Dirección -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Dirección</strong>
               <p class="m-0" t-field="o.partner_id.contact_address_complete" />
             </div>
-
+            <!-- RFC -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>RFC</strong>
               <p class="m-0" t-field="o.partner_id.vat" />
             </div>
           </div>
 
-          <h2><span>Datos bancarios de proveedor</span></h2>
+          <!-- [SECTION] - PROVEEDOR - BANCARIOS -->
+          <h2><span>Datos de pago y facturación</span></h2>
           <div class="row mt32 mb32" id="partner_bank_data">
+            <!-- Banco -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Banco</strong>
               <p class="m-0" t-field="o.partner_bank_id.bank_name" />
             </div>
-
+            <!-- Cuenta -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Número de cuenta</strong>
               <p class="m-0" t-field="o.partner_bank_id.acc_number" />
             </div>
-
+            <!-- Referencia -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Referencia bancaria</strong>
               <p class="m-0" t-field="o.partner_bank_id.referencia_bancaria" />
             </div>
-
+            <!-- CLABE -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>CLABE</strong>
               <p class="m-0" t-field="o.partner_bank_id.l10n_mx_edi_clabe" />
             </div>
           </div>
-
-          <h2><span>Datos de trazabilidad</span></h2>
-          <div class="row mt32 mb32" id="trazabilidad">
-
-            <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Requisición</strong>
-              <p class="m-0" t-field="o.x_studio_orden.x_studio_requisicin" />
-            </div>
-
-            <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Orden de compra</strong>
-              <p class="m-0" t-field="o.x_studio_folio" />
-            </div>
-
-            <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Referencia interna</strong>
-              <p class="m-0" t-field="o.name" />
-            </div>
-
-            <div class="col-auto col-3 mw-100 mb-2">
-              <strong>Referencia UUID</strong>
-              <p class="m-0" t-field="o.ref" />
-            </div>
-
-          </div>
-
-          <div class="row mt32 mb32" id="trazabilidad_2">
+          <div class="row mt32 mb32" id="partner_bank_data_2">
+            <!-- Regimen fiscal -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Regimen fiscal</strong>
-              <p class="m-0" t-field="o.regimen_fiscal" />
+              <p class="m-0" t-field="o.oupp_regimen_fiscal" />
             </div>
-            
+            <!-- Tipo de pago -->
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Tipo de pago</strong>
+              <p class="m-0" t-field="o.oupp_tipo_de_pago" />
+            </div>
+            <!-- Fecha de pago -->
             <div class="col-auto col-3 mw-100 mb-2">
               <strong>Fecha de pago</strong>
               <p class="m-0" t-field="o.invoice_date" />
+            </div>
+          </div>
+
+          <!-- [SECTION] - TRAZABILIDAD -->
+          <h2><span>Datos de trazabilidad</span></h2>
+          <div class="row mt32 mb32" id="trazabilidad">
+            <!-- Folio de requisicón -->
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Requisición</strong>
+              <p class="m-0" t-field="o.oupp_po.x_studio_requisicin" />
+            </div>
+            <!-- Folio de orden de compra -->
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Orden de compra</strong>
+              <p class="m-0" t-field="o.oupp_po.x_studio_referencia" />
+            </div>
+            <!-- Folio de factura -->
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Factura (Referencia interna)</strong>
+              <p class="m-0" t-field="o.name" />
+            </div>
+            <!-- Referencia UUID de factura fiscalizada -->
+            <div class="col-auto col-3 mw-100 mb-2">
+              <strong>Referencia UUID</strong>
+              <p class="m-0" t-field="o.ref" />
             </div>
           </div>
 

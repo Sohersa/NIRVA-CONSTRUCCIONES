@@ -6,11 +6,37 @@ class PurchaseOrder(models.Model):
 
     _inherit='purchase.order'
 
-    partner_id = fields.Many2one('res.partner', string='Proveedor', required=False)
+    # Retomamos el campo de quien autoriza
+    autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="requisition_id.autoriza")
 
-    # Estableciendo el campo de empresa
+    # Retomamos el nombre del contacto que solicita
+    oupp_solicita = fields.Many2one("hr.employee", string="Solicita y Recibe", related="requisition_id.x_studio_solicita")
+
+    # Retornamos el número de quien solicita
+    oupp_solicita_work_phone = fields.Char("Solicita y Recibe (Tel)", related="requisition_id.x_studio_solicita.work_phone")
+
+    # Definimos los tipos de pagos disponibles
+    def _tipos_de_pago(self):
+        return [
+            ('Caja chica', 'Caja chica'), 
+            ('CC - Ing. Jorge Bautista', 'CC - Ing. Jorge Bautista'), 
+            ('CC - Ing. Juan Montiel', 'CC - Ing. Juan Montiel'), 
+            ('CC - Ing. Rosy', 'CC - Ing. Rosy'), 
+            ('Crédito', 'Crédito'),
+            ('Efectivo', 'Efectivo'), 
+            ('Tarjeta - Ing. Gustavo G. V.', 'Tarjeta - Ing. Gustavo G. V.'), 
+            ('Transferencia','Transferencia')
+        ]
+
+    # Creamos el campo de tipo de pago
+    tipo_de_pago = fields.Selection(selection='_tipos_de_pago', string="Tipo de pago")
+    
+    # Estableciendo un dominio de contactos que sean empresas y que no estén asociados a otro contacto
     enterprise_domain = ['&', ('is_company', '=', True), ('parent_id', '=', False)]
+    # Declaramos un campo para filtrar a los proveedores en función a su empresa o agrupación
     empresa_id = fields.Many2one('res.partner', string='Empresa', domain=enterprise_domain)
+    # Sobre-escribimos el campo 'partner_id' con otra etiqueta
+    partner_id = fields.Many2one('res.partner', string='Proveedor', required=True)
 
     # Establecemos el dominio de los proveedores al cambiar el campo de empresa
     @api.onchange('empresa_id')
