@@ -25,7 +25,7 @@ class PurchaseOrder(models.Model):
             ('Crédito', 'Crédito')
             ('Efectivo', 'Efectivo'), 
             ('Tarjeta - Ing. Gustavo G. V.', 'Tarjeta - Ing. Gustavo G. V.'), 
-            ('Transferencia','Transferencia'),
+            ('Transferencia','Transferencia')
         ]
 
     # Creamos el campo de tipo de pago
