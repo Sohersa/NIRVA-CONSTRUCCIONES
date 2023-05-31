@@ -22,7 +22,7 @@ class PurchaseOrder(models.Model):
             ('CC - Ing. Jorge Bautista', 'CC - Ing. Jorge Bautista'), 
             ('CC - Ing. Juan Montiel', 'CC - Ing. Juan Montiel'), 
             ('CC - Ing. Rosy', 'CC - Ing. Rosy'), 
-            ('Crédito', 'Crédito')
+            ('Crédito', 'Crédito'),
             ('Efectivo', 'Efectivo'), 
             ('Tarjeta - Ing. Gustavo G. V.', 'Tarjeta - Ing. Gustavo G. V.'), 
             ('Transferencia','Transferencia')
