@@ -9,8 +9,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//form/sheet/group/group[last()]" position="after">
                     <group string="Vincular a obra" name="obra">
-                        <field name="nirva_obra" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
-                        <field name="nirva_contrato" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+                        <field name="nirva_obra" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="nirva_contrato" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                     </group>
                 </xpath>
 
