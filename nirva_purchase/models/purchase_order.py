@@ -18,10 +18,14 @@ class PurchaseOrder(models.Model):
     # Definimos los tipos de pagos disponibles
     def _tipos_de_pago(self):
         return [
-            ('Efectivo', 'Efectivo'), 
             ('Caja chica', 'Caja chica'), 
-            ('Transferencia','Transferencia'),
+            ('CC - Ing. Jorge Bautista', 'CC - Ing. Jorge Bautista'), 
+            ('CC - Ing. Juan Montiel', 'CC - Ing. Juan Montiel'), 
+            ('CC - Ing. Rosy', 'CC - Ing. Rosy'), 
             ('Crédito', 'Crédito')
+            ('Efectivo', 'Efectivo'), 
+            ('Tarjeta - Ing. Gustavo G. V.', 'Tarjeta - Ing. Gustavo G. V.'), 
+            ('Transferencia','Transferencia'),
         ]
 
     # Creamos el campo de tipo de pago
