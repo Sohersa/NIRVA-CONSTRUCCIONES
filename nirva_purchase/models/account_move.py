@@ -63,9 +63,9 @@ class AccountMove(models.Model):
     # Orden de compra - Referencia interna
     oupp_po_ref = fields.Char(string="Orden de compra (Referencia interna)", related="oupp_po.x_studio_referencia")
     # Obra
-    oupp_obra = fields.Many2one("stock.picking.type", string="Obra", related="oupp_po.picking_type_id")
+    oupp_obra = fields.Many2one("stock.picking.type", string="Obra", related="oupp_po.picking_type_id", store=True)
     # Concepto
-    oupp_concepto = fields.Many2one("stock.location", string="Concepto (Contrato/Subcontrato)", related="oupp_po.x_subcontrato")
+    oupp_concepto = fields.Many2one("stock.location", string="Concepto (Contrato/Subcontrato)", related="oupp_po.x_subcontrato", store=True)
     # Autorizado por
     oupp_autoriza = fields.Many2one("hr.employee", string="Autorizado por", related="oupp_po.autoriza")
 
