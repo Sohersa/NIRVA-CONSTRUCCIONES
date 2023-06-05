@@ -10,9 +10,8 @@ class PurchaseRequisition(models.Model):
     # Creamos el campo de las personas que pueden autorizar
     autoriza = fields.Many2one("hr.employee", string="Autorizado por", domain=[('x_studio_autoriza', '!=', False)], tracking=True)
 
-    x_studio_referencia = fields.Char(string="Referencia interna (Requisición)")
-
-    @api.onchange('x_studio_obra', 'name')
+    # @api.onchange('x_studio_obra', 'name')
+    @api.depends('x_studio_obra', 'name')
     # Creamos la referencia interna de la requisición
     def _set_referencia(self):
         for req in self:
@@ -26,6 +25,8 @@ class PurchaseRequisition(models.Model):
                 process = "REQ"
                 ref_int = prefix + "-"+ process + "-" + req.name
                 req['x_studio_referencia'] = ref_int
+
+    x_studio_referencia = fields.Char(string="Referencia interna (Requisición)", compute='_set_referencia', store=True)
 
     @api.onchange('x_studio_obra')
     # Filtramos el dominio del campo purchase_requisition.x_studio_subcontrato [Concepto]
