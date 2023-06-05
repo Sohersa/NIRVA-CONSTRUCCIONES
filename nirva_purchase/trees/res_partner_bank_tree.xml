@@ -12,9 +12,9 @@
         </field>
 
         <field name="acc_number" position="replace">
-          <field name="bank_name"/>
-          <field name="acc_number"/>
-          <field name="referencia_bancaria"/>
+          <field name="bank_name" optional="show"/>
+          <field name="acc_number" optional="show"/>
+          <field name="referencia_bancaria" optional="show"/>
         </field>
 
       </field>

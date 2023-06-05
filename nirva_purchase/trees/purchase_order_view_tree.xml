@@ -6,8 +6,8 @@
             <field name="inherit_id" ref="purchase.purchase_order_view_tree" />
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
-                    <field name="picking_type_id"/>
-                    <field name="x_subcontrato"/>
+                    <field name="picking_type_id" optional="show"/>
+                    <field name="x_subcontrato" optional="show"/>
                 </field>
             </field>
         </record>
