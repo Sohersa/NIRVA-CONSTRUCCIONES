@@ -8,7 +8,7 @@
       <field name="inherit_id" ref="account.view_partner_property_form" />
       <field name="arch" type="xml">
 
-        <xpath expr="page[@name='accounting'][1]/group[1]" position="replace">
+        <xpath expr="//xml/data/page/page[@name='accounting']/group[1]" position="replace">
 
           <group string="Bank Accounts" name="banks"
             groups="account.group_account_invoice,account.group_account_readonly">
