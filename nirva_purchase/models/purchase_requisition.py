@@ -12,7 +12,7 @@ class PurchaseRequisition(models.Model):
 
     x_studio_referencia = fields.Char(string="Referencia interna (Requisición)")
 
-    @api.onchange('x_studio_obra')
+    @api.onchange('x_studio_obra', 'name')
     # Creamos la referencia interna de la requisición
     def _set_referencia(self):
         for req in self:
