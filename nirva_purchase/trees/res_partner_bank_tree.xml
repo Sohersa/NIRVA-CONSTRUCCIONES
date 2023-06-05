@@ -15,6 +15,7 @@
           <field name="bank_name" optional="show"/>
           <field name="acc_number" optional="show"/>
           <field name="referencia_bancaria" optional="show"/>
+          <field name="oupp_contacto_de_sucursal" optional="show"/>
         </field>
 
       </field>
