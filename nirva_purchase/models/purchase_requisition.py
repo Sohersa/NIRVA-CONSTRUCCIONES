@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class PurchaseRequisition(models.Model):
 
@@ -43,7 +44,13 @@ class PurchaseRequisition(models.Model):
 
     def action_custom_rfq(self):
         for requisition in self:
-            purchase_order_count = requisition.env['purchase.order'].search_count([('state', '!=', False)])
+
+            # Revisamos si la fecha límite no se encuentra establecida
+            if requisition.date_end is None:
+                # Mostramos un error de validación
+                raise ValidationError(_("Verifique que todos los gastos pertenezcan al mismo contrato."))
+
+            # purchase_order_count = requisition.env['purchase.order'].search_count([('state', '!=', False)])
             request_for_quotation = requisition.env['purchase.order'].create({
                 'company_id': requisition.env.company.id,
                 'currency_id': requisition.env.company.currency_id.id,
