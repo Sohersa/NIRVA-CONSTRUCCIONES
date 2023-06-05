@@ -6,8 +6,8 @@
             <field name="inherit_id" ref="account.view_invoice_tree" />
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
-                    <field name="oupp_obra"/>
-                    <field name="oupp_concepto"/>
+                    <field name="oupp_obra" optional="show"/>
+                    <field name="oupp_concepto" optional="show"/>
                 </field>
             </field>
         </record>
