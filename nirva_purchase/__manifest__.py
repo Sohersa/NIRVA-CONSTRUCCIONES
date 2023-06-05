@@ -46,6 +46,7 @@
         'trees/purchase_requisition_tree.xml',
         'trees/purchase_order_view_tree.xml',
         'trees/purchase_order_kpis_tree.xml',
+        'trees/account_invoice_tree.xml',
 
         # REPORTS
         'reports/account_report_invoice_inherit.xml',
