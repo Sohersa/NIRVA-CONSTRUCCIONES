@@ -1,21 +1,17 @@
 <odoo>
   <data>
-    
+
     <!-- Customizations in ResPartnerBank Form -->
-    <record model="ir.ui.view" id="nirva_res_partner_bank_tree">
-      <field name="name">res_partner_bank_tree_customizations</field>
-      <field name="model">res.partner.bank</field>
-      <field name="inherit_id" ref="base.view_partner_bank_tree"/>
+    <record model="ir.ui.view" id="nirva_view_partner_property_form">
+      <field name="name">nirva_view_partner_property_form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="account.view_partner_property_form" />
       <field name="arch" type="xml">
 
-        <field name="bank_name" position="replace">
-        </field>
-
-        <field name="acc_number" position="replace">
-          <field name="bank_name" optional="show"/>
-          <field name="acc_number" optional="show"/>
-          <field name="referencia_bancaria" optional="show"/>
-          <field name="oupp_contacto_de_sucursal" optional="show"/>
+        <field name="acc_number" position="after">
+          <field name="bank_name" />
+          <field name="referencia_bancaria" />
+          <field name="oupp_contacto_de_sucursal" />
         </field>
 
       </field>
