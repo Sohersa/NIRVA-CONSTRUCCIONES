@@ -10,7 +10,7 @@ class PurchaseRequisition(models.Model):
     # Creamos el campo de las personas que pueden autorizar
     autoriza = fields.Many2one("hr.employee", string="Autorizado por", domain=[('x_studio_autoriza', '!=', False)], tracking=True)
 
-    # @api.onchange('x_studio_obra', 'name')
+    # Establecemos la dependencia del campo de referencia con la obra y el nombre
     @api.depends('x_studio_obra', 'name')
     # Creamos la referencia interna de la requisición
     def _set_referencia(self):
@@ -26,6 +26,7 @@ class PurchaseRequisition(models.Model):
                 ref_int = prefix + "-"+ process + "-" + req.name
                 req['x_studio_referencia'] = ref_int
 
+    # Creamos el campo de la referencia interna.
     x_studio_referencia = fields.Char(string="Referencia interna (Requisición)", compute='_set_referencia', store=True)
 
     @api.onchange('x_studio_obra')
@@ -37,12 +38,17 @@ class PurchaseRequisition(models.Model):
                 ubicaciones_domain = ["|", ('warehouse_id.id', "=", rec.x_studio_obra.warehouse_id.id), ('location_id.warehouse_id.id', "=", rec.x_studio_obra.warehouse_id.id)]
                 return {'domain': {'x_studio_subcontrato': ubicaciones_domain}}
 
+    # Definimos el dominio para las obras
     def _overwrite_obra_domain(self): 
         return ["&",("code","=","incoming"),"|",("warehouse_id","!=",False),("warehouse_id.company_id","=", self.env.company.id)]
 
+    # Creamos el campo para vincular la requisición a una obra (tipo de movimiento)
     x_studio_obra = fields.Many2one('stock.picking.type', string='Obra', domain=_overwrite_obra_domain)
+
+    # Creamos el campo para vincular la requisición a un contrato (ubicación)
     x_studio_subcontrato = fields.Many2one('stock.location', string='Concepto (Contrato/Subcontrato)', domain=[('id', '=', '-1')])
 
+    # Definimos una función para crear una orden de compra personalizada
     def action_custom_rfq(self):
         for requisition in self:
 
