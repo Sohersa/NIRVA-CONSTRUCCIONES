@@ -6,8 +6,8 @@
             <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_tree" />
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
-                    <field name="nirva_obra" />
-                    <field name="nirva_contrato" />
+                    <field name="nirva_obra" optional="show"/>
+                    <field name="nirva_contrato" optional="show"/>
                 </field>
             </field>
         </record>

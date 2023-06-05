@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="nirva_view_invoice_tree" model="ir.ui.view">
+            <field name="name">nirva_view_invoice_tree</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="oupp_obra" optional="show"/>
+                    <field name="oupp_concepto" optional="show"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo> 

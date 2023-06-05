@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="nirva_view_purchase_requisition_tree" model="ir.ui.view">
+            <field name="name">nirva_view_purchase_requisition_tree</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree" />
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="x_studio_obra" optional="show"/>
+                    <field name="x_studio_subcontrato" optional="show"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo> 
