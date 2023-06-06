@@ -1,7 +1,6 @@
 <odoo>
   <data>
 
-    <!-- Customizations in Purchase Order Form -->
     <record model="ir.ui.view" id="nirva_view_partner_form">
       <field name="name">nirva_view_partner_form</field>
       <field name="model">res.partner</field>
@@ -12,6 +11,22 @@
         <field name="acc_number" position="after">
           <field name="referencia_bancaria"/>
           <field name="oupp_contacto_de_sucursal"/>
+        </field>
+
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="nirva_view_partner_bank_form">
+      <field name="name">nirva_view_partner_bank_form</field>
+      <field name="model">res.partner.bank</field>
+      <field name="inherit_id" ref="base.view_partner_bank_form"/>
+      <field name="arch" type="xml">
+
+        <field name="partner_id" position="after">
+          <group name="oupp_fields" string="Adicionales">
+            <field name="referencia_bancaria"/>
+            <field name="oupp_contacto_de_sucursal"/>
+          </group>
         </field>
 
       </field>
