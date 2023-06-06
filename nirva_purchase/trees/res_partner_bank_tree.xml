@@ -22,12 +22,12 @@
       <field name="inherit_id" ref="base.view_partner_bank_form"/>
       <field name="arch" type="xml">
 
-        <field name="partner_id" position="after">
+        <xpath expr="//form/sheet/group/group[last()]">
           <group name="oupp_fields" string="Adicionales">
             <field name="referencia_bancaria"/>
             <field name="oupp_contacto_de_sucursal"/>
           </group>
-        </field>
+        </xpath>
 
       </field>
     </record>
