@@ -32,21 +32,31 @@ class AccountMove(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner(self):
         for rec in self:
+            # Cremaos una variable para almecenar el dominio de las cuentas bancarias.
+            partner_banks_ids = ()
             # Si hay un partner establecido
             if (rec.partner_id):
                 # Revisamos si el partner es un contacto o una sucursal de algún otro partner
                 if (rec.partner_id.parent_id):
-                    # Retornamos el dominio de todas las cuentas que pertenezcan al parent del contacto
+                    # Buscamos todas las cuentas que pertenezcan al parent del contacto
                     # donde, además, el contacto de sucursal sea igual al contacto establecido.
-                    return {'domain': {'partner_bank_id': ['&', ('partner_id', '=', rec.partner_id.parent_id.id), ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)]}}
+                    partner_banks_ids = self.env['res.partner.bank'].search([
+                        ('partner_id', '=', rec.partner_id.parent_id.id),
+                        ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)
+                    ])
                 # Si el partner no es un contacto o una sucursal
                 else:
                     # Retornamos todas las cuentas que pertenezcan al partner
-                    return {'domain': {'partner_bank_id': [('partner_id', '=', rec.partner_id.id)]}}
-            # Si no hay un partner establecido
-            else:
-                # Retornamos un dominio vacío
-                return {'domain': {'partner_bank_id': []}}
+                    partner_banks_ids = self.env['res.partner.bank'].search([
+                        ('partner_id', '=', rec.partner_id.id)
+                    ])
+
+            # Revisamos si había cuentas bancarias con las condiciones dadas
+            if partner_banks_ids and len(partner_banks_ids) >= 1:
+                # Establecemos la primer cuenta de la tupla en el campo correspondiente
+                rec['partner_bank_id'] = partner_banks_ids[0]
+            # Retornamos el dominio para el campo con las cuentas encontradas
+            return {'domain': {'partner_bank_id': partner_banks_ids}}
 
     # Referencia de la factura
     ref = fields.Char(string="Referenia UUID")
