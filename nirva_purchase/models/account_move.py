@@ -32,8 +32,6 @@ class AccountMove(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner(self):
         for rec in self:
-            # Cremaos una variable para almecenar el dominio de las cuentas bancarias.
-            partner_banks_ids = ()
             # Si hay un partner establecido
             if (rec.partner_id):
                 # Revisamos si el partner es un contacto o una sucursal de algún otro partner
