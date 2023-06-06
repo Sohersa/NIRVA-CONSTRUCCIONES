@@ -50,7 +50,7 @@ class AccountMove(models.Model):
                     ])
 
             # Revisamos si había cuentas bancarias con las condiciones dadas
-            if partner_banks_ids and len(partner_banks_ids) >= 1:
+            if (partner_banks_ids and len(partner_banks_ids) >= 1):
                 # Establecemos la primer cuenta de la tupla en el campo correspondiente
                 rec['partner_bank_id'] = partner_banks_ids[0]
                 # Retornamos el dominio para el campo con las cuentas encontradas
