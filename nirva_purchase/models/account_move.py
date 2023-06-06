@@ -53,8 +53,11 @@ class AccountMove(models.Model):
             if partner_banks_ids and len(partner_banks_ids) >= 1:
                 # Establecemos la primer cuenta de la tupla en el campo correspondiente
                 rec['partner_bank_id'] = partner_banks_ids[0]
-            # Retornamos el dominio para el campo con las cuentas encontradas
-            return {'domain': {'partner_bank_id': partner_banks_ids}}
+                # Retornamos el dominio para el campo con las cuentas encontradas
+                return {'domain': {'partner_bank_id': partner_banks_ids}}
+            else:
+                # Retornamos un dominio sin filtros
+                return {'domain': {'partner_bank_id': []}}
 
     # Referencia de la factura
     ref = fields.Char(string="Referenia UUID")
