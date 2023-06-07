@@ -32,38 +32,24 @@ class AccountMove(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner(self):
         for rec in self:
+            # Establecemos la primer cuenta de la tupla en el campo correspondiente
+            rec['partner_bank_id'] = False
+            
             # Si hay un partner establecido
             if (rec.partner_id):
                 # Revisamos si el partner es un contacto o una sucursal de algún otro partner
                 if (rec.partner_id.parent_id):
-                    # Buscamos todas las cuentas que pertenezcan al parent del contacto
-                    # donde, además, el contacto de sucursal sea igual al contacto establecido.
-                    partner_banks_ids = self.env['res.partner.bank'].search([
-                        ('partner_id', '=', rec.partner_id.parent_id.id),
-                        ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)
-                    ])
-                    # Revisamos si había cuentas bancarias con las condiciones dadas
-                    if (partner_banks_ids and len(partner_banks_ids) >= 1):
-                        # Establecemos la primer cuenta de la tupla en el campo correspondiente
-                        rec['partner_bank_id'] = False
-                        # Retornamos el dominio para el campo con las cuentas encontradas
-                        return {'domain': {'partner_bank_id': partner_banks_ids}}
+                    # Retornamos el dominio para el campo con las cuentas 
+                    # que pertenezcan al parent del contacto donde, además, 
+                    # el contacto de sucursal sea igual al contacto establecido.
+                    return {'domain': {'partner_bank_id': ['&', ('partner_id', '=', rec.partner_id.parent_id.id), ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)]}}
                 # Si el partner no es un contacto o una sucursal
                 else:
-                    # Retornamos todas las cuentas que pertenezcan al partner
-                    partner_banks_ids = self.env['res.partner.bank'].search([
-                        ('partner_id', '=', rec.partner_id.id)
-                    ])
-                    # Revisamos si había cuentas bancarias con las condiciones dadas
-                    if (partner_banks_ids and len(partner_banks_ids) >= 1):
-                        # Establecemos la primer cuenta de la tupla en el campo correspondiente
-                        rec['partner_bank_id'] = False
-                        # Retornamos el dominio para el campo con las cuentas encontradas
-                        return {'domain': {'partner_bank_id': partner_banks_ids}}
+                    # Retornamos el dominio para el campo con las cuentas
+                    # que pertenezcan al partner
+                    return {'domain': {'partner_bank_id': [('partner_id', '=', rec.partner_id.id)]}}
 
             else:
-                # Establecemos la primer cuenta de la tupla en el campo correspondiente
-                rec['partner_bank_id'] = False
                 # Retornamos un dominio sin filtros
                 return {'domain': {'partner_bank_id': []}}
 
