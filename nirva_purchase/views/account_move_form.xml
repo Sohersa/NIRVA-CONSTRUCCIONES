@@ -34,8 +34,6 @@
           <field name="factura_sat" />
         </field>
         <field name="partner_bank_id" position="after">
-          <!-- Cuenta bancaria del partner -->
-          <field name="partner_bank_id" context="{}" domain="[]" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))], 'readonly': [('state', '!=', 'draft')]}"/>
           <!-- Tipo de pago -->
           <field name="oupp_tipo_de_pago" />
         </field>
