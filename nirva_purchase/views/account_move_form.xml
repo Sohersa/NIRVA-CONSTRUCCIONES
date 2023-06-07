@@ -39,6 +39,8 @@
           <!-- Tipo de pago -->
           <field name="oupp_tipo_de_pago" />
         </field>
+        <field name="partner_bank_id" position="replace">
+        </field>
 
         <!-- DATOS DE ORDEN DE COMPRA -->
         <xpath expr="//form/sheet/group[1]" position="after">
