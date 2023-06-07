@@ -35,24 +35,33 @@ class AccountMove(models.Model):
             # Establecemos la primer cuenta de la tupla en el campo correspondiente
             rec['bank_partner_id'] = False
             rec['partner_bank_id'] = False
-            
+
             # Si hay un partner establecido
             if (rec.partner_id):
                 # Revisamos si el partner es un contacto o una sucursal de algún otro partner
                 if (rec.partner_id.parent_id):
-                    # Retornamos el dominio para el campo con las cuentas 
-                    # que pertenezcan al parent del contacto donde, además, 
+                    # Retornamos el dominio para el campo con las cuentas
+                    # que pertenezcan al parent del contacto donde, además,
                     # el contacto de sucursal sea igual al contacto establecido.
-                    return {'domain': {'partner_bank_id': ['&', ('partner_id', '=', rec.partner_id.parent_id.id), ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)]}}
+                    return {
+                        'domain': {'partner_bank_id': ['&', ('partner_id', '=', rec.partner_id.parent_id.id), ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)]},
+                        'context': {'default_partner_id': False}
+                    }
                 # Si el partner no es un contacto o una sucursal
                 else:
                     # Retornamos el dominio para el campo con las cuentas
                     # que pertenezcan al partner
-                    return {'domain': {'partner_bank_id': [('partner_id', '=', rec.partner_id.id)]}}
+                    return {
+                        'domain': {'partner_bank_id': [('partner_id', '=', rec.partner_id.id)]},
+                        'context': {'default_partner_id': False}
+                    }
 
             else:
                 # Retornamos un dominio sin filtros
-                return {'domain': {'partner_bank_id': []}}
+                return {
+                    'domain': {'partner_bank_id': []},
+                    'context': {'default_partner_id': False}
+                }
 
     # Referencia de la factura
     ref = fields.Char(string="Referenia UUID")
