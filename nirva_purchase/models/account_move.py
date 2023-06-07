@@ -45,7 +45,7 @@ class AccountMove(models.Model):
                     # Revisamos si había cuentas bancarias con las condiciones dadas
                     if (partner_banks_ids and len(partner_banks_ids) >= 1):
                         # Establecemos la primer cuenta de la tupla en el campo correspondiente
-                        rec['partner_bank_id'] = partner_banks_ids[0]
+                        rec['partner_bank_id'] = False
                         # Retornamos el dominio para el campo con las cuentas encontradas
                         return {'domain': {'partner_bank_id': partner_banks_ids}}
                 # Si el partner no es un contacto o una sucursal
@@ -57,11 +57,13 @@ class AccountMove(models.Model):
                     # Revisamos si había cuentas bancarias con las condiciones dadas
                     if (partner_banks_ids and len(partner_banks_ids) >= 1):
                         # Establecemos la primer cuenta de la tupla en el campo correspondiente
-                        rec['partner_bank_id'] = partner_banks_ids[0]
+                        rec['partner_bank_id'] = False
                         # Retornamos el dominio para el campo con las cuentas encontradas
                         return {'domain': {'partner_bank_id': partner_banks_ids}}
 
             else:
+                # Establecemos la primer cuenta de la tupla en el campo correspondiente
+                rec['partner_bank_id'] = False
                 # Retornamos un dominio sin filtros
                 return {'domain': {'partner_bank_id': []}}
 
