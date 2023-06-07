@@ -13,7 +13,11 @@ class AccountMove(models.Model):
     # Declaramos un campo para filtrar a los proveedores en función a su empresa o agrupación
     empresa_id = fields.Many2one(
         'res.partner', string='Empresa', domain=enterprise_domain)
+    # Sobrescribimos el campo del proveedor
     partner_id = fields.Many2one('res.partner', string='Proveedor')
+
+    # Declaramos un campo para sustituir el campo para las cuentas del partner
+    oupp_partner_bank_id = fields.Many2one('res.partner.bank', string="Cuenta bancaria de proveedor")
 
     # Establecemos el dominio de los proveedores al cambiar el campo de empresa
     @api.onchange('empresa_id')
@@ -28,22 +32,21 @@ class AccountMove(models.Model):
                 # Devolvemos todos los partners individuales que no estén asociados a ninguna compañía
                 return {'domain': {'partner_id': ['&', ('is_company', '=', False), ('parent_id', '=', False)]}}
 
-    # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
-    @api.onchange('partner_id')
-    def _changing_contextof_partner_bank_id(self):
-        for rec in self:
-            # Retornamos un dominio sin filtros
-            return {
-                'context': {'default_partner_id': False}
-            }
-    # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
+    # # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
+    # @api.onchange('partner_id')
+    # def _changing_contextof_partner_bank_id(self):
+    #     for rec in self:
+    #         # Retornamos un dominio sin filtros
+    #         return {
+    #             'context': {'default_partner_id': False}
+    #         }
 
+    # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
     @api.onchange('partner_id')
-    def _onchange_domainof_partner_bank_id(self):
+    def _onchange_domainof_oupp_partner_bank_id(self):
         for rec in self:
-            # Establecemos la primer cuenta de la tupla en el campo correspondiente
-            rec['bank_partner_id'] = False
-            rec['partner_bank_id'] = False
+            # Desestablecemos el valor actual del campo
+            rec['oupp_partner_bank_id'] = False
 
             # Si hay un partner establecido
             if (rec.partner_id):
@@ -53,21 +56,27 @@ class AccountMove(models.Model):
                     # que pertenezcan al parent del contacto donde, además,
                     # el contacto de sucursal sea igual al contacto establecido.
                     return {
-                        'domain': {'partner_bank_id': ['&', ('partner_id', '=', rec.partner_id.parent_id.id), ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)]}
+                        'domain': {'oupp_partner_bank_id': ['&', ('partner_id', '=', rec.partner_id.parent_id.id), ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)]}
                     }
                 # Si el partner no es un contacto o una sucursal
                 else:
                     # Retornamos el dominio para el campo con las cuentas
                     # que pertenezcan al partner
                     return {
-                        'domain': {'partner_bank_id': [('partner_id', '=', rec.partner_id.id)]}
+                        'domain': {'oupp_partner_bank_id': [('partner_id', '=', rec.partner_id.id)]}
                     }
 
             else:
                 # Retornamos un dominio sin filtros
                 return {
-                    'domain': {'partner_bank_id': []}
+                    'domain': {'oupp_partner_bank_id': []}
                 }
+    
+    # EStablecemos el oupp_partner_bank_id en el partner_bank_id
+    @api.onchange('oupp_partner_bank_id')
+    def _set_partner_bank_id(self):
+        for rec in self:
+            rec['partner_bank_id'] = rec.oupp_partner_bank_id
 
     # Referencia de la factura
     ref = fields.Char(string="Referenia UUID")
