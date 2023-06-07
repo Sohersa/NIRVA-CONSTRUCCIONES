@@ -32,8 +32,8 @@
           <field name="factura_sat"/>
         </field>
         <field name="partner_bank_id" position="replace">
-          <field name="partner_bank_id" t-if="partner_id.parent_id" domain="[('partner_id', '=', partner_id.parent_id), ('oupp_contacto_de_sucursal', '=', partner_id)]"/>
-          <field name="partner_bank_id" t-if="not partner_id.parent_id" domain="[('partner_id', '=', partner_id)]"/>
+        <!-- Cuenta bancaria -->
+          <field name="partner_bank_id"/>
           <!-- Tipo de pago -->
           <field name="oupp_tipo_de_pago"/>
         </field>
