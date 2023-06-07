@@ -33,6 +33,8 @@ class AccountMove(models.Model):
     def _onchange_partner(self):
         for rec in self:
             # Establecemos la primer cuenta de la tupla en el campo correspondiente
+            rec['default_partner_id'] = False
+            rec['bank_partner_id'] = False
             rec['partner_bank_id'] = False
 
             # Si hay un partner establecido
