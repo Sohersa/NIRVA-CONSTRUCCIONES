@@ -17,7 +17,7 @@ class AccountMove(models.Model):
     partner_id = fields.Many2one('res.partner', string='Proveedor')
 
     # Declaramos un campo para sustituir el campo para las cuentas del partner
-    oupp_partner_bank_id = fields.Many2one('res.partner.bank', string="Cuenta bancaria de proveedor")
+    oupp_partner_bank_id = fields.Many2one('res.partner.bank', string="Cuenta bancaria del partner")
 
     # Establecemos el dominio de los proveedores al cambiar el campo de empresa
     @api.onchange('empresa_id')
@@ -31,15 +31,6 @@ class AccountMove(models.Model):
             else:
                 # Devolvemos todos los partners individuales que no estén asociados a ninguna compañía
                 return {'domain': {'partner_id': ['&', ('is_company', '=', False), ('parent_id', '=', False)]}}
-
-    # # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
-    # @api.onchange('partner_id')
-    # def _changing_contextof_partner_bank_id(self):
-    #     for rec in self:
-    #         # Retornamos un dominio sin filtros
-    #         return {
-    #             'context': {'default_partner_id': False}
-    #         }
 
     # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
     @api.onchange('partner_id')
