@@ -30,10 +30,18 @@ class AccountMove(models.Model):
 
     # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
     @api.onchange('partner_id')
-    def _onchange_partner(self):
+    def _changing_contextof_partner_bank_id(self):
+        for rec in self:
+            # Retornamos un dominio sin filtros
+            return {
+                'context': {'default_partner_id': False}
+            }
+    # Establecemos el dominio de las cuentas bancarias al cambiar el partner_id
+
+    @api.onchange('partner_id')
+    def _onchange_domainof_partner_bank_id(self):
         for rec in self:
             # Establecemos la primer cuenta de la tupla en el campo correspondiente
-            rec['default_partner_id'] = False
             rec['bank_partner_id'] = False
             rec['partner_bank_id'] = False
 
