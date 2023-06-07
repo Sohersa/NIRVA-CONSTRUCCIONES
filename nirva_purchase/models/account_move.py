@@ -32,8 +32,6 @@ class AccountMove(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner(self):
         for rec in self:
-            # Instanciamos una variable para el dominio de cuentas a establecer
-            partner_banks_ids = False
             # Si hay un partner establecido
             if (rec.partner_id):
                 # Revisamos si el partner es un contacto o una sucursal de algún otro partner
@@ -44,19 +42,25 @@ class AccountMove(models.Model):
                         ('partner_id', '=', rec.partner_id.parent_id.id),
                         ('oupp_contacto_de_sucursal', '=', rec.partner_id.id)
                     ])
+                    # Revisamos si había cuentas bancarias con las condiciones dadas
+                    if (partner_banks_ids and len(partner_banks_ids) >= 1):
+                        # Establecemos la primer cuenta de la tupla en el campo correspondiente
+                        rec['partner_bank_id'] = partner_banks_ids[0]
+                        # Retornamos el dominio para el campo con las cuentas encontradas
+                        return {'domain': {'partner_bank_id': partner_banks_ids}}
                 # Si el partner no es un contacto o una sucursal
                 else:
                     # Retornamos todas las cuentas que pertenezcan al partner
                     partner_banks_ids = self.env['res.partner.bank'].search([
                         ('partner_id', '=', rec.partner_id.id)
                     ])
+                    # Revisamos si había cuentas bancarias con las condiciones dadas
+                    if (partner_banks_ids and len(partner_banks_ids) >= 1):
+                        # Establecemos la primer cuenta de la tupla en el campo correspondiente
+                        rec['partner_bank_id'] = partner_banks_ids[0]
+                        # Retornamos el dominio para el campo con las cuentas encontradas
+                        return {'domain': {'partner_bank_id': partner_banks_ids}}
 
-            # Revisamos si había cuentas bancarias con las condiciones dadas
-            if (partner_banks_ids and len(partner_banks_ids) >= 1):
-                # Establecemos la primer cuenta de la tupla en el campo correspondiente
-                rec['partner_bank_id'] = partner_banks_ids[0]
-                # Retornamos el dominio para el campo con las cuentas encontradas
-                return {'domain': {'partner_bank_id': partner_banks_ids}}
             else:
                 # Retornamos un dominio sin filtros
                 return {'domain': {'partner_bank_id': []}}
