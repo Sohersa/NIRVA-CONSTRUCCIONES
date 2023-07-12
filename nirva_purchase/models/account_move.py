@@ -27,8 +27,8 @@ class AccountMove(models.Model):
     @api.onchange('oupp_concepto.account_analytic_group')
     def _onchange_account_analytic_group(self):
         for rec in self:
-            if rec.oupp_concepto.account_analytic_group:
-                return {'domain': {'account_analytic_account': [('group_id', '=', rec.oupp_concepto.account_analytic_group)]}}
+            if rec.oupp_concepto.account_analytic_group and rec.oupp_concepto.account_analytic_group.id:
+                return {'domain': {'account_analytic_account': [('group_id', '=', rec.oupp_concepto.account_analytic_group.id)]}}
 
     # Declaramos un campo para sustituir el campo para las cuentas del partner
     oupp_partner_bank_id = fields.Many2one(
