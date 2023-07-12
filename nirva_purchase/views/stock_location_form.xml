@@ -9,9 +9,10 @@
     <field name="arch" type="xml">
 
       <xpath expr="//form/sheet/group/group" position="before">
-        <group string="Establecer contrato" name="contracts">
+        <group string="Configuraciones de Contrato" name="contracts">
           <field name="is_contract" attrs="{'invisible': [('location_id', '!=', False)]}"/>
           <field name="warehouse_id" attrs="{'invisible': [('is_contract', '=', False)]}"/>
+          <field name="account_analytic_group"/>
         </group>
       </xpath>
 
