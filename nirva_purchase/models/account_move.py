@@ -16,7 +16,7 @@ class AccountMove(models.Model):
     # Sobrescribimos el campo del proveedor
     partner_id = fields.Many2one('res.partner', string='Proveedor')
     # Declaramos un campo relacionado al grupo de cuentas analíticas de la ubicación de almacen
-    account_analytic_group = fields.Many2one("account.analytic.group", related="oupp_concepto.account_analytic_group" string="Grupo analítico")
+    account_analytic_group = fields.Many2one("account.analytic.group", related="oupp_concepto.account_analytic_group", string="Grupo analítico")
     # Declaramos un campo filtrado de las cuentas analíticas disponibles para la factura
     account_analytic_account = fields.Many2one("account.analytic")
 
