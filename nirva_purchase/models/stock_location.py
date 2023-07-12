@@ -6,7 +6,7 @@ class StockLocation(models.Model):
 
     _inherit='stock.location'
 
-    account_analytic_group = fields.Many2one(comodel_name="account.analytic.group" string="Cuenta analítica")
+    account_analytic_group = fields.Many2one(comodel_name="account.analytic.group", string="Cuenta analítica")
     is_contract = fields.Boolean(string="Es un contrato")
     warehouse_id = fields.Many2one('stock.warehouse', string='Almacen/Obra', required=False)
 
