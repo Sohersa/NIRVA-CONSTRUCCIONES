@@ -28,7 +28,7 @@ class AccountMove(models.Model):
     def _onchange_account_analytic_group(self):
         for rec in self:
             if rec.account_analytic_group:
-                return {'domain': {'account_analytic_account': [('group_id', '=', rec.account_analytic_group)]}}
+                return {'domain': {'account_analytic_account': [('group_id', '=', rec.account_analytic_group.id)]}}
             else:
                 return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
 
