@@ -30,7 +30,7 @@ class AccountMove(models.Model):
             if rec.account_analytic_group:
                 return {'domain': {'account_analytic_account': [('group_id', '=', rec.oupp_concepto.account_analytic_group.id)]}}
             else:
-                return {'domain': {'account_analytic_account': []}}
+                return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
 
     # Declaramos un campo para sustituir el campo para las cuentas del partner
     oupp_partner_bank_id = fields.Many2one(
