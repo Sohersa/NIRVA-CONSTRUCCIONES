@@ -18,16 +18,16 @@ class AccountMove(models.Model):
 
     # Declaramos un campo relacionado al grupo de cuentas analíticas de la ubicación de almacen
     account_analytic_group = fields.Many2one(
-        "account.analytic.group", related="oupp_concepto.account_analytic_group", store=True, string="Grupo analítico")
+        "account.analytic.group", store=True, string="Grupo analítico")
     # Declaramos un campo filtrado de las cuentas analíticas disponibles para la factura
     account_analytic_account = fields.Many2one(
-        "account.analytic.account", store=True)
+        "account.analytic.account", store=True, string="Cuenta analítica")
 
     # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
-    @api.onchange('oupp_concepto.account_analytic_group')
+    @api.onchange('account_analytic_group')
     def _onchange_account_analytic_group(self):
         for rec in self:
-            if rec.oupp_concepto.account_analytic_group and rec.oupp_concepto.account_analytic_group.id:
+            if rec.account_analytic_group:
                 return {'domain': {'account_analytic_account': [('group_id', '=', rec.oupp_concepto.account_analytic_group.id)]}}
 
     # Declaramos un campo para sustituir el campo para las cuentas del partner
