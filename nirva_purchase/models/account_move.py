@@ -17,21 +17,15 @@ class AccountMove(models.Model):
     partner_id = fields.Many2one('res.partner', string='Proveedor')
 
     # Declaramos un campo relacionado al grupo de cuentas analíticas de la ubicación de almacen
-    account_analytic_group = fields.Many2one("account.analytic.group", related="oupp_concepto.account_analytic_group", store=True, string="Grupo analítico")
+    account_analytic_group = fields.Many2one(
+        "account.analytic.group", string="Grupo analítico", store=True)
     # Declaramos un campo filtrado de las cuentas analíticas disponibles para la factura
-    account_analytic_account = fields.Many2one("account.analytic.account", store=True)
-
-    # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
-    @api.onchange('account_analytic_group')
-    def _onchange_account_analytic_group(self):
-        for rec in self:
-            if (rec.account_analytic_group):
-                return {'domain': {'account_analytic_account': [('group_id.id', '=', rec.account_analytic_group.id)]}}
-            else:
-                return {'domain': {'account_analytic_account': []}}
+    account_analytic_account = fields.Many2one(
+        "account.analytic.account", string="Cuenta analítica", store=True)
 
     # Declaramos un campo para sustituir el campo para las cuentas del partner
-    oupp_partner_bank_id = fields.Many2one('res.partner.bank', string="Cuenta bancaria del partner")
+    oupp_partner_bank_id = fields.Many2one(
+        'res.partner.bank', string="Cuenta bancaria del partner")
 
     # Establecemos el dominio de los proveedores al cambiar el campo de empresa
     @api.onchange('empresa_id')
@@ -76,7 +70,7 @@ class AccountMove(models.Model):
                 return {
                     'domain': {'oupp_partner_bank_id': []}
                 }
-    
+
     # EStablecemos el oupp_partner_bank_id en el partner_bank_id
     @api.onchange('oupp_partner_bank_id')
     def _set_partner_bank_id(self):
@@ -145,3 +139,12 @@ class AccountMove(models.Model):
                 move["purchase_id"] = move.oupp_po
                 move["partner_id"] = move.oupp_po.partner_id
                 move["empresa_id"] = move.oupp_po.empresa_id
+                # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
+                return {
+                    'domain': {
+                        'account_analytic_group': [('id', '=', move.oupp_concepto.account_analytic_group.id)],
+                        'account_analytic_account': [('group_id.id', '=', move.oupp_concepto.account_analytic_group.id)]
+                    }
+                }
+            else:
+                return {'domain': {'account_analytic_account': []}}
