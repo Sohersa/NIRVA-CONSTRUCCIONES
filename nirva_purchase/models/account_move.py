@@ -38,7 +38,7 @@ class AccountMove(models.Model):
         for rec in self:
             # Buscamos las líneas de factura (apuntes contables excluídos de la pestaña de líneas de factura) que pertenezcan a esta factura
             invoice_lines = self.env['account.move.line'].search(
-                ["&", ('move_id', '=', rec.id), ("exclude_from_invoice_tab", "=", True)]
+                ["&", ('move_id', '=', rec.id), ("exclude_from_invoice_tab", "=", False)]
             )
             # Establecemos la cuenta analítica de la factura en cada línea de factura (apuntes contables excluídos de la pestaña de líneas de factura)
             for invoice_line in invoice_lines:
