@@ -16,12 +16,27 @@ class AccountMove(models.Model):
     # Sobrescribimos el campo del proveedor
     partner_id = fields.Many2one('res.partner', string='Proveedor')
 
+    # Definimos el dominio para el account_analytic_group basado en el concepto (stock.location)
+    def _domain_for_account_analytic_group_field(self):
+        if (self.oupp_concepto and self.oupp_concepto.account_analytic_group):
+            return [('group_id', '=', self.oupp_concepto.account_analytic_group.id)]
+        else:
+            return []
+
     # Declaramos un campo relacionado al grupo de cuentas analíticas de la ubicación de almacen
     account_analytic_group = fields.Many2one(
-        "account.analytic.group", store=True, string="Grupo analítico")
+        "account.analytic.group", domain=_domain_for_account_analytic_group_field, store=True, string="Grupo analítico")
+
+    # Definimos el domino para el account_analytic_account basado en su grupo
+    def _domain_for_account_analytic_account_field(self):
+        if (self.account_analytic_group):
+            return [('group_id', '=', self.account_analytic_group.id)]
+        else:
+            return []
+
     # Declaramos un campo filtrado de las cuentas analíticas disponibles para la factura
     account_analytic_account = fields.Many2one(
-        "account.analytic.account", store=True, string="Cuenta analítica")
+        "account.analytic.account", domain=_domain_for_account_analytic_account_field, store=True, string="Cuenta analítica")
 
     # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
     @api.onchange('account_analytic_group')
@@ -31,14 +46,14 @@ class AccountMove(models.Model):
                 return {'domain': {'account_analytic_account': [('group_id', '=', rec.account_analytic_group.id)]}}
             else:
                 return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
-            
-    @api.onchange('account_analytic_account')
+
     # Establecemos la cuenta analítica establecida en todas las líneas de factura
     def set_account_analytic_account_in_invoice_lines(self):
         for rec in self:
             # Buscamos las líneas de factura (apuntes contables excluídos de la pestaña de líneas de factura) que pertenezcan a esta factura
             invoice_lines = self.env['account.move.line'].search(
-                ["&", ('move_id', '=', rec.id), ("exclude_from_invoice_tab", "=", False)]
+                ["&", ('move_id', '=', rec.id),
+                 ("exclude_from_invoice_tab", "=", False)]
             )
             # Establecemos la cuenta analítica de la factura en cada línea de factura (apuntes contables excluídos de la pestaña de líneas de factura)
             for invoice_line in invoice_lines:
