@@ -35,7 +35,7 @@
         </field>
         <field name="partner_bank_id" position="after">
           <!-- Cuenta bancaria -->
-          <field name="oupp_partner_bank_id"/>
+          <field name="oupp_partner_bank_id" />
           <!-- Tipo de pago -->
           <field name="oupp_tipo_de_pago" />
         </field>
@@ -50,12 +50,25 @@
             <field name="oupp_obra" />
             <field name="oupp_concepto" />
             <field name="oupp_autoriza" />
-            <field name="account_analytic_group"/>
-            <field name="account_analytic_account"/>
+            <field name="account_analytic_group" />
+            <field name="account_analytic_account" />
           </group>
         </xpath>
 
+
       </field>
+    </record>
+
+    <!-- Registin action -->
+    <record model="ir.actions.server" id="nirva_actions_set_analytic">
+      <field name="name">Establecer cuenta analítica</field>
+      <field name="model_id" ref="account.move" />
+      <field name="binding_model_id" ref="account.move" />
+      <field name="state">code</field>
+      <field name="code">
+        action = records.set_account_analytic_account_in_invoice_lines()
+      </field>
+
     </record>
 
   </data>
