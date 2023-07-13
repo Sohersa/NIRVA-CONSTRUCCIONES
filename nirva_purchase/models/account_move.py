@@ -32,6 +32,16 @@ class AccountMove(models.Model):
             else:
                 return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
 
+    # Establecemos la cuenta analítica establecida en todas las líneas de factura
+    def set_account_analytic_account_in_invoice_lines(self):
+        # Buscamos las líneas de factura que pertenezcan a esta factura
+        invoice_lines = self.env['account.move.line'].search(
+            [('move_id', '=', self.id)]
+        )
+        # Establecemos la cuenta analítica de la factura en cada línea de factura
+        for invoice_line in invoice_lines:
+            invoice_line['analytic_account_id'] = self.account_analytic_account.id
+
     # Declaramos un campo para sustituir el campo para las cuentas del partner
     oupp_partner_bank_id = fields.Many2one(
         'res.partner.bank', string="Cuenta bancaria del partner")
