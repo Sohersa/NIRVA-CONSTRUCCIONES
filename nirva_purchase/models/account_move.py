@@ -35,15 +35,6 @@ class AccountMove(models.Model):
                 # Desestablecemos el grupo de cuentas analíticas
                 rec["account_analytic_group"] = False
 
-    # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
-    @api.onchange('account_analytic_group')
-    def _onchange_account_analytic_group(self):
-        for rec in self:
-            if rec.account_analytic_group:
-                return {'domain': {'account_analytic_account': [('group_id', '=', rec.account_analytic_group.id)]}}
-            else:
-                return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
-
     # Establecemos la cuenta analítica establecida en todas las líneas de factura
     def set_account_analytic_account_in_invoice_lines(self):
         for rec in self:
