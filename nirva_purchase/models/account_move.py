@@ -16,27 +16,23 @@ class AccountMove(models.Model):
     # Sobrescribimos el campo del proveedor
     partner_id = fields.Many2one('res.partner', string='Proveedor')
 
-    # Definimos el dominio para el account_analytic_group basado en el concepto (stock.location)
-    def _domain_for_account_analytic_group_field(self):
-        if (self.oupp_concepto and self.oupp_concepto.account_analytic_group):
-            return [('id', '=', self.oupp_concepto.account_analytic_group.id)]
-        else:
-            return []
-
     # Declaramos un campo relacionado al grupo de cuentas analíticas de la ubicación de almacen
     account_analytic_group = fields.Many2one(
-        "account.analytic.group", domain=_domain_for_account_analytic_group_field, store=True, string="Grupo analítico")
-
-    # Definimos el domino para el account_analytic_account basado en su grupo
-    def _domain_for_account_analytic_account_field(self):
-        if (self.account_analytic_group):
-            return [('group_id', '=', self.account_analytic_group.id)]
-        else:
-            return []
-
+        "account.analytic.group", store=True, string="Grupo analítico")
+    
     # Declaramos un campo filtrado de las cuentas analíticas disponibles para la factura
     account_analytic_account = fields.Many2one(
-        "account.analytic.account", domain=_domain_for_account_analytic_account_field, store=True, string="Cuenta analítica")
+        "account.analytic.account", store=True, string="Cuenta analítica")
+    
+    # Establecemos el grupo analítico a partir del grupo vinculado al concepto (stock.location)
+    def _set_analytic_group_by_location(self):
+        for rec in self:
+            # Revisamos si el contrato (stock.location) tiene un grupo analítico establecido
+            if (rec.oupp_concepto and rec.oupp_concepto.account_analytic_group):
+                # Establecemos el grupo analítico de esta factura con el del contrato
+                rec["account_analytic_group"] = rec.oupp_concepto.account_analytic_group.id
+            else:
+                rec["account_analytic_group"] = False
 
     # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
     @api.onchange('account_analytic_group')

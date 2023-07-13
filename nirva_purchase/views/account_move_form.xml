@@ -59,16 +59,25 @@
       </field>
     </record>
 
-    <!-- Registin action -->
-    <record model="ir.actions.server" id="nirva_actions_set_analytic">
-      <field name="name">Establecer cuenta analítica</field> 
+    <!-- Registering actions -->
+    <record model="ir.actions.server" id="nirva_actions_set_analytic_account_in_move_lines">
+      <field name="name">Establecer cuenta analítica en apuntes analíticos</field>
       <field name="model_id" ref="model_account_move" />
       <field name="binding_model_id" ref="model_account_move" />
       <field name="state">code</field>
       <field name="code">
         action = records.set_account_analytic_account_in_invoice_lines()
       </field>
+    </record>
 
+    <record model="ir.actions.server" id="nirva_actions_set_analytic_group_by_location">
+      <field name="name">Establecer grupo analítico por contrato</field>
+      <field name="model_id" ref="model_account_move" />
+      <field name="binding_model_id" ref="model_account_move" />
+      <field name="state">code</field>
+      <field name="code">
+        action = records._set_analytic_group_by_location()
+      </field>
     </record>
 
   </data>
