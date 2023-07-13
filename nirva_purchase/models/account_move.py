@@ -31,13 +31,9 @@ class AccountMove(models.Model):
             if (rec.oupp_concepto and rec.oupp_concepto.account_analytic_group):
                 # Establecemos el grupo analítico de esta factura con el del contrato
                 rec["account_analytic_group"] = rec.oupp_concepto.account_analytic_group.id
-                # Modificamos el dominio para las cuentas analíticas que pertenezcan al grupo
-                return {'domain': {'account_analytic_account': [('group_id', '=', rec.account_analytic_group.id)]}}
             else:
                 # Desestablecemos el grupo de cuentas analíticas
                 rec["account_analytic_group"] = False
-                # Establecemos como dominio de cuentas analíticas, aquellas cuentas que no tengan grupo
-                return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
 
     # Cambiamos el dominio de las cuentas analíticas cuando se cambie el grupo de cuentas analíticas
     @api.onchange('account_analytic_group')
