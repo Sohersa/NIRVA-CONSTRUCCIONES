@@ -31,7 +31,8 @@ class AccountMove(models.Model):
                 return {'domain': {'account_analytic_account': [('group_id', '=', rec.account_analytic_group.id)]}}
             else:
                 return {'domain': {'account_analytic_account': [('group_id', '=', False)]}}
-
+            
+    @api.onchange('account_analytic_account')
     # Establecemos la cuenta analítica establecida en todas las líneas de factura
     def set_account_analytic_account_in_invoice_lines(self):
         # Buscamos las líneas de factura que pertenezcan a esta factura
