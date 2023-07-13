@@ -19,7 +19,7 @@ class AccountMove(models.Model):
     # Definimos el dominio para el account_analytic_group basado en el concepto (stock.location)
     def _domain_for_account_analytic_group_field(self):
         if (self.oupp_concepto and self.oupp_concepto.account_analytic_group):
-            return [('group_id', '=', self.oupp_concepto.account_analytic_group.id)]
+            return [('id', '=', self.oupp_concepto.account_analytic_group.id)]
         else:
             return []
 
