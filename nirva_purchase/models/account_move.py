@@ -36,11 +36,11 @@ class AccountMove(models.Model):
     # Establecemos la cuenta analítica establecida en todas las líneas de factura
     def set_account_analytic_account_in_invoice_lines(self):
         for rec in self:
-            # Buscamos las líneas de factura que pertenezcan a esta factura
+            # Buscamos las líneas de factura (apuntes contables excluídos de la pestaña de líneas de factura) que pertenezcan a esta factura
             invoice_lines = self.env['account.move.line'].search(
-                [('move_id', '=', rec.id)]
+                ["&", ('move_id', '=', rec.id), ("exclude_from_invoice_tab", "=", True)]
             )
-            # Establecemos la cuenta analítica de la factura en cada línea de factura
+            # Establecemos la cuenta analítica de la factura en cada línea de factura (apuntes contables excluídos de la pestaña de líneas de factura)
             for invoice_line in invoice_lines:
                 invoice_line['analytic_account_id'] = rec.account_analytic_account.id
 
