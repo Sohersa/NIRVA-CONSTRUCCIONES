@@ -51,7 +51,7 @@
             <field name="oupp_concepto" />
             <field name="oupp_autoriza" />
             <field name="account_analytic_group" />
-            <field name="account_analytic_account" domain="[('group_id', '=', account_analytic_group.id)]"/>
+            <field name="account_analytic_account" domain="[('group_id', '=', account_analytic_group)]"/>
           </group>
         </xpath>
 
