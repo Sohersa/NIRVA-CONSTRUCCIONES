@@ -61,9 +61,9 @@
 
     <!-- Registin action -->
     <record model="ir.actions.server" id="nirva_actions_set_analytic">
-      <field name="name">Establecer cuenta analítica</field>
-      <field name="model_id" ref="account.model_account_move" />
-      <field name="binding_model_id" ref="account.model_account_move" />
+      <field name="name">Establecer cuenta analítica</field> 
+      <field name="model_id" ref="model_account_move" />
+      <field name="binding_model_id" ref="model_account_move" />
       <field name="state">code</field>
       <field name="code">
         action = records.set_account_analytic_account_in_invoice_lines()
